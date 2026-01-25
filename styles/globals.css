@@ -236,3 +236,22 @@ body {
   .book-spine { width: 130px; height: 190px; }
   .section-card { padding: 20px; }
 }
+
+.download-btn-link {
+  background: #fff4ed;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #d35400;
+  transition: all 0.3s ease;
+}
+
+.download-btn-link:hover {
+  background: #d35400;
+  color: white !important;
+}
+
+/* Скрываем скроллбары в контейнере iframe, если они появятся */
+.iframe-container {
+  overflow: hidden;
+  background-color: #525659;
+}
