@@ -1,35 +1,95 @@
 :root {
-  --bg-main: #fdfaf6;
-  --wood-dark: #3e2410;
-  --wood-light: #7c5030;
-  --accent: #1e3a8a;
+  --wood-dark: #5d3a1f;
+  --wood-light: #8b5a3c;
+  --accent: #667eea;
 }
-html { scroll-behavior: smooth; }
-body { margin: 0; font-family: 'Georgia', serif; background: var(--bg-main); color: #333; }
-.sticky-header {
-  position: sticky; top: 0; width: 100%;
-  background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
-  border-bottom: 2px solid #e5e7eb; z-index: 100; padding: 1rem 0;
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f9f9f9;
+  color: #1a1a1a;
 }
-.nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-.nav-links { display: flex; gap: 2rem; }
-.nav-links a { text-decoration: none; color: var(--wood-dark); font-weight: bold; }
-.library-container { max-width: 1100px; margin: 0 auto; padding: 2rem 20px 6rem; }
-.shelf-title { font-size: 1.8rem; color: var(--wood-dark); margin: 4rem 0 1.5rem; border-left: 6px solid var(--wood-light); padding-left: 20px; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Ефект полиці */
 .bookshelf {
-  background: var(--wood-light); border: 4px solid var(--wood-dark);
-  border-radius: 4px; padding: 3rem 2rem 1rem;
-  display: flex; flex-wrap: wrap; align-items: flex-end;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative;
+  position: relative;
+  background: var(--wood-light);
+  border: 3px solid var(--wood-dark);
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-end;
 }
-.bookshelf::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 15px; background: var(--wood-dark); }
+
+.bookshelf::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: var(--wood-dark);
+}
+
+/* Книги */
 .book-spine {
-  width: 170px; height: 240px; color: white; border: none;
-  margin-bottom: 15px; cursor: pointer; transition: all 0.3s ease;
-  box-shadow: 5px 0 15px rgba(0,0,0,0.3); padding: 20px;
-  display: flex; flex-direction: column; justify-content: space-between;
-  text-align: left; border-left: 4px solid rgba(0,0,0,0.2);
+  width: 180px;
+  height: 250px;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  transition: transform 0.2s;
+  box-shadow: 3px 0 10px rgba(0,0,0,0.3);
+  padding: 0;
+  background: #2c5282;
 }
-.book-spine:hover { transform: translateY(-15px); }
-.pdf-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center; z-index: 1000; }
-.modal-body { width: 95%; height: 95%; background: white; border-radius: 8px; position: relative; }
+
+.book-spine:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.book-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Модальне вікно */
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
