@@ -1,234 +1,88 @@
-# goette-bookshelf
-Express  presentation for customer 
+📚 Goette Bookshelf — Digital Library of Henriette Goette
 
-# Витягти першу сторінку як PNG
-pdftoppm -png -f 1 -l 1 -scale-to 400 book.pdf cover
-```
+An online library of historical research on German–Swiss heritage in Ukraine
 
----
+🔗 Live Demo: https://goette-bookshelf.vercel.app
 
-## 📐 Оптимальні параметри обкладинки
+📖 About the Project
 
-### Розміри зображення:
+Goette Bookshelf is a digital library created to present the scholarly works of Henriette Goette, an independent historian researching the history of German and Swiss colonists in Ukraine.
 
-**Для книги на полиці (вертикальна орієнтація):**
-- Ширина: **300-400px**
-- Висота: **400-550px**
-- Співвідношення: ~3:4 (як справжня книга)
-- Формат: **WebP** (менший розмір при тій самій якості)
-- Вага: **150-300KB** (баланс якість/швидкість)
+The platform provides online viewing and PDF access to her books, which are based on extensive archival research in Ukraine, Germany, Switzerland, and Russia. The project focuses on lesser-known aspects of 19th–20th century history, regional memory, and cultural heritage.
 
-**Чому саме такі розміри:**
-- 400px ширина × 2 (Retina) = 800px реальна ширина
-- Достатньо для чіткості на будь-якому екрані
-- Не перевантажує трафік
+🧰 Tech Stack
 
----
+Next.js — React framework
 
-## ☁️ Зберігання обкладинок: Cloudflare R2
+Vercel — deployment and hosting
 
-### Чи можна зберігати обкладинки на Cloudflare R2?
+Cloudflare R2 — storage for PDFs and book covers
 
-**✅ ТАК, і це ідеальний варіант!**
+Lucide React — icons
 
-### Структура файлів на R2:
-```
-R2 Bucket: henrietta-gotte-library/
+🚀 Getting Started
+Install dependencies
+npm install
 
-├── covers/                    (обкладинки)
-│   ├── quantum-computing.webp      (250KB)
-│   ├── ai-ethics.webp              (180KB)
-│   ├── digital-transformation.webp (220KB)
-│   └── ...
-│
-├── pdfs/                      (повні PDF)
-│   ├── quantum-computing.pdf       (5MB)
-│   ├── ai-ethics.pdf               (2MB)
-│   └── ...
-```
+Run locally
+npm run dev
 
----
 
-## ⚡ Чи будуть затримки?
+Open: http://localhost:3000
 
-### Короткая відповідь: **НІ, затримок не буде**
+Build & deploy
+npm run build
+vercel deploy
 
-### Детально:
+📂 Project Structure
+goette-bookshelf/
+├── pages/
+│   ├── _app.js          # Next.js app wrapper
+│   └── index.js         # Main page
+├── styles/
+│   └── globals.css      # Global styles
+├── public/
+│   ├── cover/           # Book covers (WebP)
+│   ├── Books/           # Web-optimized PDFs
+│   └── Books-full/      # Full PDF editions
+├── data.js              # Books and author data
+├── package.json
+└── README.md
 
-**1. Cloudflare R2 + CDN = миттєве завантаження**
-```
-Користувач відкриває сайт
-   ↓
-Браузер запитує обкладинку (300KB WebP)
-   ↓
-Cloudflare CDN віддає з найближчого серверу
-   ↓
-Завантаження 0.3-0.8 секунди (залежно від інтернету)
-   ↓
-Обкладинка з'являється на полиці ✅
+✨ Features
 
-Техніка 1: Lazy Loading (ледаче завантаження)
-jsx<img 
-  src={coverUrl} 
-  loading="lazy"  // Завантажується тільки коли книга видима
-  alt="Обкладинка книги"
-/>
-Результат: Обкладинки завантажуються тільки коли користувач доскролює до полиці.
+Responsive layout (desktop, tablet, mobile)
 
-Техніка 2: Placeholder (заглушка під час завантаження)
-jsxconst Book = ({ book }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
+Bookshelf-style UI
 
-  return (
-    <div className="book-spine">
-      {!imageLoaded && (
-        <div className="placeholder-gradient">
-          {/* Кольоровий градієнт доки завантажується */}
-        </div>
-      )}
-      
-      <img
-        src={book.coverUrl}
-        onLoad={() => setImageLoaded(true)}
-        style={{ opacity: imageLoaded ? 1 : 0 }}
-        alt={book.title}
-      />
-    </div>
-  );
-};
-Результат: Спочатку показується кольоровий блок, потім плавно з'являється обкладинка.
+Modal PDF viewer (read without downloading)
 
-Техніка 3: WebP з JPG fallback
-jsx<picture>
-  <source srcSet={book.coverWebP} type="image/webp" />
-  <source srcSet={book.coverJPG} type="image/jpeg" />
-  <img src={book.coverJPG} alt={book.title} />
-</picture>
-Результат: Сучасні браузери завантажують WebP (швидше), старі — JPG.
+Download original PDFs
 
-Техніка 4:Preload важливих обкладинок
-html<!-- У <head> сторінки -->
-<link rel="preload" as="image" href="covers/quantum-computing.webp" />
-<link rel="preload" as="image" href="covers/ai-ethics.webp" />
-Результат: Перші 2-3 обкладинки завантажуються ще до того, як користувач доскролить.
+Automatic grouping of books into shelves
 
-Структура даних:
-javascriptconst booksData = [
-  {
-    id: 'quantum-computing',
-    title: 'Квантовые вычисления',
-    coverUrl: 'https://r2.henriettagotte.com/covers/quantum-computing.webp',
-    coverFallback: 'https://r2.henriettagotte.com/covers/quantum-computing.jpg',
-    pdfUrl: 'quantum-computing.pdf',
-    // ...
-  },
-];
-Компонент книги з обкладинкою:
-jsxconst Book = ({ book, onClick }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
+Optimized assets for fast loading
 
-  return (
-    <div className="book-wrapper" onClick={() => onClick(book)}>
-      <div className="book-spine">
-        {/* Градієнт-заглушка */}
-        {!imageLoaded && (
-          <div className="cover-placeholder" />
-        )}
-        
-        {/* Реальна обкладинка */}
-        <picture>
-          <source srcSet={book.coverUrl} type="image/webp" />
-          <source srcSet={book.coverFallback} type="image/jpeg" />
-          <img
-            src={book.coverFallback}
-            alt={`Обкладинка: ${book.title}`}
-            className="book-cover"
-            loading="lazy"
-            onLoad={() => setImageLoaded(true)}
-            style={{ 
-              opacity: imageLoaded ? 1 : 0,
-              transition: 'opacity 0.3s ease'
-            }}
-          />
-        </picture>
+🧠 Key Lessons Learned
 
-        {/* Назва книги поверх обкладинки (якщо потрібно) */}
-        <div className="book-title-overlay">
-          {book.title}
-        </div>
-      </div>
-    </div>
-  );
-};
-CSS для обкладинок:
-css.book-spine {
-  position: relative;
-  width: 210px;
-  height: 280px;
-  overflow: hidden;
-  border-radius: 3px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease;
-}
+Always commit before structural Git changes
 
-.book-spine:hover {
-  transform: translateY(-10px);
-}
+Pull remote changes before pushing
 
-.cover-placeholder {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
+Standardize file names (lowercase, kebab-case)
 
-.book-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Обкладинка заповнює весь простір */
-}
+Use public/ for static assets in Next.js
 
-.book-title-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-  color: white;
-  padding: 1rem 0.5rem 0.5rem;
-  font-size: 14px;
-  font-weight: 700;
-  text-align: center;
-}
+_app.js is a wrapper, not a page
 
- Покрокова інструкція
-Крок 1: Підготувати обкладинки
-bash# Для кожної книги:
-1. Відкрити ilovepdf.com/pdf_to_jpg
-2. Завантажити PDF
-3. Вибрати "Extract only first page"
-4. Скачати JPG
-5. Відкрити squoosh.app
-6. Завантажити JPG → конвертувати в WebP (якість 85%)
-7. Скачати quantum-computing.webp (250KB)
-Крок 2: Завантажити на Cloudflare R2
-bash# У Cloudflare Dashboard:
-1. R2 → Ваш bucket → Upload
-2. Створити папку "covers"
-3. Завантажити всі .webp файли
-4. Налаштувати Public Access (або Signed URLs)
-```
+git status prevents costly mistakes
 
-### Крок 3: Отримати URL
-```
-Приклад URL:
-https://pub-xxxxx.r2.dev/covers/quantum-computing.webp
-Крок 4: Вставити в код
-javascriptconst booksData = [
-  {
-    id: 'quantum-computing',
-    title: 'Квантовые вычисления',
-    coverUrl: 'https://pub-xxxxx.r2.dev/covers/quantum-computing.webp',
-    // ...
-  },
-];
+👤 Author
+
+Henriette Goette
+Independent historian and researcher of German–Swiss heritage
+📍 Germany
+
+📝 License
+
+ISC — free use with attribution.
