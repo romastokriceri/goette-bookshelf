@@ -1,12 +1,8 @@
-import '../styles/globals.css'; // Подключаем стили здесь и только здесь
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  // Этот компонент оборачивает все твои страницы (включая index.js)
-  return (
-    <>
-      <Component {...pageProps} />
-    </>
-  );
+  
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
