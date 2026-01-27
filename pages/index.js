@@ -13,14 +13,13 @@ const getR2Url = (path) => {
 const Comments = () => {
   return (
     <Giscus
-      src="https://giscus.app/client.js"
       id="comments"
-      data-repo="romastokriceri/goette-bookshelf"
-      data-repo-id="R_kgDOQ33NMg"
-      data-category="Q&A"
-      data-category-id="DIC_kwDOQ33NMs4C1ccg"
+      repo="romastokriceri/goette-bookshelf"
+      repoId="R_kgDOQ33NMg"
+      category="Q&A"
+      categoryId="DIC_kwDOQ33NMs4C1ccg"
       mapping="pathname"
-      strict="1"
+      strict="0"
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="bottom"
