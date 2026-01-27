@@ -34,7 +34,7 @@ const Comments = () => {
   return (
     <div 
       className="hyvor-talk-embed"
-      data-website-id="14939" // ⬅️ ЗАМІНІТЬ НА ВАШ HYVOR ID (число, наприклад: 12345)
+      data-website-id="14939"
       data-page-id={typeof window !== 'undefined' ? window.location.pathname : ''}
       data-page-title="Отзывы"
       data-page-language="ru"
