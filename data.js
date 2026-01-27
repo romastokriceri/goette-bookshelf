@@ -89,7 +89,22 @@ export const booksData = [
     pdfFull: "11-in-memory-of-jakowlew-2024.pdf",
     size: "3.38 MB",
     fullSize: "3.38 MB"
-  }
+  },
+
+  {
+  id: 12,
+  title: { 
+    ru: "Николаевский областной краеведческий музей в освещении немецкой истории края", 
+    de: "Das Regionalmuseum von Nikolajew im Licht der deutschen Geschichte der Region" 
+  },
+  year: "2025", // Або інший актуальний рік
+  pdfFull: "12-german-history-of-the-region-2026.pdf",
+  pdfWeb: "12-german-history-of-the-region-2026_144dpi_75%_rgb.pdf",
+  cover: "12-german-history-of-the-region-2026_1.webp",
+  size: "18 MB",
+  fullSize: "52 MB"
+}
+
 ];
 
 // Данные об авторе
