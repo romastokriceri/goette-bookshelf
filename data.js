@@ -92,7 +92,7 @@ export const booksData = [
   },
 
   {
-  id: 12,
+  id: "12-german-history-of-the-region",
   title: { 
     ru: "Николаевский областной краеведческий музей в освещении немецкой истории края", 
     de: "Das Regionalmuseum von Nikolajew im Licht der deutschen Geschichte der Region" 

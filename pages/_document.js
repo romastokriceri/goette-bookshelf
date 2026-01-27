@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="uk">
       <Head>
         {/* Тут можна додати мета-теги або шрифти */}
-        <meta name="description" content="Аналітика Telegram каналів та бібліотека книг" />
+        <meta name="description" content="<библиотека книг>" />
       </Head>
       <body>
         <Main />
