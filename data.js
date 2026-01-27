@@ -99,7 +99,7 @@ export const booksData = [
   },
   year: "2025", // Або інший актуальний рік
   pdfFull: "12-german-history-of-the-region-2026.pdf",
-  pdfWeb: "12-german-history-of-the-region-2026_144dpi_75%_rgb.pdf",
+  pdfWeb: "12-german-history-of-the-region-2026_144dpi_75%_rgb_web.pdf",
   cover: "12-german-history-of-the-region-2026_1.webp",
   size: "18 MB",
   fullSize: "52 MB"

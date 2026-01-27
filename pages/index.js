@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Mail, MapPin, BookOpen, User, Info, MessageCircle } from 'lucide-react';
-import Giscus from '@giscus/react';
 // Импортируем данные. Убедись, что файл data.js лежит в корне проекта (на один уровень выше папки pages)
 import { authorData, shelves, contactData } from '../data';
 
@@ -9,23 +8,37 @@ const getR2Url = (path) => {
   return `${R2_URL}/${path}`;
 };
 
-// Компонент коментарів
+// Компонент коментарів Hyvor Talk
 const Comments = () => {
+  useEffect(() => {
+    const existingScript = document.getElementById('hyvor-talk-script');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    const script = document.createElement('script');
+    script.id = 'hyvor-talk-script';
+    script.src = 'https://talk.hyvor.com/embed/embed.js';
+    script.async = true;
+    script.type = 'module';
+    document.body.appendChild(script);
+
+    return () => {
+      const scriptToRemove = document.getElementById('hyvor-talk-script');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
+
   return (
-    <Giscus
-      id="comments"
-      repo="romastokriceri/goette-bookshelf"
-      repoId="R_kgDOQ33NMg"
-      category="Q&A"
-      categoryId="DIC_kwDOQ33NMs4C1ccg"
-      mapping="pathname"
-      strict="0"
-      reactionsEnabled="1"
-      emitMetadata="0"
-      inputPosition="bottom"
-      theme="preferred_color_scheme"
-      lang="ru"
-      loading="lazy"
+    <div 
+      className="hyvor-talk-embed"
+      data-website-id="14939" // ⬅️ ЗАМІНІТЬ НА ВАШ HYVOR ID (число, наприклад: 12345)
+      data-page-id={typeof window !== 'undefined' ? window.location.pathname : ''}
+      data-page-title="Отзывы"
+      data-page-language="ru"
+      data-loading-mode="scroll"
     />
   );
 };
@@ -145,8 +158,7 @@ export default function Home() {
               </h2>
               <p className="feedback-description">
                 Поделитесь впечатлениями от исследований, задайте вопросы автору 
-                или оставьте слова благодарности. Для комментирования нужен бесплатный 
-                аккаунт GitHub.
+                или оставьте слова благодарности. Комментировать может любой желающий.
               </p>
             </div>
             
@@ -184,7 +196,7 @@ export default function Home() {
                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
                }}>
             
-            {/* HEADER */}
+            {/* HEADER З ПОКРАЩЕНОЮ КНОПКОЮ ЗАВАНТАЖЕННЯ */}
             <div className="modal-header" style={{
               padding: '12px 20px',
               display: 'flex',
@@ -202,10 +214,16 @@ export default function Home() {
               </div>
               
               <div className="modal-actions" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+                {/* ПОКРАЩЕНА КНОПКА ЗАВАНТАЖЕННЯ */}
                 <a 
                   href={getR2Url(`Books-full/${encodeURIComponent(selectedBook.pdfFull)}`)} 
-                  download 
+                  download={selectedBook.pdfFull} // Вказуємо назву файлу явно
+                  target="_self"
                   className="download-btn-link"
+                  onClick={(e) => {
+                    // Якщо стандартний download не спрацює, файл просто відкриється (fallback)
+                    console.log("Downloading:", selectedBook.pdfFull);
+                  }}
                   style={{ 
                     display: 'flex', 
                     alignItems: 'center', 
@@ -217,10 +235,23 @@ export default function Home() {
                     padding: '8px 16px',
                     border: '2px solid #d35400',
                     borderRadius: '6px',
-                    transition: 'all 0.2s ease'
+                    transition: 'all 0.2s ease',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#d35400';
+                    e.currentTarget.style.color = '#fff';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.color = '#d35400';
                   }}
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
                   Скачать PDF ({selectedBook.fullSize})
                 </a>
 
@@ -233,8 +264,11 @@ export default function Home() {
                     cursor: 'pointer', 
                     color: '#34495e',
                     display: 'flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    transition: 'color 0.2s ease'
                   }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#e74c3c'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#34495e'}
                 >
                   <X size={32} />
                 </button>
