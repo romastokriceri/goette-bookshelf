@@ -8,7 +8,7 @@ import {
   Info,
   MessageCircle
 } from 'lucide-react';
-import { authorData, shelves, contactData, heroData } from '../data';
+import { authorData, shelves, contactData, heroData, literaryReviews } from '../data';
 
 
 /* =======================
