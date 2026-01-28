@@ -17,6 +17,8 @@ import { authorData, shelves, contactData, heroData } from '../data';
 
 const getR2Url = (path) => {
   const R2_URL = process.env.NEXT_PUBLIC_R2_URL || '';
+  console.log('Author photo URL:', getR2Url(authorData.photo));
+  console.log('R2_URL:', process.env.NEXT_PUBLIC_R2_URL);
   return `${R2_URL}/${path}`;
 };
 
@@ -68,7 +70,7 @@ const Comments = () => {
 };
 
 /* =======================
-   Main Page
+   Main
 ======================= */
 
 export default function Home() {
