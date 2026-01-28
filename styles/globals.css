@@ -98,6 +98,113 @@ body {
 }
 
 /* =====================
+   HERO SECTION
+   ===================== */
+
+.hero-section {
+  margin-bottom: 60px;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 50px 40px;
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(139, 90, 43, 0.1);
+  border-left: 5px solid var(--wood-color);
+}
+
+.hero-title-group {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero-title {
+  font-size: 1.3rem;
+  color: var(--wood-dark);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.hero-divider {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--wood-color), transparent);
+  margin: 0 auto;
+}
+
+.hero-quote {
+  background: rgba(139, 90, 43, 0.05);
+  border-left: 4px solid var(--accent);
+  padding: 25px 30px;
+  margin: 30px 0;
+  border-radius: 4px;
+  font-style: italic;
+}
+
+.quote-text {
+  font-size: 1.15rem;
+  color: var(--text-main);
+  margin-bottom: 15px;
+  line-height: 1.7;
+}
+
+.quote-author {
+  font-style: normal;
+  font-size: 0.95rem;
+  color: #555;
+  text-align: right;
+}
+
+.quote-author strong {
+  color: var(--wood-dark);
+}
+
+.quote-position {
+  font-size: 0.85rem;
+  color: #777;
+  font-style: italic;
+}
+
+.hero-description {
+  margin-top: 30px;
+}
+
+.hero-description p {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.hero-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive для hero */
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 30px 20px;
+  }
+
+  .hero-title {
+    font-size: 1.1rem;
+  }
+
+  .quote-text {
+    font-size: 1rem;
+  }
+
+  .hero-description p {
+    font-size: 1rem;
+    text-align: left;
+  }
+}
+
+/* =====================
    AUTHOR
    ===================== */
 
@@ -277,23 +384,27 @@ body {
 }
 
 /* =====================
-   FEEDBACK / COMMENTS
+   DISQUS COMMENTS
    ===================== */
 
-.feedback-section {
-  margin-top: 4rem;
+#disqus_thread {
+  min-height: 400px;
+  padding: 20px;
 }
 
-.feedback-description {
-  margin-top: 1rem;
-  color: #7f8c8d;
-}
-
+/* Стилізація контейнера коментарів */
 .comments-wrapper {
   min-height: 400px;
   background: #fff;
   border-radius: 8px;
   padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Для темної теми Disqus (опціонально) */
+.disqus-dark-mode #disqus_thread {
+  background: #1a1a1a;
+  color: #fff;
 }
 
 /* =====================

@@ -8,7 +8,8 @@ import {
   Info,
   MessageCircle
 } from 'lucide-react';
-import { authorData, shelves, contactData } from '../data';
+import { authorData, shelves, contactData, heroData } from '../data';
+
 
 /* =======================
    Utils
@@ -20,42 +21,48 @@ const getR2Url = (path) => {
 };
 
 /* =======================
-   Hyvor Talk Comments
+   Disqus Comments
 ======================= */
 
 const Comments = () => {
-  const pageId =
-    typeof window !== 'undefined'
-      ? window.location.pathname
-      : '/';
-
   useEffect(() => {
-    if (document.getElementById('hyvor-talk-script')) return;
+    // Очистити попередні скрипти Disqus якщо є
+    const existingScript = document.getElementById('disqus-script');
+    if (existingScript) {
+      existingScript.remove();
+    }
 
-    const script = document.createElement('script');
-    script.id = 'hyvor-talk-script';
-    script.src = 'https://talk.hyvor.com/embed/embed.js';
-    script.async = true;
-    script.type = 'module';
-
-    script.onerror = () => {
-      console.error('Hyvor Talk failed to load');
+    // Налаштування Disqus
+    window.disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = window.location.pathname;
+      this.language = 'ru';
     };
 
-    document.body.appendChild(script);
+    // Завантажити Disqus скрипт
+    const script = document.createElement('script');
+    script.id = 'disqus-script';
+    script.src = 'https://goette-bookshelf.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    script.async = true;
+
+    script.onerror = () => {
+      console.error('Disqus failed to load');
+    };
+
+    (document.head || document.body).appendChild(script);
+
+    // Cleanup при розмонтуванні
+    return () => {
+      if (window.DISQUS) {
+        window.DISQUS.reset({
+          reload: true
+        });
+      }
+    };
   }, []);
 
-  return (
-    <div
-      key={pageId}
-      className="hyvor-talk-embed"
-      data-website-id="14939"
-      data-page-id={pageId}
-      data-page-title="Отзывы"
-      data-page-language="ru"
-      data-loading-mode="scroll"
-    />
-  );
+  return <div id="disqus_thread"></div>;
 };
 
 /* =======================
@@ -119,6 +126,34 @@ export default function Home() {
       </header>
 
       <main className="container">
+
+       {/* HERO SECTION - ДОДАЙТЕ ЦЕ */}
+  <section className="hero-section">
+    <div className="hero-card">
+      <div className="hero-title-group">
+        <h2 className="hero-title">
+          {heroData.title.ru} / {heroData.title.de} / {heroData.title.en}
+        </h2>
+        <div className="hero-divider"></div>
+      </div>
+
+      <blockquote className="hero-quote">
+        <p className="quote-text">{heroData.quote.text}</p>
+        <footer className="quote-author">
+          <strong>{heroData.quote.author}</strong>
+          <br />
+          <span className="quote-position">{heroData.quote.position}</span>
+        </footer>
+      </blockquote>
+
+      <div className="hero-description">
+        {heroData.description.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
         {/* ABOUT */}
         <section id="about" className="section author-section">
           <div className="section-card">
