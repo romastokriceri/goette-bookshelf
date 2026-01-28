@@ -26,33 +26,28 @@ const getR2Url = (path) => {
 
 const Comments = () => {
   useEffect(() => {
-    // Очистити попередні скрипти Disqus якщо є
+    // Очистити попередні скрипти
     const existingScript = document.getElementById('disqus-script');
     if (existingScript) {
       existingScript.remove();
     }
 
-    // Налаштування Disqus
+    // Конфігурація Disqus
     window.disqus_config = function () {
       this.page.url = window.location.href;
       this.page.identifier = window.location.pathname;
       this.language = 'ru';
     };
 
-    // Завантажити Disqus скрипт
+    // Завантажити скрипт Disqus
     const script = document.createElement('script');
     script.id = 'disqus-script';
     script.src = 'https://goette-bookshelf.disqus.com/embed.js';
     script.setAttribute('data-timestamp', +new Date());
     script.async = true;
 
-    script.onerror = () => {
-      console.error('Disqus failed to load');
-    };
-
     (document.head || document.body).appendChild(script);
 
-    // Cleanup при розмонтуванні
     return () => {
       if (window.DISQUS) {
         window.DISQUS.reset({
@@ -62,7 +57,14 @@ const Comments = () => {
     };
   }, []);
 
-  return <div id="disqus_thread"></div>;
+  return (
+    <div>
+      <div id="disqus_thread"></div>
+      <noscript>
+        Прошу, включите JavaScript для просмотра комментариев.
+      </noscript>
+    </div>
+  );
 };
 
 /* =======================
@@ -127,7 +129,7 @@ export default function Home() {
 
       <main className="container">
 
-       {/* HERO SECTION - ДОДАЙТЕ ЦЕ */}
+       {/* HERO SECTION */}
   <section className="hero-section">
     <div className="hero-card">
       <div className="hero-title-group">
