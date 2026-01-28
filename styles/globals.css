@@ -498,24 +498,30 @@ body {
    DISQUS - Прибрати реакції
    ===================== */
 
+/* =====================
+   DISQUS - Прибрати реакції
+   ===================== */
+
 /* Приховати блок з реакціями */
 #disqus_thread .reactions,
 #disqus_thread .publisher-anchor-color,
 #disqus_thread iframe[title*="Reactions"],
-#disqus_thread div[class*="Reactions"] {
+#disqus_thread div[class*="Reactions"],
+#disqus_thread div[class*="reactions"] {
   display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
-/* Приховати "What do you think?" заголовок */
-#disqus_thread h3:has-text("What do you think?"),
-#disqus_thread .post-message {
-  display: none !important;
-}
-
-/* Загальне правило для всіх iframe з реакціями */
+/* Приховати iframe з реакціями */
 #disqus_thread iframe[src*="reactions"] {
   display: none !important;
   height: 0 !important;
+}
+
+/* Приховати post-message блок */
+#disqus_thread .post-message {
+  display: none !important;
 }
 
 /* =====================
