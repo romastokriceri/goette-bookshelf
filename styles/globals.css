@@ -495,36 +495,6 @@ body {
 }
 
 /* =====================
-   DISQUS - Прибрати реакції
-   ===================== */
-
-/* =====================
-   DISQUS - Прибрати реакції
-   ===================== */
-
-/* Приховати блок з реакціями */
-#disqus_thread .reactions,
-#disqus_thread .publisher-anchor-color,
-#disqus_thread iframe[title*="Reactions"],
-#disqus_thread div[class*="Reactions"],
-#disqus_thread div[class*="reactions"] {
-  display: none !important;
-  height: 0 !important;
-  overflow: hidden !important;
-}
-
-/* Приховати iframe з реакціями */
-#disqus_thread iframe[src*="reactions"] {
-  display: none !important;
-  height: 0 !important;
-}
-
-/* Приховати post-message блок */
-#disqus_thread .post-message {
-  display: none !important;
-}
-
-/* =====================
    FOOTER
    ===================== */
 
