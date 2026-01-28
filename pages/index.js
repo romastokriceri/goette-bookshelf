@@ -155,23 +155,41 @@ export default function Home() {
       </div>
     </div>
   </section>
+{/* ABOUT */}
+<section id="about" className="section author-section">
+  <div className="section-card">
+    <div className="author-content">
+      <div className="badge">
+        <User size={20} /> Об авторе
+      </div>
+      
+      <div className="author-layout">
+        {/* Фото автора */}
+        <div className="author-photo-wrapper">
+          <img 
+            src={getR2Url(authorData.photo)} 
+            alt={authorData.name}
+            className="author-photo"
+            onError={(e) => {
+              console.error('Photo failed:', e.target.src);
+              e.target.src = 'https://via.placeholder.com/400x400/8b5a2b/ffffff?text=Photo+Error';
+            }}
+          />
+        </div>
 
-        {/* ABOUT */}
-        <section id="about" className="section author-section">
-          <div className="section-card">
-            <div className="author-content">
-              <div className="badge">
-                <User size={20} /> Об авторе
-              </div>
-              <h1>{authorData.name}</h1>
-              {authorData.bio.map((paragraph, index) => (
-                <p key={index} className="author-text">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Текст про автора */}
+        <div className="author-text-content">
+          <h1 className="author-name">{authorData.name}</h1>
+          {authorData.bio.map((paragraph, index) => (
+            <p key={index} className="author-text">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* BOOKS */}
         <section id="books" className="section books-section">
