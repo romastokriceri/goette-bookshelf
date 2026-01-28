@@ -110,7 +110,7 @@ export const booksData = [
 // Данные об авторе
 export const authorData = {
   name: "Генриетта Гётте",
-  photo: "author/henrietta-goette.webp", 
+  photo: "henrietta-goette.webp", 
   bio: [
 
   "Автору книг, Генриетте Гётте,  судьбою была уготовлена полная трагизма жизнь: война, разлука с родителями,",
@@ -127,10 +127,11 @@ export const authorData = {
 
 export const heroData = {
   title: {
-    ru: "Главная страница",
+    ru: "Главная",
     // de: "Startseite",
     // en: "Main page"
   },
+  
   quote: {
     text: "«Потрясение. По прочтении книг Генриетты Львовны Гётте».",
     author: "А. Яковлев, 2017",

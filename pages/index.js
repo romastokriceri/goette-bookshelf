@@ -134,7 +134,7 @@ export default function Home() {
     <div className="hero-card">
       <div className="hero-title-group">
         <h2 className="hero-title">
-          {heroData.title.ru} / {heroData.title.de} / {heroData.title.en}
+         {heroData.title.ru}  {/* / {heroData.title.de} / {heroData.title.en} */}
         </h2>
         <div className="hero-divider"></div>
       </div>
