@@ -97,7 +97,7 @@ export const booksData = [
     ru: "Николаевский областной краеведческий музей в освещении немецкой истории края", 
     de: "Das Regionalmuseum von Nikolajew im Licht der deutschen Geschichte der Region" 
   },
-  year: "2025", // Або інший актуальний рік
+  year: "2025",
   pdfFull: "12-german-history-of-the-region-2026.pdf",
   pdfWeb: "12-german-history-of-the-region-2026_144dpi_75%_rgb_web.pdf",
   cover: "12-german-history-of-the-region-2026_1.webp",
