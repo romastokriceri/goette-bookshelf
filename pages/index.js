@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import {
   X,
-  Mail,
   MapPin,
   BookOpen,
   User,
-  Info,
   MessageCircle
 } from 'lucide-react';
-import { authorData, shelves, contactData, heroData, literaryReviews } from '../data';
-
+import { 
+  authorData, 
+  shelves, 
+  heroData, 
+  translations,
+  shelfDividerQuote,
+  articlesData,
+  reviewsData
+} from '../data';
 
 /* =======================
    Utils
@@ -68,43 +73,34 @@ const Comments = () => {
 };
 
 /* =======================
-   Main
+   Main Component
 ======================= */
 
 export default function Home() {
   const [selectedBook, setSelectedBook] = useState(null);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [lang, setLang] = useState('ru');
 
-  const downloadFile = async (url, fileName) => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Network error');
+  // Load saved language
+  useEffect(() => {
+    const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
+    setLang(savedLang);
+  }, []);
 
-      const blob = await response.blob();
-      const blobUrl = window.URL.createObjectURL(blob);
-
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = fileName;
-
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      window.URL.revokeObjectURL(blobUrl);
-    } catch (error) {
-      console.error('Download failed:', error);
-      window.open(url, '_blank');
-    }
+  // Switch language
+  const switchLang = (newLang) => {
+    setLang(newLang);
+    localStorage.setItem('selectedLanguage', newLang);
   };
 
+  // Scroll to section
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (!element) return;
 
     const headerOffset = 80;
     const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition =
-      elementPosition + window.pageYOffset - headerOffset;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
     window.scrollTo({
       top: offsetPosition,
@@ -118,160 +114,250 @@ export default function Home() {
       <header className="sticky-header">
         <nav className="nav-container">
           <div className="logo">{authorData.name}</div>
+          
           <ul className="nav-links">
-            <li onClick={() => scrollToSection('about')}>Об авторе</li>
-            <li onClick={() => scrollToSection('books')}>Книги</li>
-            <li onClick={() => scrollToSection('contacts')}>Контакты</li>
-            <li onClick={() => scrollToSection('feedback')}>Отзывы</li>
+            <li onClick={() => scrollToSection('about')}>
+              {translations[lang].nav.about}
+            </li>
+            <li onClick={() => scrollToSection('books')}>
+              {translations[lang].nav.books}
+            </li>
+            <li onClick={() => scrollToSection('articles')}>
+              {translations[lang].nav.articles}
+            </li>
+            <li onClick={() => scrollToSection('reviews')}>
+              {translations[lang].nav.reviews}
+            </li>
+            <li onClick={() => scrollToSection('feedback')}>
+              {translations[lang].nav.feedback}
+            </li>
           </ul>
+
+          <div className="lang-switcher">
+            <button 
+              className={lang === 'ru' ? 'active' : ''}
+              onClick={() => switchLang('ru')}
+            >
+              RU
+            </button>
+            <button 
+              className={lang === 'de' ? 'active' : ''}
+              onClick={() => switchLang('de')}
+            >
+              DE
+            </button>
+            <button 
+              className={lang === 'en' ? 'active' : ''}
+              onClick={() => switchLang('en')}
+            >
+              EN
+            </button>
+          </div>
         </nav>
       </header>
 
       <main className="container">
 
-       {/* HERO SECTION */}
-  <section className="hero-section">
-    <div className="hero-card">
-      <div className="hero-title-group">
-        <h2 className="hero-title">
-         {heroData.title.ru}  {/* / {heroData.title.de} / {heroData.title.en} */}
-        </h2>
-        <div className="hero-divider"></div>
-      </div>
+        {/* HERO SECTION */}
+        <section className="hero-section">
+          <div className="hero-card">
+            <div className="hero-title-group">
+              <h2 className="hero-title">
+                {translations[lang].hero.title}
+              </h2>
+              <div className="hero-divider"></div>
+            </div>
 
-      <blockquote className="hero-quote">
-        <p className="quote-text">{heroData.quote.text}</p>
-        <footer className="quote-author">
-          <strong>{heroData.quote.author}</strong>
-          <br />
-          <span className="quote-position">{heroData.quote.position}</span>
-        </footer>
-      </blockquote>
+            <blockquote className="hero-quote">
+              <p className="quote-text">{heroData.quote.text}</p>
+              <footer className="quote-author">
+                <strong>{heroData.quote.author}</strong>
+                <br />
+                <span className="quote-position">{heroData.quote.position}</span>
+              </footer>
+            </blockquote>
 
-      <div className="hero-description">
-        {heroData.description.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))}
-      </div>
-    </div>
-  </section>
-{/* ABOUT */}
-<section id="about" className="section author-section">
-  <div className="section-card">
-    <div className="author-content">
-      <div className="badge">
-        <User size={20} /> Об авторе
-      </div>
-      
-      <div className="author-layout">
-        {/* Фото автора */}
-        <div className="author-photo-wrapper">
-          <img 
-            src={getR2Url(authorData.photo)} 
-            alt={authorData.name}
-            className="author-photo"
-            onError={(e) => {
-              console.error('Photo failed:', e.target.src);
-              e.target.src = 'https://via.placeholder.com/400x400/8b5a2b/ffffff?text=Photo+Error';
-            }}
-          />
-        </div>
-
-        {/* Текст про автора */}
-        <div className="author-text-content">
-          <h1 className="author-name">{authorData.name}</h1>
-          {authorData.bio.map((paragraph, index) => (
-            <p key={index} className="author-text">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-        {/* BOOKS */}
-        <section id="books" className="section books-section">
-          {(() => {
-            const allBooks = shelves.flatMap(
-              (shelf) => shelf.books
-            );
-
-            const itemsPerShelf = 5;
-            const shelvesChunked = [];
-
-            for (let i = 0; i < allBooks.length; i += itemsPerShelf) {
-              shelvesChunked.push(
-                allBooks.slice(i, i + itemsPerShelf)
-              );
-            }
-
-            return shelvesChunked.map((books, index) => (
-              <div key={`shelf-${index}`} className="shelf-group">
-                <h2 className="section-title">
-                  <BookOpen /> Полка {index + 1}
-                </h2>
-
-                <div className="bookshelf">
-                  {books.map((book) => (
-                    <button
-                      key={book.id}
-                      className="book-spine"
-                      onClick={() => setSelectedBook(book)}
-                    >
-                      <img
-                        src={getR2Url(`cover/${book.cover}`)}
-                        alt={book.title.ru}
-                        className="book-cover"
-                      />
-                      <div className="book-overlay">
-                        <span className="read-badge">Читать</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ));
-          })()}
+            <div className="hero-description">
+              {heroData.description.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
         </section>
 
-        {/* CONTACTS */}
-        <section id="contacts" className="section contacts-section">
+        {/* ABOUT AUTHOR */}
+        <section id="about" className="section author-section">
           <div className="section-card">
-            <h2 className="section-title">
-              <Info /> Контакты
-            </h2>
-
-            <div className="contacts-grid">
-              <div className="contact-item">
-                <Mail className="icon" />
-                <p>
-                  Email: <span>{contactData.email}</span>
-                </p>
+            <div className="author-content">
+              <div className="badge">
+                <User size={20} /> {translations[lang].sections.about}
               </div>
+              
+              <div className="author-layout">
+                <div className="author-photo-wrapper">
+                  <img 
+                    src={getR2Url(authorData.photo)} 
+                    alt={authorData.name}
+                    className="author-photo"
+                    onError={(e) => {
+                      console.error('Photo failed:', e.target.src);
+                      e.target.src = 'https://via.placeholder.com/400x400/8b5a2b/ffffff?text=Photo+Error';
+                    }}
+                  />
+                </div>
 
-              <div className="contact-item">
-                <MapPin className="icon" />
-                <p>
-                  Локация: <span>{contactData.location}</span>
-                </p>
+                <div className="author-text-content">
+                  <h1 className="author-name">{authorData.name}</h1>
+                  {authorData.bio.map((paragraph, index) => (
+                    <p key={index} className="author-text">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* FEEDBACK */}
+        {/* BOOKS SECTION - SHELF 1 */}
+        <section id="books" className="section books-section">
+          <div className="shelf-group">
+            <h2 className="section-title">
+              <BookOpen /> {translations[lang].sections.books} 1
+            </h2>
+
+            <div className="bookshelf">
+              {shelves[0].books.map((book) => (
+                <button
+                  key={book.id}
+                  className="book-spine"
+                  onClick={() => setSelectedBook(book)}
+                >
+                  <img
+                    src={getR2Url(`cover/${book.cover}`)}
+                    alt={book.title[lang]}
+                    className="book-cover"
+                  />
+                  <div className="book-overlay">
+                    <span className="read-badge">{translations[lang].buttons.read}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* DIVIDER QUOTE BETWEEN SHELVES */}
+          <div className="shelf-divider-quote">
+            <div className="divider-quote-content">
+              <blockquote className="divider-quote-text">
+                «{shelfDividerQuote.text[lang]}»
+              </blockquote>
+              <footer className="divider-quote-footer">
+                <strong>{shelfDividerQuote.author[lang]}</strong>
+                <br />
+                <span className="divider-quote-position">
+                  {shelfDividerQuote.position[lang]}
+                </span>
+              </footer>
+            </div>
+          </div>
+
+          {/* SHELF 2 */}
+          <div className="shelf-group">
+            <h2 className="section-title">
+              <BookOpen /> {translations[lang].sections.books} 2
+            </h2>
+
+            <div className="bookshelf">
+              {shelves[1].books.map((book) => (
+                <button
+                  key={book.id}
+                  className="book-spine"
+                  onClick={() => setSelectedBook(book)}
+                >
+                  <img
+                    src={getR2Url(`cover/${book.cover}`)}
+                    alt={book.title[lang]}
+                    className="book-cover"
+                  />
+                  <div className="book-overlay">
+                    <span className="read-badge">{translations[lang].buttons.read}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ARTICLES AS BOOKSHELF */}
+        <section id="articles" className="section articles-section">
+          <h2 className="section-title">
+            <BookOpen /> {translations[lang].sections.articles}
+          </h2>
+
+          <div className="bookshelf articles-shelf">
+            {articlesData.map((article) => (
+              <button
+                key={article.id}
+                className="book-spine article-spine"
+                onClick={() => setSelectedArticle(article)}
+              >
+                <div className="article-spine-content">
+                  <span className="article-spine-title">
+                    {article.title[lang]}
+                  </span>
+                  <span className="article-spine-label">
+                    {lang === 'ru' ? 'Статья' : lang === 'de' ? 'Artikel' : 'Article'}
+                  </span>
+                </div>
+                <div className="book-overlay">
+                  <span className="read-badge">{translations[lang].buttons.read}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* REVIEWS */}
+        <section id="reviews" className="section reviews-section">
+          <div className="section-card">
+            <h2 className="section-title">
+              <MessageCircle /> {translations[lang].sections.reviews}
+            </h2>
+
+            <div className="reviews-container">
+              {reviewsData.map((review) => (
+                <div key={review.id} className="review-block">
+                  <h3 className="review-book-title">{review.bookTitle[lang]}</h3>
+                  
+                  {review.items.map((item, index) => (
+                    <div key={index} className="review-item">
+                      {item.text && (
+                        <p className="review-text">{item.text[lang]}</p>
+                      )}
+                      {item.quote && (
+                        <blockquote className="review-quote">
+                          <p>"{item.quote}"</p>
+                          <footer className="review-author">{item.author}</footer>
+                        </blockquote>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FEEDBACK / COMMENTS */}
         <section id="feedback" className="section feedback-section">
           <div className="section-card">
             <div className="feedback-header">
               <h2 className="section-title">
-                <MessageCircle /> Отзывы и обратная связь
+                <MessageCircle /> {translations[lang].sections.feedback}
               </h2>
               <p className="feedback-description">
-                Поделитесь впечатлениями от исследований,
-                задайте вопросы автору или оставьте слова
-                благодарности.
+                {translations[lang].sections.feedbackDescription}
               </p>
             </div>
 
@@ -282,7 +368,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* PDF MODAL */}
+      {/* PDF MODAL FOR BOOKS */}
       {selectedBook && (
         <div
           className="pdf-modal"
@@ -295,38 +381,22 @@ export default function Home() {
             <div className="modal-header">
               <div className="modal-info">
                 <h3 className="modal-title">
-                  {selectedBook.title.ru}{' '}
+                  {selectedBook.title[lang]}{' '}
                   <span className="modal-year">
                     ({selectedBook.year})
                   </span>
                 </h3>
                 <small className="modal-subtitle">
-                  {selectedBook.size} • Полная версия
+                  {selectedBook.size}
                 </small>
               </div>
 
-              <div className="modal-actions">
-                <button
-                  className="download-btn"
-                  onClick={() => {
-                    const url = getR2Url(
-                      `Books-full/${encodeURIComponent(
-                        selectedBook.pdfFull
-                      )}`
-                    );
-                    downloadFile(url, selectedBook.pdfFull);
-                  }}
-                >
-                  Скачать PDF ({selectedBook.fullSize})
-                </button>
-
-                <button
-                  className="close-btn"
-                  onClick={() => setSelectedBook(null)}
-                >
-                  <X size={32} />
-                </button>
-              </div>
+              <button
+                className="close-btn"
+                onClick={() => setSelectedBook(null)}
+              >
+                <X size={32} />
+              </button>
             </div>
 
             <div className="iframe-container">
@@ -339,6 +409,41 @@ export default function Home() {
                 title="PDF Viewer"
                 width="100%"
                 height="100%"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ARTICLE MODAL */}
+      {selectedArticle && (
+        <div
+          className="pdf-modal"
+          onClick={() => setSelectedArticle(null)}
+        >
+          <div
+            className="modal-content article-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-header">
+              <h3 className="modal-title">{selectedArticle.title[lang]}</h3>
+              <button
+                className="close-btn"
+                onClick={() => setSelectedArticle(null)}
+              >
+                <X size={32} />
+              </button>
+            </div>
+
+            <div className="article-content-scroll">
+              <article 
+                className="article-full-text"
+                dangerouslySetInnerHTML={{
+                  __html: selectedArticle.fullText[lang] || 
+                          `<p style="text-align: center; color: #999; font-style: italic;">
+                            ${translations[lang].articlePlaceholder}
+                           </p>`
+                }}
               />
             </div>
           </div>
