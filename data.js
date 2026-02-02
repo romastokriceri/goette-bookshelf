@@ -259,7 +259,7 @@ export const shelfDividerQuote = {
   },
   position: {
     ru: "Историк, директор Основского музея при винсовхозе «Таврия»",
-    de: "Historiker, Direktor des Osnowa-Museums beim Weingut „Tavrija"",
+    de: "Historiker, Direktor des Osnowa-Museums beim Weingut \"Tavrija\"",
     en: "Historian, Director of the Osnowa Museum at the Tavria Winery"
   }
 };
