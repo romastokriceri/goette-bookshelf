@@ -943,14 +943,14 @@ body {
 
 .expandable-quote {
   position: relative;
-  max-height: 4.8em;           /* ≈ 3 рядки */
+  max-height: 7.2em;           /* ≈ 3-4 рядки (1.8rem * 1.6 line-height * 3) */
   overflow: hidden;
   transition: max-height 0.4s ease;
   cursor: pointer;
 }
 
 .expandable-quote.expanded {
-  max-height: none;
+  max-height: 1000px;          /* Достатньо для будь-якого тексту */
 }
 
 .expandable-quote p {
@@ -958,41 +958,52 @@ body {
 }
 
 /* Градієнт "..." для згорнутого стану */
-.expandable-quote::after {
+.expandable-quote:not(.expanded)::after {
   content: "...";
   position: absolute;
   bottom: 0;
-  right: 0;
-  background: linear-gradient(to right, transparent, var(--bg-color) 30%);
-  padding-left: 20px;
+  right: 40px;                 /* Відступ від правих лапок */
+  background: linear-gradient(to right, transparent, #f9f7f2 20%, #f9f7f2);
+  padding-left: 30px;
+  padding-right: 5px;
   color: var(--accent);
   font-weight: bold;
+  font-size: 1.5rem;
   pointer-events: none;
 }
 
 /* Текст "Скрыть ↑" для розгорнутого стану */
 .expandable-quote.expanded::after {
-  content: "Скрыть ↑";
+  content: attr(data-hide-text);
   background: none;
   padding: 0;
   position: static;
   display: block;
   text-align: center;
-  margin-top: 15px;
-  font-size: 0.9rem;
+  margin-top: 20px;
+  font-size: 1rem;
   font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
 }
 
-.expandable-quote {
-  max-height: 5.5em; /* трохи більше для мобільних через менший шрифт */
-}
+/* =====================
+   RESPONSIVE - Mobile
+   ===================== */
 
-.expandable-quote::after {
-  font-size: 0.9rem;
-}
+@media (max-width: 768px) {
+  .expandable-quote {
+    max-height: 8em;           /* Більше для мобільних (менший шрифт = більше рядків) */
+  }
 
-.expandable-quote.expanded::after {
-  font-size: 0.85rem;
-  margin-top: 10px;
-  content: attr(data-hide-text);
+  .expandable-quote:not(.expanded)::after {
+    font-size: 1.2rem;
+    right: 20px;
+  }
+
+  .expandable-quote.expanded::after {
+    font-size: 0.9rem;
+    margin-top: 15px;
+  }
+}
 }
