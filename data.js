@@ -3,20 +3,23 @@
 // =====================
 
 export const translations = {
+  
+  readMore: { ru: "Скрыть ↑", de: "Verbergen ↑", en: "Hide ↑" },
+
   ru: {
     nav: {
       about: "Об авторе",
       books: "Книги",
       articles: "Статьи",
       reviews: "Отзывы",
-      feedback: "Отзывы и обратная связь"
+      feedback: "Обратная связь"
     },
     sections: {
       about: "Об авторе",
       books: "Полка",
       articles: "Статьи",
       reviews: "Отзывы",
-      feedback: "Отзывы и обратная связь",
+      feedback: "Обратная связь",
       feedbackDescription: "Поделитесь впечатлениями от исследований, задайте вопросы автору или оставьте слова благодарности."
     },
     buttons: {
@@ -34,14 +37,14 @@ export const translations = {
       books: "Bücher",
       articles: "Artikel",
       reviews: "Kommentare",
-      feedback: "Kommentare und Feedback"
+      feedback: "Feedback"
     },
     sections: {
       about: "Über den Autor",
       books: "Regal",
       articles: "Artikel",
       reviews: "Kommentare zum Buch",
-      feedback: "Kommentare und Feedback",
+      feedback: "Feedback",
       feedbackDescription: "Teilen Sie Ihre Eindrücke von der Forschung, stellen Sie Fragen an den Autor oder hinterlassen Sie Worte der Dankbarkeit."
     },
     buttons: {
@@ -59,14 +62,14 @@ export const translations = {
       books: "Books",
       articles: "Articles",
       reviews: "Reviews",
-      feedback: "Reviews and Feedback"
+      feedback: "Feedback"
     },
     sections: {
       about: "About the Author",
       books: "Shelf",
       articles: "Articles",
       reviews: "Reviews",
-      feedback: "Reviews and Feedback",
+      feedback: "Feedback",
       feedbackDescription: "Share your impressions of the research, ask questions to the author, or leave words of gratitude."
     },
     buttons: {
@@ -103,7 +106,7 @@ export const booksData = [
     id: "03-memory-cruise",
     title: { 
       ru: "Круиз памяти", 
-      de: "Gedächtniskreuzfahrt",
+      de: "Die Reise zu den Erinnerungen",
       en: "Memory Cruise"
     },
     year: 2024,
@@ -116,9 +119,9 @@ export const booksData = [
   {
     id: "04-german-trace-nikolayev",
     title: { 
-      ru: "Немецкий след в Николаеве", 
-      de: "Deutsche Spuren in Nikolajew",
-      en: "German Traces in Nikolayev"
+      ru: "Немецкий след в истории Николаевщины", 
+      de: "Deutsche Spuren in der Geschichte der Region Nikolajew",
+      en: "The German trace in the history of Nykolaev region"
     },
     year: 2009,
     cover: "04-german-trace-nikolayev-2009_1.webp",
@@ -130,9 +133,9 @@ export const booksData = [
   {
     id: "05-tribute-to-memory",
     title: { 
-      ru: "Дань памяти", 
-      de: "Tribut an die Erinnerung",
-      en: "Tribute to Memory"
+      ru: "Дань памяти, встречи у истоков", 
+      de: "Dem Gedenken verpflichtet. Begegnungen an den Quellen",
+      en: "Tribute to memory, Meetings at the origins"
     },
     year: 2011,
     cover: "05-tribute-to-memory-2011_1.webp",
@@ -144,9 +147,9 @@ export const booksData = [
   {
     id: "06-swiss-colony-shabo",
     title: { 
-      ru: "Швейцарская колония Шабо", 
-      de: "Schweizer Kolonie Schabo",
-      en: "Swiss Colony of Shabo"
+      ru: "Документальная история образования швейцарской колонии «Шабо» в Российской империи. Её основатель – Луи Винсент Тардан", 
+      de: "Dokumentierte Geschichte der Gründung der Schweizer Kolonie „Schabo“ im Russischen Reich. Ihr Gründer Louis Vincent Tardan",
+      en: "A documentary history of the Swiss colony of Shabo in the Russian Empire. Its founder is Louis Vincent Tardan"
     },
     year: 2024,
     cover: "06-swiss-colony-shabo-2024_1.webp",
@@ -158,9 +161,9 @@ export const booksData = [
   {
     id: "07-st-joseph-church-nikolayev",
     title: { 
-      ru: "Костёл Святого Иосифа в Николаеве", 
-      de: "St. Joseph Kirche in Nikolajew",
-      en: "St. Joseph Church in Nikolayev"
+      ru: "Николаевская римско-католическая церковь Святого Иосифа", 
+      de: "Die Römisch-katholische Kirche St. Joseph in Nikolajew",
+      en: "St. Joseph's Roman Catholic Church in Nikolaev"
     },
     year: 2011,
     cover: "07-st-joseph-church-nikolayev-2011_1.webp",
@@ -172,9 +175,9 @@ export const booksData = [
   {
     id: "09-cossacks-historical-metamorphoses",
     title: { 
-      ru: "Казаки: исторические метаморфозы", 
-      de: "Kosaken: Historische Metamorphosen",
-      en: "Cossacks: Historical Metamorphoses"
+      ru: "Казачество. Исторические метаморфозы", 
+      de: "Die Kosaken. Historische Metamorphosen",
+      en: "The Cossacks. Historical Metamorphoses"
     },
     year: 2018,
     cover: "09-cossacks-historical-metamorphoses-2018_1.webp",
@@ -186,11 +189,11 @@ export const booksData = [
   {
     id: "10-german-swiss-contribution-18-19c",
     title: { 
-      ru: "Немецко-швейцарский вклад XVIII-XIX вв.", 
-      de: "Deutsch-Schweizer Beitrag 18.-19. Jh.",
-      en: "German-Swiss Contribution 18th-19th Centuries"
+      ru: "Вклад немцев и швейцарцев в развитие Российской империи и их участие в колонизации юга страны в XVIII–XIX веках", 
+      de: "Der Beitrag von Deutschen und Schweizern zur Entwicklung des Russischen Reiches und ihre Beteiligung an der Kolonisierung des Südens des Landes im 18.–19. Jahrhundert",
+      en: "The contribution of Germans and Swiss to the evolution of the Russian Empire and their participation in the colonization of the country's South in the 18th and 19th centuries"
     },
-    year: 2024,
+    year: 2022,
     cover: "10-german-swiss-contribution-18-19c_1.webp",
     pdfWeb: "10-german-swiss-contribution-18-19c_144dpi_75%_rgb_web.pdf",
     pdfFull: "10-german-swiss-contribution-18-19c.pdf",
@@ -200,9 +203,9 @@ export const booksData = [
   {
     id: "11-in-memory-of-jakowlew",
     title: { 
-      ru: "Памяти Яковлева", 
-      de: "Zum Gedenken an Jakowlew",
-      en: "In Memory of Yakovlev"
+      ru: "В память тех, кого нам не забыть. Яковлев Анатолий Авенирович (1948-2018) ", 
+      de: "Zum Gedenken an die Unvergessenen. Anatoly Awenirowitsch Jakowlev  (1948–2018)",
+      en: "In memory of those we never forget. Yakovlev Anatoly Avenirovich (1948-2018)"
     },
     year: 2024,
     cover: "11-in-memory-of-jakowlew-2024_1.webp",
@@ -216,7 +219,7 @@ export const booksData = [
     title: { 
       ru: "Николаевский областной краеведческий музей в освещении немецкой истории края", 
       de: "Das Regionalmuseum von Nikolajew im Licht der deutschen Geschichte der Region",
-      en: "Nikolayev Regional Museum in the Light of the German History of the Region"
+      en: "The Nikolaev Regional Museum in view of the Region's German History"
     },
     year: "2025",
     pdfFull: "12-german-history-of-the-region-2026.pdf",
@@ -243,25 +246,48 @@ export const shelves = [
 ];
 
 // =====================
-// SHELF DIVIDER QUOTE
+// SHELF DIVIDER QUOTES
 // =====================
 
-export const shelfDividerQuote = {
-  text: {
-    ru: "Потрясение. По прочтении книг Генриетты Львовны Гётте.",
-    de: "Erschütterung. Nach der Lektüre der Bücher von Henriette Lwowna Goette.",
-    en: "A shock. After reading the books of Henriette Lvovna Goette."
-  },
-  author: {
-    ru: "А. Яковлев, 2017",
-    de: "A. Jakowlew, 2017",
-    en: "A. Yakovlev, 2017"
-  },
-  position: {
-    ru: "Историк, директор Основского музея при винсовхозе «Таврия»",
-    de: "Historiker, Direktor des Osnowa-Museums beim Weingut \"Tavrija\"",
-    en: "Historian, Director of the Osnowa Museum at the Tavria Winery"
-  }
+export const shelfDividerQuotes = {
+  "shelf-1": [
+    {
+      id: "quote-shevchenko",
+      text: {
+        ru: "…Монография «Отвергнутые родиной» – значительное историческое исследование в раскрытии «белых пятен» истории не только Причерноморья, но и почти всего постсоветского пространства. С особой яркостью показан трагизм немецких и швейцарских колонистов, долгое время проживавших в Причерноморье",
+        de: "…Die Monografie „Von der Heimat verleugnet“ ist eine wichtige historische Untersuchung zur Aufdeckung der „weißen Flecken“ in der Geschichte nicht nur des Schwarzmeergebietes, sondern wohl  des gesamten postsowjetischen Raumes. Mit besonders eindringlicher Klarheit sind die Tragödien   der deutschen und Schweizer Kolonisten dargestellt, die lange Zeit im Schwarzmeergebiet  gelebt haben",
+        en: "\"...The monograph \"Rejected by the Motherland\" is a significant historical research that reveals the \"white spots\"...\""
+      },
+      author: { ru: "В. Шевченко, 2011", de: "W. Schewtschenko, 2011", en: "V. Shevchenko, 2011" },
+      position: {
+        ru: "Историк, доцент Каховского филиала ХТУ",
+        de: "Historiker, Dozent an der Filiale Kachowka",
+        en: "Historian, Associate Professor"
+      }
+    },
+    {
+      id: "quote-yakovlev-2011",
+      text: {
+        ru: "Нет сомнения, что замечательное и в своём роде уникальное произведение Генриетты Львовны Гётте... сделает нас лучше, чище, мудрее! И верю, что миллионы будущих читателей во всех концах бывшего Союза и за его пределами по достоинству оценят непреходящее значение этой, без преувеличения великой книги, пронизанной  высоким гуманизмом, верой в высшую справедливость – победу добра над злом!",
+        de: "Es steht außer Zweifel, dass das hervorragende Werk von Henriette Lwowna Goette uns weiser machen wird!Es steht außer Zweifel, dass das hervorragende und in dieser Art einzigartige Werk von Henriette Lwowna  Goette uns allen  nicht nur helfen wird einige Fragen unserer leidvollen  Geschichte, die die sowjetische Geschichtsschreibung zuvor  verschwiegen hat,  sondern  es wird uns, das wage ich zu sagen,  besser, reiner und weiser machen! Und ich glaube, dass Millionen zukünftiger Leser im ganzen Bereich  der ehemaligen Sowjetraum und über  ihre Grenzen hinaus, den unvergänglichen Wert dieses ohne Übertreibung großartigen Buches würdigen werden, das von hohem Humanismus und dem Glauben an die höhere Gerechtigkeit – den Sieg des Guten über das Böse – durchdrungen ist!",
+        en: "\"There is no doubt that Henrietta Lvovna Gette's remarkable work will make us wiser!\""
+      },
+      author: { ru: "А. Яковлев, 2011", de: "A. Jakowlew, 2011", en: "A. Yakovlev, 2011" },
+      position: { ru: "Историк, директор музея «Таврия»", de: "Historiker, Direktor des Museums", en: "Historian, Museum Director" }
+    }
+  ],
+  "shelf-2": [
+    {
+      id: "quote-yakovlev-2018",
+      text: {
+        ru: "«Книга Генриетты Львовны Гётте \"Казачество. Исторические метаморфозы\" — лучшее на сегодняшний день издание о казаках».",
+        de: "„Das Buch „Kosaken. Historische Metamorphosen“ ist das beste bis heute veröffentlichtе Buch über Kosaken.“",
+        en: "\"The book 'Cossacks. Historical Metamorphoses' is the best book about Cossacks published to date.\""
+      },
+      author: { ru: "А. Яковлев, 2018", de: "A. Jakowlew, 2018", en: "A. Yakovlev, 2018" },
+      position: { ru: "Историк", de: "Historiker", en: "Historian" }
+    }
+  ]
 };
 
 // =====================
@@ -387,7 +413,7 @@ export const reviewsData = [
         }
       },
       {
-        quote: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes „Die Reise zu den Erinnerungen".",
+        quote: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes „Die Reise zu den Erinnerungen“.",
         author: "A. Jakowlew, 2009"
       }
     ]
@@ -408,31 +434,42 @@ export const reviewsData = [
         }
       },
       {
-        quote: "Das Buch von Henriette Lwowna Goette \"Kosaken. Historische Metamorphosen\" ist das beste bis heute veröffentlichte Buch über Kosaken. Es wäre ein gutes Lehrbuch für Kosaken-Lyzeen.",
+        quote: "Das Buch von Henriette Lwowna Goette \"Kosaken. Historische Metamorphosen\" ist das beste bis heute veröffentlichtе Buch über Kosaken. Es wäre ein gutes Lehrbuch für Kosaken-Lyzeen.",
         author: "A. Jakowlew, 2018"
       }
     ]
   }
 ];
 
+
 // =====================
 // AUTHOR DATA
 // =====================
 
 export const authorData = {
-  name: "Генриетта Гётте",
+  name: {
+    ru: "Генриетта Гётте",
+    de: "Henriette Götte",
+    en: "Henriette Goette"
+  },
   photo: "author/henrietta-goette.webp",
-  bio: [
-    "Автору книг, Генриетте Гётте, судьбою была уготовлена полная трагизма жизнь: война, разлука с родителями,",
-    "детские дома, лишения, унижения, радость воссоединения семьи, учёба, работа в Советском Союзе, переезд в Германию, снова учёба и адаптация на новой родине.",
-    "После смерти её родителей в 2002 году она начала собирать документальный материал о событиях, проходивших в XIX-XX столетиях.",
-    "Все они нашли отражение в истории пяти поколений автора.",
-    "В период публикаций работ Генриетты Гётте на сайте Academia-Prämium (Academia.edu) с 2021 по 2024 годы",
-    "имя автора цитировалось учёными различных университетов.",
-    "В 565 научных работах на Academia.edu упоминается автор «Генриетта Гётте».",
-    "Были загружены научные труды по историографии и статьи конференций с упоминанием работ Генриетты Гётте,",
-    "внёсшей ценный вклад в историческую литературу."
-  ]
+  bio: {
+    ru: [
+      "Автору книг, Генриетте Гётте, судьбою была уготовлена полная трагизма жизнь: война, разлука с родителями, детские дома, лишения, унижения, радость воссоединения семьи, учёба, работа в Советском Союзе, переезд в Германию, снова учёба и адаптация на новой родине.",
+      "После смерти её родителей в 2002 году она начала собирать документальный материал о событиях, проходивших в XIX-XX столетиях.",
+      "Все они нашли отражение в истории пяти поколений автора."
+    ],
+    de: [
+      "Die Autorin der Bücher, Henriette Götte, hatte ein Leben voller Tragödien: Krieg, Trennung von ihren Eltern, Waisenhäuser, Entbehrungen, Demütigungen, die Freude über die Familienzusammenführung, Studium, Arbeit in der Sowjetunion, Übersiedlung nach Deutschland, erneutes Studium und Anpassung in ihrer neuen Heimat.",
+      "Nach dem Tod ihrer Eltern im Jahr 2002 begann sie Dokumentationsmaterial über die Ereignisse des 19. und 20. Jahrhunderts zu sammeln.",
+      "All diese Ereignisse spiegeln sich in der Geschichte von fünf Generationen der Autorin wider."
+    ],
+    en: [
+      "The author of the books Henriette Goette was destined to a tragic life: war, separation from her parents, orphanages, deprivation, humiliation, the joy of family reunification, study and work in the Soviet Union, relocation to Germany, study again and adapting to her new homeland.",
+      "After the death of her parents in 2002 she began collecting documentary evidence of events which took place in the 19th and 20th centuries.",
+      "These events are reflected in the five generation history of the author's family."
+    ]
+  }
 };
 
 // =====================
@@ -441,13 +478,42 @@ export const authorData = {
 
 export const heroData = {
   quote: {
-    text: "«Потрясение. По прочтении книг Генриетты Львовны Гётте».",
-    author: "А. Яковлев, 2017",
-    position: "Историк, директор Основского музея при винсовхозе «Таврия»"
+    text: {
+      ru: "«Потрясение. По прочтении книг Генриетты Львовны Гётте».",
+      de: "„Man ist erschüttert beim Lesen der Bücher von Henriette Lwowna Goette“.",
+      en: "“Reading the books written by Henriette Lvovna Goette leaves you shaken”."
+    },
+    author: {
+      ru: "А. Яковлев, 2017",
+      de: "Jakovlev, 2017",
+      en: "A. Yakovlev, 2017"
+    },
+    position: {
+      ru: "Историк, директор Основского музея при винсовхозе «Таврия»",
+      de: "Historiker, Direktor des Osnovsky-Museums auf dem Weingut Tavriya",
+      en: "Historian, director of the Osnovsky museum at the “Tavriya” wine farm"
+    }
   },
-  description: [
-    "Генриетта Гётте – независимый исследователь, автор книг, основанных на исторических документах из архивов и библиотек Одессы, Херсона, Николаева, Измаила, Симферополя, Санкт-Петербурга, Москвы, Саратова, Иркутска, а также документов из швейцарских архивов Цюриха, Во (Vaud) и Арговия (Аарау), общины Оберкульм, документов из немецких Государственных и Военных архивов (Bundesarchiv, Militärarchiv) и библиотек.",
-    "В период публикаций работ Генриетты Гётте на сайте Academia-Prämium (Academia.edu) с 2021 по 2024 годы имя автора цитировалось учёными различных университетов. В 565 научных работах на Academia.edu упоминается автор «Генриетта Гётте».",
-    "Были загружены научные труды по историографии и статьи конференций с упоминанием работ Генриетты Гётте, внёсшей ценный вклад в историческую литературу."
-  ]
+  description: {
+    ru: [
+      "Генриетта Гётте – независимый исследователь, автор книг, основанных на исторических документах из архивов и библиотек Одессы, Херсона, Николаева, Измаила, Симферополя, Санкт-Петербурга, Москвы, Саратова, Иркутска, а также документов из швейцарских архивов Во (Vaud) и Арговия (Aarau), общины Оберкульм, документов из немецких Государственных и Военных архивов (Bundesarchiv, Militärarchiv) и библиотек.",
+      "В период публикаций работ Генриетты Гётте на сайте Academia-Prämium (Academia.edu) с 2021 по 2024 годы имя автора цитировалось учёными различных университетов.",
+      "В 565 научных работах на Academia.edu упоминается автор «Генриетта Гётте».",
+      "Были загружены научные труды по историографии и статьи конференций с упоминанием работ Генриетты Гётте, внёсшей ценный вклад в историческую литературу."
+    ],
+    de: [
+      "Henriette Goette ist eine unabhängige Forscherin und Autorin von Büchern, die auf historischen Dokumenten aus Archiven und Bibliotheken von Odessa, Cherson, Nikolajew, Izmail, Simferopol, St. Petersburg, Moskau, Saratow, Irkutsk, sowie Dokumenten aus den Schweizer Archiven der Kantone Vaud und Argovie (Aarau), der Gemeinde Oberkulm, Dokumenten aus deutschen Staats- und Militärarchiv (Bundesarchiv, Militärarchiv) und Bibliotheken basieren.",
+      "Während der Veröffentlichung der Werke von Henriette Goette auf der Website des Academia-Prämiums (Academia.edu) von 2021 bis 2024 wurde der Name der Autorin von Wissenschaftlern verschiedener Universitäten zitiert.",
+      "Die Autorin „Henriette Goette“ wird in 565 wissenschaftlichen Arbeiten auf Academia.edu erwähnt.",
+      "Mit ihren Werken, wissenschaftlichen Abhandlungen zur Geschichtsschreibung und Konferenzbeiträgen hat sie einen wertvollen Beitrag zur historischen Literatur geleistet."
+    ],
+    en: [
+      "Henrietta Goethe is an independent researcher, the author of books based on historical documents from the archives and libraries of Odessa, Kherson, Nikolaev, Izmail, Simferopol, St. Petersburg, Moscow, Saratov, Irkutsk, as well as documents from the Swiss archives of Zurich, Vaud and Argovia, the community of Oberkulm, documents from German State and Military Archives (Bundesarchiv, Militararchiv) and libraries.",
+      "During the publication of Henriette Goette’s works on the Academia-Prämium website (Academia.edu) from 2021 to 2024, her name was cited by scholars from various universities.",
+      "The author “Henriette Goette” is mentioned in 565 academic papers on Academia.edu.",
+      "Through her works, historiographic studies and conference articles, she has made a valuable contribution to historical literature."
+    ]
+  }
 };
+
+

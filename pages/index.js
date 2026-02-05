@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   X,
-  MapPin,
   BookOpen,
   User,
   MessageCircle
@@ -11,7 +10,7 @@ import {
   shelves, 
   heroData, 
   translations,
-  shelfDividerQuote,
+  shelfDividerQuotes,
   articlesData,
   reviewsData
 } from '../data';
@@ -19,32 +18,25 @@ import {
 /* =======================
    Utils
 ======================= */
-
 const getR2Url = (path) => {
   const R2_URL = process.env.NEXT_PUBLIC_R2_URL || '';
   return `${R2_URL}/${path}`;
 };
 
 /* =======================
-   Disqus Comments
+   Disqus Comments Component
 ======================= */
-
 const Comments = () => {
   useEffect(() => {
-    // Очистити попередні скрипти
     const existingScript = document.getElementById('disqus-script');
-    if (existingScript) {
-      existingScript.remove();
-    }
+    if (existingScript) existingScript.remove();
 
-    // Конфігурація Disqus
     window.disqus_config = function () {
       this.page.url = window.location.href;
       this.page.identifier = window.location.pathname;
       this.language = 'ru';
     };
 
-    // Завантажити скрипт Disqus
     const script = document.createElement('script');
     script.id = 'disqus-script';
     script.src = 'https://goette-bookshelf.disqus.com/embed.js';
@@ -54,58 +46,47 @@ const Comments = () => {
     (document.head || document.body).appendChild(script);
 
     return () => {
-      if (window.DISQUS) {
-        window.DISQUS.reset({
-          reload: true
-        });
-      }
+      if (window.DISQUS) window.DISQUS.reset({ reload: true });
     };
   }, []);
 
   return (
     <div>
       <div id="disqus_thread"></div>
-      <noscript>
-        Прошу, включите JavaScript для просмотра комментариев.
-      </noscript>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
   );
 };
 
 /* =======================
-   Main Component
+   Main Component (Home)
 ======================= */
-
 export default function Home() {
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [lang, setLang] = useState('ru');
+  const [expandedQuotes, setExpandedQuotes] = useState({});
 
-  // Load saved language
   useEffect(() => {
     const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
     setLang(savedLang);
   }, []);
 
-  // Switch language
   const switchLang = (newLang) => {
     setLang(newLang);
     localStorage.setItem('selectedLanguage', newLang);
   };
+  const toggleQuote = (id) => {
+    setExpandedQuotes(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
-  // Scroll to section
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (!element) return;
-
     const headerOffset = 80;
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
   };
 
   return (
@@ -113,45 +94,26 @@ export default function Home() {
       {/* HEADER */}
       <header className="sticky-header">
         <nav className="nav-container">
-          <div className="logo">{authorData.name}</div>
+          <div className="logo">{authorData.name[lang]}</div>
           
           <ul className="nav-links">
-            <li onClick={() => scrollToSection('about')}>
-              {translations[lang].nav.about}
-            </li>
-            <li onClick={() => scrollToSection('books')}>
-              {translations[lang].nav.books}
-            </li>
-            <li onClick={() => scrollToSection('articles')}>
-              {translations[lang].nav.articles}
-            </li>
-            <li onClick={() => scrollToSection('reviews')}>
-              {translations[lang].nav.reviews}
-            </li>
-            <li onClick={() => scrollToSection('feedback')}>
-              {translations[lang].nav.feedback}
-            </li>
+            {['about', 'books', 'articles', 'reviews', 'feedback'].map((sec) => (
+              <li key={sec} onClick={() => scrollToSection(sec)}>
+                {translations[lang].nav[sec]}
+              </li>
+            ))}
           </ul>
 
           <div className="lang-switcher">
-            <button 
-              className={lang === 'ru' ? 'active' : ''}
-              onClick={() => switchLang('ru')}
-            >
-              RU
-            </button>
-            <button 
-              className={lang === 'de' ? 'active' : ''}
-              onClick={() => switchLang('de')}
-            >
-              DE
-            </button>
-            <button 
-              className={lang === 'en' ? 'active' : ''}
-              onClick={() => switchLang('en')}
-            >
-              EN
-            </button>
+            {['ru', 'de', 'en'].map((l) => (
+              <button 
+                key={l}
+                className={lang === l ? 'active' : ''}
+                onClick={() => switchLang(l)}
+              >
+                {l.toUpperCase()}
+              </button>
+            ))}
           </div>
         </nav>
       </header>
@@ -162,25 +124,21 @@ export default function Home() {
         <section className="hero-section">
           <div className="hero-card">
             <div className="hero-title-group">
-              <h2 className="hero-title">
-                {translations[lang].hero.title}
-              </h2>
+              <h2 className="hero-title">{translations[lang].hero.title}</h2>
               <div className="hero-divider"></div>
             </div>
 
             <blockquote className="hero-quote">
-              <p className="quote-text">{heroData.quote.text}</p>
+              <p className="quote-text">{heroData.quote.text[lang]}</p>
               <footer className="quote-author">
-                <strong>{heroData.quote.author}</strong>
+                <strong>{heroData.quote.author[lang]}</strong>
                 <br />
-                <span className="quote-position">{heroData.quote.position}</span>
+                <span className="quote-position">{heroData.quote.position[lang]}</span>
               </footer>
             </blockquote>
 
             <div className="hero-description">
-              {heroData.description.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              {heroData.description[lang].map((p, i) => <p key={i}>{p}</p>)}
             </div>
           </div>
         </section>
@@ -197,21 +155,14 @@ export default function Home() {
                 <div className="author-photo-wrapper">
                   <img 
                     src={getR2Url(authorData.photo)} 
-                    alt={authorData.name}
+                    alt={authorData.name[lang]}
                     className="author-photo"
-                    onError={(e) => {
-                      console.error('Photo failed:', e.target.src);
-                      e.target.src = 'https://via.placeholder.com/400x400/8b5a2b/ffffff?text=Photo+Error';
-                    }}
                   />
                 </div>
-
                 <div className="author-text-content">
-                  <h1 className="author-name">{authorData.name}</h1>
-                  {authorData.bio.map((paragraph, index) => (
-                    <p key={index} className="author-text">
-                      {paragraph}
-                    </p>
+                  <h1 className="author-name">{authorData.name[lang]}</h1>
+                  {authorData.bio[lang].map((p, i) => (
+                    <p key={i} className="author-text">{p}</p>
                   ))}
                 </div>
               </div>
@@ -219,102 +170,86 @@ export default function Home() {
           </div>
         </section>
 
-        {/* BOOKS SECTION - SHELF 1 */}
+        {/* BOOKS SECTION */}
         <section id="books" className="section books-section">
-          <div className="shelf-group">
-            <h2 className="section-title">
-              <BookOpen /> {translations[lang].sections.books} 1
-            </h2>
+          {shelves.map((shelf, sIndex) => (
+            <React.Fragment key={shelf.id}>
+              <div className="shelf-group">
+                <h2 className="section-title">
+                  <BookOpen /> {translations[lang].sections.books} {sIndex + 1}
+                </h2>
+                <div className="bookshelf">
+                  {shelf.books.map((book) => (
+                    <button
+                      key={book.id}
+                      className="book-spine"
+                      onClick={() => setSelectedBook(book)}
+                    >
+                      <img
+                        src={getR2Url(`cover/${book.cover}`)}
+                        alt={book.title[lang]}
+                        className="book-cover"
+                      />
+                      <div className="book-overlay">
+                        <span className="read-badge">{translations[lang].buttons.read}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-            <div className="bookshelf">
-              {shelves[0].books.map((book) => (
-                <button
-                  key={book.id}
-                  className="book-spine"
-                  onClick={() => setSelectedBook(book)}
-                >
-                  <img
-                    src={getR2Url(`cover/${book.cover}`)}
-                    alt={book.title[lang]}
-                    className="book-cover"
-                  />
-                  <div className="book-overlay">
-                    <span className="read-badge">{translations[lang].buttons.read}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* DIVIDER QUOTE BETWEEN SHELVES */}
-          <div className="shelf-divider-quote">
-            <div className="divider-quote-content">
-              <blockquote className="divider-quote-text">
-                «{shelfDividerQuote.text[lang]}»
-              </blockquote>
-              <footer className="divider-quote-footer">
-                <strong>{shelfDividerQuote.author[lang]}</strong>
-                <br />
-                <span className="divider-quote-position">
-                  {shelfDividerQuote.position[lang]}
-                </span>
-              </footer>
-            </div>
-          </div>
-
-          {/* SHELF 2 */}
-          <div className="shelf-group">
-            <h2 className="section-title">
-              <BookOpen /> {translations[lang].sections.books} 2
-            </h2>
-
-            <div className="bookshelf">
-              {shelves[1].books.map((book) => (
-                <button
-                  key={book.id}
-                  className="book-spine"
-                  onClick={() => setSelectedBook(book)}
-                >
-                  <img
-                    src={getR2Url(`cover/${book.cover}`)}
-                    alt={book.title[lang]}
-                    className="book-cover"
-                  />
-                  <div className="book-overlay">
-                    <span className="read-badge">{translations[lang].buttons.read}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
+              {/* ЦИТАТИ ПІСЛЯ ВІДПОВІДНОЇ ПОЛИЦІ */}
+              {shelfDividerQuotes[shelf.id] && (
+                <div className="shelf-divider-quotes-list">
+                  {shelfDividerQuotes[shelf.id].map((quote) => (
+                    <div key={quote.id} className="shelf-divider-quote">
+                      <div className="divider-quote-content">
+                        <blockquote data-hide-text={translations[lang].readMore}
+                          className={`divider-quote-text expandable-quote ${expandedQuotes[quote.id] ? 'expanded' : ''}`}
+                          onClick={() => toggleQuote(quote.id)}
+                        >
+                          <p>{quote.text[lang]}</p>
+                        </blockquote>
+                        <footer className="divider-quote-footer">
+                          <strong>{quote.author[lang]}</strong>
+                          <br />
+                          <span className="divider-quote-position">
+                            {quote.position[lang]}
+                          </span>
+                        </footer>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </React.Fragment>
+          ))}
         </section>
 
-        {/* ARTICLES AS BOOKSHELF */}
+      {/* ARTICLES SECTION */}
         <section id="articles" className="section articles-section">
-          <h2 className="section-title">
-            <BookOpen /> {translations[lang].sections.articles}
-          </h2>
+          <div className="section-card">
+            <h2 className="section-title">
+              <BookOpen /> {translations[lang].sections.articles}
+            </h2>
 
-          <div className="bookshelf articles-shelf">
-            {articlesData.map((article) => (
-              <button
-                key={article.id}
-                className="book-spine article-spine"
-                onClick={() => setSelectedArticle(article)}
-              >
-                <div className="article-spine-content">
-                  <span className="article-spine-title">
-                    {article.title[lang]}
-                  </span>
-                  <span className="article-spine-label">
-                    {lang === 'ru' ? 'Статья' : lang === 'de' ? 'Artikel' : 'Article'}
-                  </span>
-                </div>
-                <div className="book-overlay">
-                  <span className="read-badge">{translations[lang].buttons.read}</span>
-                </div>
-              </button>
-            ))}
+            <div className="articles-grid-v4">
+              {articlesData.map((article) => (
+                <button
+                  key={article.id}
+                  className="article-card-v4"
+                  onClick={() => setSelectedArticle(article)}
+                >
+                  <div className="article-header-v4">
+                    <h3 className="article-title-v4">{article.title[lang]}</h3>
+                    <div className="article-divider-v4"></div>
+                  </div>
+                  <p className="article-preview-v4">
+                    {article.preview[lang] || translations[lang].articlePlaceholder}
+                  </p>
+                </button>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -324,19 +259,15 @@ export default function Home() {
             <h2 className="section-title">
               <MessageCircle /> {translations[lang].sections.reviews}
             </h2>
-
             <div className="reviews-container">
               {reviewsData.map((review) => (
                 <div key={review.id} className="review-block">
                   <h3 className="review-book-title">{review.bookTitle[lang]}</h3>
-                  
                   {review.items.map((item, index) => (
                     <div key={index} className="review-item">
-                      {item.text && (
-                        <p className="review-text">{item.text[lang]}</p>
-                      )}
+                      {item.text && <p className="review-text">{item.text[lang]}</p>}
                       {item.quote && (
-                        <blockquote className="review-quote">
+                        <blockquote data-hide-text={translations[lang].readMore} className="review-quote">
                           <p>"{item.quote}"</p>
                           <footer className="review-author">{item.author}</footer>
                         </blockquote>
@@ -349,7 +280,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FEEDBACK / COMMENTS */}
+        {/* FEEDBACK */}
         <section id="feedback" className="section feedback-section">
           <div className="section-card">
             <div className="feedback-header">
@@ -360,7 +291,6 @@ export default function Home() {
                 {translations[lang].sections.feedbackDescription}
               </p>
             </div>
-
             <div className="comments-wrapper">
               <Comments />
             </div>
@@ -368,44 +298,22 @@ export default function Home() {
         </section>
       </main>
 
-      {/* PDF MODAL FOR BOOKS */}
+      {/* PDF MODAL */}
       {selectedBook && (
-        <div
-          className="pdf-modal"
-          onClick={() => setSelectedBook(null)}
-        >
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
+        <div className="pdf-modal" onClick={() => setSelectedBook(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <div className="modal-info">
                 <h3 className="modal-title">
-                  {selectedBook.title[lang]}{' '}
-                  <span className="modal-year">
-                    ({selectedBook.year})
-                  </span>
+                  {selectedBook.title[lang]} <span className="modal-year">({selectedBook.year})</span>
                 </h3>
-                <small className="modal-subtitle">
-                  {selectedBook.size}
-                </small>
+                <small className="modal-subtitle">{selectedBook.size}</small>
               </div>
-
-              <button
-                className="close-btn"
-                onClick={() => setSelectedBook(null)}
-              >
-                <X size={32} />
-              </button>
+              <button className="close-btn" onClick={() => setSelectedBook(null)}><X size={32} /></button>
             </div>
-
             <div className="iframe-container">
               <iframe
-                src={`${getR2Url(
-                  `Books/${encodeURIComponent(
-                    selectedBook.pdfWeb
-                  )}`
-                )}#toolbar=1&navpanes=1&view=FitH`}
+                src={`${getR2Url(`Books/${encodeURIComponent(selectedBook.pdfWeb)}`)}#toolbar=1`}
                 title="PDF Viewer"
                 width="100%"
                 height="100%"
@@ -415,40 +323,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* ARTICLE MODAL */}
-      {selectedArticle && (
-        <div
-          className="pdf-modal"
-          onClick={() => setSelectedArticle(null)}
-        >
-          <div
-            className="modal-content article-modal"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="modal-header">
-              <h3 className="modal-title">{selectedArticle.title[lang]}</h3>
-              <button
-                className="close-btn"
-                onClick={() => setSelectedArticle(null)}
-              >
-                <X size={32} />
-              </button>
-            </div>
-
-            <div className="article-content-scroll">
-              <article 
-                className="article-full-text"
-                dangerouslySetInnerHTML={{
-                  __html: selectedArticle.fullText[lang] || 
-                          `<p style="text-align: center; color: #999; font-style: italic;">
-                            ${translations[lang].articlePlaceholder}
-                           </p>`
-                }}
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
