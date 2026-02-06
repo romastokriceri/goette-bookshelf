@@ -24,6 +24,41 @@ const getR2Url = (path) => {
 };
 
 /* =======================
+   ReviewCard Component
+======================= */
+const ReviewCard = ({ review, lang, onExpand }) => {
+  // Перевіряємо чи є розширений контент для поточної мови
+  const hasFullContent = review.fullContent && review.fullContent[lang];
+
+  return (
+    <div className="review-block">
+      <h3 className="review-book-title">{review.bookTitle[lang]}</h3>
+      
+      {review.items.map((item, index) => (
+        <div key={index} className="review-item">
+          {item.text && <p className="review-text">{item.text[lang]}</p>}
+          {item.quote && (
+            <blockquote className="review-quote">
+              <p>"{item.quote}"</p>
+              <footer className="review-author">{item.author}</footer>
+            </blockquote>
+          )}
+        </div>
+      ))}
+
+      {hasFullContent && (
+        <button 
+          className="btn-read-full"
+          onClick={() => onExpand(review)}
+        >
+          {translations[lang].buttons.readFull}
+        </button>
+      )}
+    </div>
+  );
+};
+
+/* =======================
    Disqus Comments Component
 ======================= */
 const Comments = () => {
@@ -64,22 +99,20 @@ const Comments = () => {
 export default function Home() {
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const [expandedReview, setExpandedReview] = useState(null); // НОВИЙ СТЕЙТ
   const [lang, setLang] = useState('ru');
   const [expandedQuotes, setExpandedQuotes] = useState({});
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Ініціалізація мови
     const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
     setLang(savedLang);
     
-    // Визначення типу пристрою (High Confidence: SSR безпечний підхід)
     const checkMobile = () => {
       setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
     };
     checkMobile();
     
-    // Додаємо слухач на випадок зміни розміру вікна (опціонально)
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
@@ -132,7 +165,6 @@ export default function Home() {
       </header>
 
       <main className="container">
-
         {/* HERO SECTION */}
         <section className="hero-section">
           <div className="hero-card">
@@ -217,7 +249,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* ЦИТАТИ ПІСЛЯ ВІДПОВІДНОЇ ПОЛИЦІ */}
               {shelfDividerQuotes[shelf.id] && (
                 <div className="shelf-divider-quotes-list">
                   {shelfDividerQuotes[shelf.id].map((quote) => {
@@ -291,7 +322,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* REVIEWS */}
+        {/* REVIEWS SECTION */}
         <section id="reviews" className="section reviews-section">
           <div className="section-card">
             <h2 className="section-title">
@@ -299,20 +330,12 @@ export default function Home() {
             </h2>
             <div className="reviews-container">
               {reviewsData.map((review) => (
-                <div key={review.id} className="review-block">
-                  <h3 className="review-book-title">{review.bookTitle[lang]}</h3>
-                  {review.items.map((item, index) => (
-                    <div key={index} className="review-item">
-                      {item.text && <p className="review-text">{item.text[lang]}</p>}
-                      {item.quote && (
-                        <blockquote className="review-quote">
-                          <p>"{item.quote}"</p>
-                          <footer className="review-author">{item.author}</footer>
-                        </blockquote>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                <ReviewCard 
+                  key={review.id} 
+                  review={review} 
+                  lang={lang} 
+                  onExpand={setExpandedReview} 
+                />
               ))}
             </div>
           </div>
@@ -336,7 +359,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* PDF MODAL - Тільки для десктопу */}
+      {/* PDF MODAL */}
       {selectedBook && !isMobile && (
         <div className="pdf-modal" onClick={() => setSelectedBook(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -355,6 +378,32 @@ export default function Home() {
                 title="PDF Viewer"
                 width="100%"
                 height="100%"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* REVIEWS FULL TEXT MODAL */}
+      {expandedReview && (
+        <div className="review-modal" onClick={() => setExpandedReview(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3 className="modal-title">
+                {expandedReview.bookTitle[lang]}
+              </h3>
+              <button 
+                className="close-btn" 
+                onClick={() => setExpandedReview(null)}
+              >
+                <X size={32} />
+              </button> 
+            </div>
+            <div className="review-content-scroll">
+              <div 
+                dangerouslySetInnerHTML={{ 
+                  __html: expandedReview.fullContent[lang] 
+                }}
               />
             </div>
           </div>

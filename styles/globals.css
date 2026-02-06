@@ -446,7 +446,7 @@ body {
 }
 
 /* =====================
-   ARTICLES VARIANT 4 - Minimalist Square Cards
+   ARTICLES VARIANT 4
    ===================== */
 
 .articles-grid-v4 {
@@ -478,36 +478,21 @@ body {
 
 .article-header-v4 {
   display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.article-number-v4 {
-  background: var(--wood-color);
-  color: white;
-  min-width: 35px;
-  height: 35px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.1rem;
-  flex-shrink: 0;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .article-divider-v4 {
-  flex: 1;
   height: 2px;
   background: linear-gradient(90deg, var(--wood-color), transparent);
 }
 
 .article-title-v4 {
   color: var(--wood-dark);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin: 0;
   line-height: 1.4;
 }
 
@@ -534,6 +519,7 @@ body {
   padding: 25px;
   border-radius: 8px;
   border-left: 4px solid var(--wood-color);
+  position: relative;
 }
 
 .review-book-title {
@@ -578,7 +564,74 @@ body {
 }
 
 /* =====================
-   MODAL PDF & ARTICLES
+   REVIEWS EXPANDED & MODAL (NEW)
+   ===================== */
+
+.btn-read-full {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid var(--wood-color);
+  color: var(--wood-color);
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Georgia', serif;
+}
+
+.btn-read-full:hover {
+  background: var(--wood-color);
+  color: white;
+}
+
+.review-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.review-content-scroll {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 40px;
+  background: #fff;
+}
+
+/* Внутрішня верстка тексту відгуку */
+.review-full-text h3 {
+  color: var(--wood-dark);
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.review-full-text .review-item {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.review-full-text .review-item:last-child {
+  border-bottom: none;
+}
+
+.review-full-text blockquote {
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-main);
+  margin-bottom: 15px;
+}
+
+/* =====================
+   MODAL BASE (PDF & ARTICLES)
    ===================== */
 
 .pdf-modal {
@@ -662,15 +715,6 @@ body {
 }
 
 /* Article Modal Specific */
-.article-modal {
-  max-width: 900px;
-}
-
-.article-modal .modal-header {
-  padding: 20px 25px;
-  border-bottom: 2px solid #e0e0e0;
-}
-
 .article-content-scroll {
   flex-grow: 1;
   overflow-y: auto;
@@ -685,7 +729,6 @@ body {
   color: var(--text-main);
 }
 
-/* Article text formatting */
 .article-full-text p {
   margin-bottom: 1.5em;
   text-align: justify;
@@ -696,42 +739,6 @@ body {
   text-indent: 0;
 }
 
-/* Italics for quotes */
-.article-full-text em {
-  font-style: italic;
-  color: #444;
-}
-
-/* Bold for archival documents */
-.article-full-text strong {
-  font-weight: 700;
-  color: var(--wood-dark);
-  font-size: 1.05em;
-}
-
-/* Subheadings in articles */
-.article-full-text h4 {
-  font-size: 1.3rem;
-  color: var(--wood-dark);
-  margin: 2em 0 1em;
-  text-align: left;
-  text-indent: 0;
-  font-weight: 600;
-}
-
-/* Lists */
-.article-full-text ul,
-.article-full-text ol {
-  margin: 1.5em 0 1.5em 3em;
-  text-indent: 0;
-}
-
-.article-full-text li {
-  margin-bottom: 0.8em;
-  line-height: 1.8;
-}
-
-/* Block quotes */
 .article-full-text blockquote {
   margin: 2em 0;
   padding: 1.5em 2em;
@@ -770,181 +777,11 @@ body {
 }
 
 /* =====================
-   RESPONSIVE
-   ===================== */
-
-@media (max-width: 968px) {
-  .author-layout {
-    grid-template-columns: 200px 1fr;
-    gap: 30px;
-  }
-
-  .author-name {
-    font-size: 1.7rem;
-  }
-
-  .divider-quote-text {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
-  .lang-switcher {
-    gap: 5px;
-  }
-
-  .lang-switcher button {
-    padding: 5px 10px;
-    font-size: 0.85rem;
-  }
-
-  .hero-card {
-    padding: 30px 20px;
-  }
-
-  .hero-title {
-    font-size: 1.1rem;
-  }
-
-  .quote-text {
-    font-size: 1rem;
-  }
-
-  .hero-description p {
-    font-size: 1rem;
-    text-align: left;
-  }
-
-  .author-layout {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .author-photo-wrapper {
-    max-width: 280px;
-    margin: 0 auto;
-  }
-
-  .author-text-content {
-    padding-top: 0;
-  }
-
-  .author-name {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-
-  .author-text {
-    font-size: 1rem;
-    text-align: left;
-  }
-
-  .book-spine {
-    width: 130px;
-    height: 190px;
-  }
-
-  /* Articles V4 responsive */
-  .articles-grid-v4 {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .article-card-v4 {
-    padding: 20px;
-    min-height: 200px;
-  }
-
-  .article-title-v4 {
-    font-size: 1.15rem;
-  }
-
-  .article-preview-v4 {
-    font-size: 0.95rem;
-  }
-
-  .article-number-v4 {
-    min-width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
-
-  .shelf-divider-quote {
-    margin: 40px 0;
-    padding: 30px 20px;
-  }
-
-  .divider-quote-text {
-    font-size: 1.3rem;
-    padding: 0 20px;
-  }
-
-  .divider-quote-text::before,
-  .divider-quote-text::after {
-    font-size: 2rem;
-  }
-
-  .divider-quote-footer strong {
-    font-size: 1rem;
-  }
-
-  .section-card {
-    padding: 20px;
-  }
-
-  .article-content-scroll {
-    padding: 30px 20px;
-  }
-
-  .article-full-text {
-    font-size: 1rem;
-  }
-
-  .article-full-text p {
-    text-indent: 1.5em;
-  }
-
-  .modal-content {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-  }
-
-  .modal-header {
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start;
-  }
-}
-
-.article-header-v4 {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.article-title-v4 {
-  margin: 0;
-  font-size: 1.3rem;
-}
-
-.article-divider-v4 {
-  height: 2px;
-  background: linear-gradient(90deg, var(--wood-color), transparent);
-}
-
-/* =====================
    EXPANDABLE QUOTE FUNCTIONALITY
    ===================== */
 
 .quote-wrapper {
   position: relative;
-  /* 3.5em гарантує видимість 2 рядків при line-height 1.6 */
   max-height: 3.5em; 
   overflow: hidden;
   transition: max-height 0.5s ease;
@@ -960,18 +797,16 @@ body {
   left: 0;
   right: 0;
   height: 40px;
-  background: linear-gradient(transparent, var(--bg-color)); /* Колір фону вашої картки */
   pointer-events: none;
 }
 
-/* Градієнт поверх тексту (тільки в згорнутому стані) */
 .quote-wrapper:not(.expanded) .quote-gradient-overlay {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 4em;                  /* Висота градієнта */
+  height: 4em;
   background: linear-gradient(
     to bottom, 
     transparent 0%, 
@@ -981,15 +816,13 @@ body {
   pointer-events: none;
 }
 
-/*Ховаємо градієнт у розгорнутому стані */
 .quote-wrapper.expanded .quote-gradient-overlay {
   display: none;
 }
 
-/* Кнопка "Читати далі" / "Скрыть" */
 .quote-toggle-btn {
   display: block;
-  margin: 20px auto 20px;
+  margin: 20px auto;
   padding: 8px 20px;
   background: transparent;
   border: 2px solid var(--accent);
@@ -1010,21 +843,35 @@ body {
 }
 
 /* =====================
-   RESPONSIVE - Mobile
+   RESPONSIVE
    ===================== */
+
+@media (max-width: 968px) {
+  .author-layout {
+    grid-template-columns: 200px 1fr;
+    gap: 30px;
+  }
+  .author-name { font-size: 1.7rem; }
+  .divider-quote-text { font-size: 1.5rem; }
+}
+
 @media (max-width: 768px) {
-  .quote-wrapper {
-    /* 8em — це золота середина для збільшеного шрифту (приблизно 3-4 рядки) */
-    max-height: 8em;           
-  }
-
-  .quote-wrapper:not(.expanded) .quote-gradient-overlay {
-    /* Висота градієнта має бути трохи меншою за max-height */
-    height: 5em;
-  }
-
-  .quote-toggle-btn {
-    font-size: 0.95rem; /* Трохи більше за попередній, бо шрифт всього сайту виріс */
-    padding: 8px 18px;
-  }
+  .nav-links { display: none; }
+  .lang-switcher button { padding: 5px 10px; font-size: 0.85rem; }
+  .hero-card { padding: 30px 20px; }
+  .author-layout { grid-template-columns: 1fr; gap: 25px; }
+  .author-photo-wrapper { max-width: 280px; margin: 0 auto; }
+  .author-name { font-size: 1.8rem; text-align: center; }
+  .book-spine { width: 130px; height: 190px; }
+  .articles-grid-v4 { grid-template-columns: 1fr; }
+  .section-card { padding: 20px; }
+  .article-content-scroll { padding: 30px 20px; }
+  .modal-content { width: 100%; height: 100%; border-radius: 0; }
+  .modal-header { flex-direction: column; gap: 15px; align-items: flex-start; }
+  
+  .quote-wrapper { max-height: 8em; }
+  .quote-wrapper:not(.expanded) .quote-gradient-overlay { height: 5em; }
+  
+  .review-content-scroll { padding: 20px; }
+  .review-full-text h3 { font-size: 1.3rem; }
 }
