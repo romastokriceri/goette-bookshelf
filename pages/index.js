@@ -66,16 +66,29 @@ export default function Home() {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [lang, setLang] = useState('ru');
   const [expandedQuotes, setExpandedQuotes] = useState({});
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Ініціалізація мови
     const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
     setLang(savedLang);
+    
+    // Визначення типу пристрою (High Confidence: SSR безпечний підхід)
+    const checkMobile = () => {
+      setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+    };
+    checkMobile();
+    
+    // Додаємо слухач на випадок зміни розміру вікна (опціонально)
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const switchLang = (newLang) => {
     setLang(newLang);
     localStorage.setItem('selectedLanguage', newLang);
   };
+  
   const toggleQuote = (id) => {
     setExpandedQuotes(prev => ({ ...prev, [id]: !prev[id] }));
   };
@@ -183,7 +196,13 @@ export default function Home() {
                     <button
                       key={book.id}
                       className="book-spine"
-                      onClick={() => setSelectedBook(book)}
+                      onClick={() => {
+                        if (isMobile) {
+                          window.open(getR2Url(`Books/${encodeURIComponent(book.pdfWeb)}`), '_blank');
+                        } else {
+                          setSelectedBook(book);
+                        }
+                      }}
                     >
                       <img
                         src={getR2Url(`cover/${book.cover}`)}
@@ -201,32 +220,51 @@ export default function Home() {
               {/* ЦИТАТИ ПІСЛЯ ВІДПОВІДНОЇ ПОЛИЦІ */}
               {shelfDividerQuotes[shelf.id] && (
                 <div className="shelf-divider-quotes-list">
-                  {shelfDividerQuotes[shelf.id].map((quote) => (
-                    <div key={quote.id} className="shelf-divider-quote">
-                      <div className="divider-quote-content">
-                        <blockquote data-hide-text={translations[lang].readMore}
-                          className={`divider-quote-text expandable-quote ${expandedQuotes[quote.id] ? 'expanded' : ''}`}
-                          onClick={() => toggleQuote(quote.id)}
-                        >
-                          <p>{quote.text[lang]}</p>
-                        </blockquote>
-                        <footer className="divider-quote-footer">
-                          <strong>{quote.author[lang]}</strong>
-                          <br />
-                          <span className="divider-quote-position">
-                            {quote.position[lang]}
-                          </span>
-                        </footer>
+                  {shelfDividerQuotes[shelf.id].map((quote) => {
+                    const isExpanded = expandedQuotes[quote.id];
+                    const text = quote.text[lang];
+                    const isLongText = text.length > 200; 
+
+                    return (
+                      <div key={quote.id} className="shelf-divider-quote">
+                        <div className="divider-quote-content">
+                          <div className={`quote-wrapper ${isExpanded || !isLongText ? 'expanded' : ''}`}>
+                            <blockquote className="divider-quote-text">
+                              <p>{text}</p>
+                            </blockquote>
+                            {isLongText && !isExpanded && <div className="quote-gradient-overlay"></div>}
+                          </div>
+                          
+                          {isLongText && (
+                            <button 
+                              className="quote-toggle-btn"
+                              onClick={() => toggleQuote(quote.id)}
+                            >
+                              {isExpanded 
+                                ? translations[lang].buttons.readLess 
+                                : translations[lang].buttons.readMore
+                              }
+                            </button>
+                          )}
+
+                          <footer className="divider-quote-footer">
+                            <strong>{quote.author[lang]}</strong>
+                            <br />
+                            <span className="divider-quote-position">
+                              {quote.position[lang]}
+                            </span>
+                          </footer>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </React.Fragment>
           ))}
         </section>
 
-      {/* ARTICLES SECTION */}
+        {/* ARTICLES SECTION */}
         <section id="articles" className="section articles-section">
           <div className="section-card">
             <h2 className="section-title">
@@ -267,7 +305,7 @@ export default function Home() {
                     <div key={index} className="review-item">
                       {item.text && <p className="review-text">{item.text[lang]}</p>}
                       {item.quote && (
-                        <blockquote data-hide-text={translations[lang].readMore} className="review-quote">
+                        <blockquote className="review-quote">
                           <p>"{item.quote}"</p>
                           <footer className="review-author">{item.author}</footer>
                         </blockquote>
@@ -298,8 +336,8 @@ export default function Home() {
         </section>
       </main>
 
-      {/* PDF MODAL */}
-      {selectedBook && (
+      {/* PDF MODAL - Тільки для десктопу */}
+      {selectedBook && !isMobile && (
         <div className="pdf-modal" onClick={() => setSelectedBook(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">

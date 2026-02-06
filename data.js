@@ -3,8 +3,6 @@
 // =====================
 
 export const translations = {
-  
-  readMore: { ru: "Скрыть ↑", de: "Verbergen ↑", en: "Hide ↑" },
 
   ru: {
     nav: {
@@ -24,7 +22,10 @@ export const translations = {
     },
     buttons: {
       read: "Читать",
-      close: "Закрыть"
+      close: "Закрыть",
+      readMore: "Развернуть ↓",
+      readLess: "Скрыть ↑"
+
     },
     hero: {
       title: "Главная"
@@ -49,7 +50,9 @@ export const translations = {
     },
     buttons: {
       read: "Lesen",
-      close: "Schließen"
+      close: "Schließen",
+      readMore: "Weiterlesen ↓",
+      readLess: "Verbergen ↑"
     },
     hero: {
       title: "Startseite"
@@ -74,7 +77,9 @@ export const translations = {
     },
     buttons: {
       read: "Read",
-      close: "Close"
+      close: "Close",
+      readMore: "Read more ↓",
+      readLess: "Hide ↑"
     },
     hero: {
       title: "Main Page"

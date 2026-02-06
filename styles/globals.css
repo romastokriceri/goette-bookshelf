@@ -22,6 +22,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.6;
+  font-size: 110%;
 }
 
 /* =====================
@@ -941,69 +942,89 @@ body {
    EXPANDABLE QUOTE FUNCTIONALITY
    ===================== */
 
-.expandable-quote {
+.quote-wrapper {
   position: relative;
-  max-height: 7.2em;           /* ≈ 3-4 рядки (1.8rem * 1.6 line-height * 3) */
+  /* 3.5em гарантує видимість 2 рядків при line-height 1.6 */
+  max-height: 3.5em; 
   overflow: hidden;
-  transition: max-height 0.4s ease;
-  cursor: pointer;
+  transition: max-height 0.5s ease;
 }
 
-.expandable-quote.expanded {
-  max-height: 1000px;          /* Достатньо для будь-якого тексту */
+.quote-wrapper.expanded {
+  max-height: 2000px; 
 }
 
-.expandable-quote p {
-  margin: 0;
-}
-
-/* Градієнт "..." для згорнутого стану */
-.expandable-quote:not(.expanded)::after {
-  content: "...";
+.quote-gradient-overlay {
   position: absolute;
   bottom: 0;
-  right: 40px;                 /* Відступ від правих лапок */
-  background: linear-gradient(to right, transparent, #f9f7f2 20%, #f9f7f2);
-  padding-left: 30px;
-  padding-right: 5px;
-  color: var(--accent);
-  font-weight: bold;
-  font-size: 1.5rem;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(transparent, var(--bg-color)); /* Колір фону вашої картки */
   pointer-events: none;
 }
 
-/* Текст "Скрыть ↑" для розгорнутого стану */
-.expandable-quote.expanded::after {
-  content: attr(data-hide-text);
-  background: none;
-  padding: 0;
-  position: static;
+/* Градієнт поверх тексту (тільки в згорнутому стані) */
+.quote-wrapper:not(.expanded) .quote-gradient-overlay {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4em;                  /* Висота градієнта */
+  background: linear-gradient(
+    to bottom, 
+    transparent 0%, 
+    rgba(249, 247, 242, 0.7) 50%,
+    rgba(249, 247, 242, 0.95) 100%
+  );
+  pointer-events: none;
+}
+
+/*Ховаємо градієнт у розгорнутому стані */
+.quote-wrapper.expanded .quote-gradient-overlay {
+  display: none;
+}
+
+/* Кнопка "Читати далі" / "Скрыть" */
+.quote-toggle-btn {
   display: block;
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1rem;
-  font-style: normal;
+  margin: 20px auto 20px;
+  padding: 8px 20px;
+  background: transparent;
+  border: 2px solid var(--accent);
   color: var(--accent);
+  font-size: 1rem;
   font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Georgia', serif;
+}
+
+.quote-toggle-btn:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(211, 84, 0, 0.3);
 }
 
 /* =====================
    RESPONSIVE - Mobile
    ===================== */
-
 @media (max-width: 768px) {
-  .expandable-quote {
-    max-height: 8em;           /* Більше для мобільних (менший шрифт = більше рядків) */
+  .quote-wrapper {
+    /* 8em — це золота середина для збільшеного шрифту (приблизно 3-4 рядки) */
+    max-height: 8em;           
   }
 
-  .expandable-quote:not(.expanded)::after {
-    font-size: 1.2rem;
-    right: 20px;
+  .quote-wrapper:not(.expanded) .quote-gradient-overlay {
+    /* Висота градієнта має бути трохи меншою за max-height */
+    height: 5em;
   }
 
-  .expandable-quote.expanded::after {
-    font-size: 0.9rem;
-    margin-top: 15px;
+  .quote-toggle-btn {
+    font-size: 0.95rem; /* Трохи більше за попередній, бо шрифт всього сайту виріс */
+    padding: 8px 18px;
   }
-}
 }
