@@ -781,24 +781,225 @@ export const reviewsData = [
       `
     }
   },
-  // EXISTING: Cossacks Review
+
   {
-    id: "review-4",
+    id: "review-cossacks-2018",
     bookTitle: {
       ru: "КАЗАЧЕСТВО. Исторические метаморфозы, 2018",
       de: "Die Kosaken. Historische Metamorphosen, 2018",
       en: "THE COSSACKS. Historical Metamorphoses, 2018"
     },
-    type: "quote",
+    bookCover: "09-cossacks-historical-metamorphoses-2018_1.webp",
     items: [
       {
-        text: { ru: "Стр. 456-457 (в книге)", de: "S. 456-457 (im Buch)", en: "P. 456-457 (in the book)" }
-      },
-      {
-        quote: "Das Buch von Henriette Lwowna Goette \"Kosaken. Historische Metamorphosen\" ist das beste bis heute veröffentlichtе Buch über Kosaken.",
-        author: "A. Jakowlew, 2018"
+        text: { 
+          ru: "Отзывы о книге (стр. 456-457)", 
+          de: "Rezensionen (S. 456-457)", 
+          en: "Reviews (pp. 456-457)" 
+        }
       }
-    ]
+    ],
+    fullContent: {
+      ru: `
+        <h1>Отзывы</h1>
+        
+        <div class="review-section">
+          <h2>После ознакомления с оглавлением книги Генриетты Гётте о казачестве</h2>
+          <p style="font-style: italic; color: #666; margin-bottom: 30px; text-align: center;">
+            Анатолий Яковлев
+          </p>
+          
+          <div style="background: rgba(139, 90, 43, 0.03); padding: 30px; border-left: 4px solid var(--wood-color); margin: 30px 0; border-radius: 4px;">
+            <p style="text-align: center; margin-bottom: 15px;">
+              Своё имея мнение,<br>
+              Без лести Вам скажу:<br>
+              "Прочёл я оглавление<br>
+              И рот открыл, сижу!
+            </p>
+            
+            <p style="text-align: center; margin-bottom: 15px;">
+              Слова в мозгу раздались<br>
+              Потом их смог сказать,<br>
+              И как же Вам удалося<br>
+              Сей уникум создать!
+            </p>
+            
+            <p style="text-align: center; margin-bottom: 15px;">
+              Такой огромный перечень<br>
+              Всего, что в книге есть,<br>
+              Ну как же нам теперича,<br>
+              Ваш супертруд прочесть!
+            </p>
+            
+            <p style="text-align: center; margin-bottom: 0;">
+              Он уплывёт из гавани<br>
+              К читателям своим -<br>
+              Желать большого плаванья<br>
+              Мы "Казакам" хотим!"
+            </p>
+          </div>
+          
+          <p style="text-align: right; font-style: italic; color: #777; margin-top: 20px;">
+            Анатолий Яковлев
+          </p>
+        </div>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section">
+          <h2>По прочтении "Заключения" к монографии Генриетты Гётте о трагедии казачества</h2>
+          <p style="font-style: italic; color: #666; margin-bottom: 30px; text-align: center;">
+            Анатолий Яковлев
+          </p>
+          
+          <div style="background: rgba(139, 90, 43, 0.03); padding: 30px; border-left: 4px solid var(--accent); margin: 30px 0; border-radius: 4px;">
+            <p style="text-align: center; margin-bottom: 15px;">
+              Себя Вы бросили опять<br>
+              Внутрь вселенского страданья,<br>
+              Вы повернули время вспять,<br>
+              Нарушив тайну мирозданья!
+            </p>
+            
+            <p style="text-align: center; margin-bottom: 15px;">
+              И вновь слова у Вас кричат,<br>
+              Их будто больно пронизали,<br>
+              Чтоб убиенных скорбный взгляд<br>
+              Мы в страшном прошлом увидали!
+            </p>
+            
+            <p style="text-align: center; margin-bottom: 15px;">
+              Вы, будто, в ад открыли дверь,<br>
+              В кошмар реальный, не иначе,<br>
+              Где ощутить масштаб потерь,<br>
+              Неразрешимая задача!
+            </p>
+            
+            <p style="text-align: center; margin-bottom: 15px;">
+              И чтобы нам не опоздать,<br>
+              Чтобы от горя не свихнуться,<br>
+              Вы позволяете прозреть<br>
+              И к лжи привычной не вернуться!
+            </p>
+            
+            <p style="text-align: center; margin-bottom: 0;">
+              Едва ли станем мы добрей,<br>
+              Вступив на истины пороги -<br>
+              Жестокой правдою своей,<br>
+              Вы изменили нас, ей Богу!
+            </p>
+          </div>
+          
+          <p style="text-align: right; font-style: italic; color: #777; margin-top: 20px;">
+            Анатолий Яковлев
+          </p>
+        </div>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section">
+          <h2>Оценка А. Яковлева</h2>
+          
+          <blockquote>
+            <p>
+              «Книга Генриетты Львовны Гётте "Казачество. Исторические метаморфозы" – 
+              лучшая книга о казаках, изданная на сегодня. Она была бы хорошим учебным 
+              пособием для казачьих лицеев».
+            </p>
+            <footer class="quote-author">
+              <strong>А. Яковлев</strong>, историк, директор музея «Таврия», 2018
+            </footer>
+          </blockquote>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
+          <p style="font-size: 0.95rem; color: #777; font-style: italic;">
+            Страницы 456-457 книги "Казачество. Исторические метаморфозы", 2018
+          </p>
+        </div>
+      `,
+      
+      de: `
+        <h1>Rezensionen</h1>
+        
+        <div class="review-section">
+          <h2>Gedichte von Anatoly Jakowlew</h2>
+          <p style="font-style: italic; color: #666; margin-bottom: 30px;">
+            Nach dem Lesen des Buches von Henriette Goette über die Kosaken
+          </p>
+          
+          <blockquote>
+            <p style="text-align: center; font-style: italic;">
+              Zwei Gedichte des Historikers Anatoly Jakowlew,<br>
+              gewidmet dem Buch "Die Kosaken. Historische Metamorphosen"
+            </p>
+          </blockquote>
+        </div>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section">
+          <h2>Bewertung</h2>
+          
+          <blockquote>
+            <p>
+              «Das Buch von Henriette Lwowna Goette "Die Kosaken. Historische 
+              Metamorphosen" ist das beste bis heute veröffentlichte Buch über 
+              Kosaken. Es wäre ein gutes Lehrbuch für Kosaken-Lyzeen».
+            </p>
+            <footer class="quote-author">
+              <strong>A. Jakowlew</strong>, Historiker, 2018
+            </footer>
+          </blockquote>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
+          <p style="font-size: 0.95rem; color: #777; font-style: italic;">
+            Seiten 456-457 des Buches "Die Kosaken. Historische Metamorphosen", 2018
+          </p>
+        </div>
+      `,
+      
+      en: `
+        <h1>Reviews</h1>
+        
+        <div class="review-section">
+          <h2>Poems by Anatoly Yakovlev</h2>
+          <p style="font-style: italic; color: #666; margin-bottom: 30px;">
+            After reading Henriette Goette's book about the Cossacks
+          </p>
+          
+          <blockquote>
+            <p style="text-align: center; font-style: italic;">
+              Two poems by historian Anatoly Yakovlev,<br>
+              dedicated to the book "The Cossacks. Historical Metamorphoses"
+            </p>
+          </blockquote>
+        </div>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section">
+          <h2>Assessment</h2>
+          
+          <blockquote>
+            <p>
+              «Henrietta Lvovna Gette's book "The Cossacks. Historical Metamorphoses" 
+              is the best book about the Cossacks that has been published to date. 
+              It would be a good textbook for Cossack lyceums».
+            </p>
+            <footer class="quote-author">
+              <strong>A. Yakovlev</strong>, Historian, 2018
+            </footer>
+          </blockquote>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
+          <p style="font-size: 0.95rem; color: #777; font-style: italic;">
+            Pages 456-457 of the book "The Cossacks. Historical Metamorphoses", 2018
+          </p>
+        </div>
+      `
+    }
   }
 ];
 
