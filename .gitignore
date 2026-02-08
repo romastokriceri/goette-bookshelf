@@ -20,3 +20,5 @@ Thumbs.db
 
 # Vercel
 .vercel
+
+external_code_framebar=0.js

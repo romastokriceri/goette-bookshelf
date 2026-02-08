@@ -122,15 +122,6 @@ export default function Home() {
     const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
     setLang(savedLang);
     
-    const handleArticleClick = (article) => {
-    if (isMobile) {
-      // На мобільних відкриваємо PDF у новій вкладці
-      window.open(getR2Url(`article/${encodeURIComponent(article.pdfFile)}`), '_blank');
-    } else {
-      setSelectedArticle(article);
-    }
-  };
-    
     const checkMobile = () => {
       setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
     };
@@ -330,7 +321,13 @@ export default function Home() {
                 <button
                   key={article.id}
                   className="article-card-v4"
-                  onClick={() => setSelectedArticle(article)}
+                  onClick={() => {
+                    if (isMobile) {
+                      window.open(getR2Url(`article/${encodeURIComponent(article.pdfFile)}`), '_blank');
+                    } else {
+                      setSelectedArticle(article);
+                    }
+                  }}
                 >
                   <div className="article-header-v4">
                     <h3 className="article-title-v4">{article.title[lang]}</h3>
@@ -382,7 +379,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* PDF MODAL */}
+      {/* PDF MODAL - BOOKS */}
       {selectedBook && !isMobile && (
         <div className="pdf-modal" onClick={() => setSelectedBook(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -427,7 +424,6 @@ export default function Home() {
               </button> 
             </div>
             <div className="review-page-scroll">
-              {/* Тут буде ваш контент у форматі "сайт в сайті" */}
               <div 
                 className="review-page-content"
                 dangerouslySetInnerHTML={{ 
@@ -439,8 +435,8 @@ export default function Home() {
         </div>
       )}
 
-      {/* ARTICLE MODAL */}
-      {selectedArticle && (
+      {/* ARTICLE MODAL - PDF */}
+      {selectedArticle && !isMobile && (
         <div className="pdf-modal" onClick={() => setSelectedArticle(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
@@ -451,10 +447,13 @@ export default function Home() {
                 <X size={32} />
               </button>
             </div>
-            <div className="article-content-scroll">
-              <div className="article-full-text">
-                {selectedArticle.fullText[lang] || translations[lang].articlePlaceholder}
-              </div>
+            <div className="iframe-container">
+              <iframe
+                src={`${getR2Url(`article/${encodeURIComponent(selectedArticle.pdfFile)}`)}#toolbar=1`}
+                title="Article PDF Viewer"
+                width="100%"
+                height="100%"
+              />
             </div>
           </div>
         </div>
