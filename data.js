@@ -279,11 +279,6 @@ export const shelfDividerQuotes = {
   ]
 };
 
-// =====================
-// ARTICLES DATA (RESTORED & MERGED)
-// =====================
-// Відновлено повний список з 3 статей. 
-// Прев'ю для статті про Мазепу збережено з поточної версії.
 export const articlesData = [
   {
     id: "mazepa",
@@ -292,13 +287,12 @@ export const articlesData = [
       de: "Iwan Stepanowitch Masepa-Koledinskij – die Verkörperung des Epos von der ukrainischen spirituellen Wiedergeburt der Kosaken",
       en: "Ivan Stepanovich Mazepa-Kaledinsky is the embodiment of the epic of the Ukrainian spiritual revival of the Cossacks"
     },
-    // Merged: Preview preserved from input 2
     preview: { 
-        ru: "Вот уже более 300 лет украинский полководец и дипломат Иван Степанович Мазепа рассматривается некоторыми историками как предатель...", 
-        de: "", 
-        en: "" 
+      ru: "Вот уже более 300 лет украинский полководец и дипломат Иван Степанович Мазепа рассматривается некоторыми историками как предатель...", 
+      de: "Seit mehr als 300 Jahren wird der ukrainische Feldherr und Diplomat Iwan Masepa von einigen Historikern als Verräter betrachtet...", 
+      en: "For more than 300 years, the Ukrainian commander and diplomat Ivan Mazepa has been viewed by some historians as a traitor..." 
     },
-    fullText: { ru: "", de: "", en: "" }
+    pdfFile: "Ivan_Stepanovich_Mazepa-Koledinsky.pdf"
   },
   {
     id: "pugachev",
@@ -308,10 +302,11 @@ export const articlesData = [
       en: "The national movement in Russia led by Yemelyan Ivanovich Pugachev"
     },
     preview: { 
-      ru: "В 2015 г. исполнилось 240 лет со дня подавления Крестьянской войны 1773–1775 гг. под руководством Емельяна Ивановича Пугачѐва. Сведения о нѐм находились более 140лет под грифом «секретно», и поэтому, как отмечает В. Короленко, для созданиясправедливого облика личности, стоявшего в центре движения и давшего ему своѐимя, историкам мешала груда сознательно и бессознательно фальсифицированногоматериала. ",
-      de: "",
-      en: "" },
-    fullText: { ru: "", de: "", en: "" }
+      ru: "В 2015 г. исполнилось 240 лет со дня подавления Крестьянской войны 1773–1775 гг. под руководством Емельяна Ивановича Пугачѐва...",
+      de: "Im Jahr 2015 jährte sich zum 240. Mal die Unterdrückung des Bauernkriegs von 1773–1775 unter der Führung von Pugachew...",
+      en: "2015 marked the 240th anniversary of the suppression of the Peasant War of 1773–1775 led by Yemelyan Pugachev..." 
+    },
+    pdfFile: "The_Pugachev_Rebellion.pdf"
   },
   {
     id: "civil-war",
@@ -321,17 +316,18 @@ export const articlesData = [
       en: "The Civil War in the South of Russia. Northern Tavria: the Land of the Cossack tragedy"
     },
     preview: {
-      ru: "В этом году исполняется 100 лет со времён одной из самых кровопролитных войн человечества, последовавшей в России после революции 1917 года. В Северной Таврии в 1920 году проходили самые ожесточённые бои этой гражданской войны уже на своём завершающем этапе.",
-      de: "",
-      en: "" },
-    fullText: { ru: "", de: "", en: "" }
+      ru: "В этом году исполняется 100 лет со времён одной из самых кровопролитных войн человечества, последовавшей в России после революции 1917 года...",
+      de: "In diesem Jahr jährt sich zum 100. Mal einer der blutigsten Kriege der Menschheit, der nach der Revolution von 1917 in Russland ausbrach...",
+      en: "This year marks the 100th anniversary of one of the bloodiest wars in humanity, which followed in Russia after the 1917 revolution..." 
+    },
+    pdfFile: "Civil_War_Southern_Russia.pdf"
   }
 ];
 
 // =====================
 // REVIEWS DATA (MERGED)
 // =====================
-// Об'єднано відновлений відгук про "Круїз пам'яті" та існуючі відгуки.
+
 export const reviewsData = [
   // EXISTING: Rejected by Homeland Review (HTML)
   {
@@ -341,33 +337,382 @@ export const reviewsData = [
       de: "Von der Heimat verleugnet. 3. Auflage, 2011",
       en: "Rejected by the Homeland. 3rd edition, 2011"
     },
-    type: "text",
-    fullContent: {
-      ru: `
-        <div class="review-full-text">
-          <h3>Отзывы после выхода первых двух изданий книги</h3>
-          <div class="review-item">
-            <blockquote><p>«...Монография «Отвергнутые родиной» – значительное историческое исследование...»</p></blockquote>
-            <footer class="review-author"><strong>В. Шевченко</strong>, доцент Каховского филиала ХТУ</footer>
-          </div>
-          <div class="review-item">
-            <blockquote><p>«...Ваша книга искренняя, правдивая... волнует и не оставляет никого равнодушным.»</p></blockquote>
-            <footer class="review-author"><strong>С. Скобалака</strong>, директор Каховского исторического музея</footer>
-          </div>
-        </div>
-      `,
-      de: "Der Text wird hinzugefügt...",
-      en: "Text will be added..."
-    },
+    bookCover: "01-rejected-by-homeland-2011_1.webp",
     items: [
       {
         text: {
-          ru: "Отзывы после выхода первых двух изданий (2007-2008). Читать полностью →",
-          de: "Rezensionen nach der Veröffentlichung der ersten beiden Ausgaben",
-          en: "Reviews after the release of the first two editions"
+          ru: "Отзывы после выхода первых двух изданий (стр. 507-508)",
+          de: "Rezensionen nach den ersten beiden Ausgaben (S. 507-508)",
+          en: "Reviews after the first two editions (pp. 507-508)"
         }
       }
-    ]
+    ],
+    fullContent: {
+      ru: `
+        <h1>Отзывы после выхода первых двух изданий книги</h1>
+        
+        <div class="review-section">
+          <h2>В. Шевченко</h2>
+          <p style="font-style: italic; color: #666; margin-bottom: 20px;">
+            Доцент Каховского филиала Херсонского технического университета
+          </p>
+          
+          <blockquote>
+            <p>
+              «… Монография "Отвергнутые родиной" — значительное историческое 
+              исследование в раскрытии "белых пятен" истории не только 
+              Причерноморья, но и почти всего постсоветского пространства. 
+              С особой яркостью показан трагизм немецких и швейцарских 
+              колонистов, долгое время проживавших в Причерноморье».
+            </p>
+            <footer class="quote-author">
+              <strong>В. Шевченко</strong>, доцент Каховского филиала Херсонского 
+              технического университета
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section">
+          <h2>С. Скобалака</h2>
+          <p style="font-style: italic; color: #666; margin-bottom: 20px;">
+            Директор Каховского исторического музея филиала Херсонского 
+            краеведческого музея
+          </p>
+          
+          <blockquote>
+            <p>
+              «… Ваша книга искренняя, правдивая, насыщенная массой подлинных 
+              документов и фотографий, волнует и не оставляет никого 
+              равнодушным. Спасибо Вам за это».
+            </p>
+            <footer class="quote-author">
+              <strong>С. Скобалака</strong>, директор Каховского исторического 
+              музея филиала Херсонского краеведческого музея
+            </footer>
+          </blockquote>
+          
+          <p style="margin-top: 25px;">
+            «Невозможно выразить признательность за Ваш авторский труд. 
+            Исследуя историю своей семьи на фоне глобальных социальных 
+            перемен XX ст., Вы открыли читателям страницы жизни первых 
+            немецких и швейцарских переселенцев в степи Таврии, а также 
+            судьбы их потомков. Здесь присутствуют все человеческие чувства: 
+            любовь и ненависть, разочарование и надежда.
+          </p>
+          
+          <p>
+            Книга "Отвергнутые родиной" поможет историкам, студентам, 
+            краеведам в проведении научно-исследовательских работ. Советские 
+            репрессии были беспощадны ко всему населению страны и сегодня 
+            важно знать правду прошлого, осмыслить её, чтобы впредь 
+            национальность не использовалась политиками при решении любых 
+            вопросов».
+          </p>
+          
+          <p style="text-align: right; font-style: italic; margin-top: 20px;">
+            Спасибо за книгу. Новых творческих удач!
+          </p>
+        </div>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section">
+          <h2>Г. Франтенко</h2>
+          <p style="font-style: italic; color: #666; margin-bottom: 20px;">
+            Директор Бериславского краеведческого музея
+          </p>
+          
+          <blockquote>
+            <p>
+              «… От имени сотрудников музея благодарю за Вашу книгу, в которой 
+              собран интереснейший материал о Ваших родственниках и истории 
+              Херсонщины. Прочитав эту книгу, мы увидели бережное Ваше 
+              отношение к предкам, глубокое познание истории.
+            </p>
+            <p>
+              Ваша работа — титанический вклад в сохранение истории, культуры».
+            </p>
+            <footer class="quote-author">
+              <strong>Г. Франтенко</strong>, директор Бериславского 
+              краеведческого музея
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section">
+          <h2>Л. Белоусова</h2>
+          <p style="font-style: italic; color: #666; margin-bottom: 20px;">
+            Зам. директора Госархива Одесской области
+          </p>
+          
+          <blockquote>
+            <p>
+              «Выражаем Вам огромную благодарность за Вашу книгу 
+              "Отвергнутые родиной". Это замечательное исследование дополнило 
+              материалы нашей библиотеки по истории российских немцев и вызвало 
+              большой интерес у исследователей, студентов-практикантов и 
+              сотрудников архива. Семейные истории сегодня актуальны и 
+              востребованы как никогда. В Ваши работе блестяще является новым 
+              словом в исторической науке. Архивистам же особенно интересно было 
+              ознакомиться с копиями документов, фамилиями частных лиц, с 
+              фотографиями, опубликованными в книге.
+            </p>
+            <p>
+              Желаем Вам дальнейших творческих успехов, новых интересных 
+              исследовательских работ и публикаций!»
+            </p>
+            <footer class="quote-author">
+              <strong>Л. Белоусова</strong>, зам. директора Госархива 
+              Одесской области
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section">
+          <h2>А. Г. Неділько</h2>
+          <p style="font-style: italic; color: #666; margin-bottom: 20px;">
+            Редактор сборника «Основські хроніки»
+          </p>
+          
+          <p>
+            Это уже третье издание книги, хорошо известной жителям села Основа-на-Днепре, 
+            и бесспорно завоевавшей сердца многих читателей Украины и других стран. 
+            Ее автор – Генриетта Гётте, проживающая в данный момент в Германии, выполнила 
+            колоссальную работу по поиску достоверных данных о своих предках - швейцарцах, 
+            создавших крупнейшее винодельческое предприятие юга Украины, принесших большую 
+            пользу России и Украине, и заложивших село Основа-на-Днепре. Первое издание, 
+            вышедшее в свет в 2007 году, стало сенсацией и в одночасье диаметрально изменило
+            отношение многих жителей Основы к своему прошлому. 
+          </p>
+
+          <p>
+            Не секрет, что до этой даты преобладающее большинство жителей Основы 
+            (и не только Основы), будучи под сильным влиянием коммунистической пропаганды, 
+            считали, что события развивались именно так, как нагло утверждали 
+            фальсификаторы в многочисленных источниках советского периода.
+            Для подтверждения всех изложенных фактов автор использует различные 
+            документы и фотоматериалы, которые были получены после многолетних 
+            поисков в архивах разных стран, и которые дают неоспоримые свидетельства 
+            рассматриваемых фактов. Книга поражает широтой своей структуры.
+          </p>
+        
+          <p>
+            Повествование начинается с описания посленаполеоновских потрясений, 
+            вызвавших целую волну миграций из Европы в Россию. В книге наглядно 
+            показано, насколько непростым и тернистым был путь переселенцев из 
+            Швейцарии на восток. На примере не одного поколения швейцарцев и немцев 
+            показана и их самоотверженность в выполнении своего долга и преодолении 
+            многочисленных лишений, и горькое разочарование от тяжелых условий жизни 
+            в Российской империи, а впоследствии - в Советском Союзе.
+          </p>
+
+          <p>
+            Обладая большим жизненным потенциалом и всеми необходимыми знаниями 
+            своей профессии, переселенцы сумели в сравнительно короткий срок добиться 
+            больших успехов и принесли немалый вклад в развитие экономики России и СССР. 
+            Читатель будет несомненно поражен представленными документальными 
+            свидетельствами, собранными автором с большим старанием.Книга переносит
+            читателя по разным странам, из Европы в Россию. 
+          </p>
+
+          <p>
+            Судьба разбросала предков Генриетты Гётте по разным
+            уголкам России - в книге описано Поволжье, в котором
+            жили предки ее отца, а также семья Антони из Розенталя в
+            Крыму, и скитания семейства Гётте по уездам Таврической
+            губернии, и огромный вклад в развитие Херсонской
+            губернии, сделанный семьей Квадрициус, родственниками
+            ее матери; описано также развитие шведских поселений
+            Шведского округа Альтшведендорф, Шлангендорф и других
+            сел. Одной из первых швейцарских колонией в России
+            стала колония Шабо в Аккерманском уезде Бессарабской
+            губернии, от которой впоследствии отделились дочерние
+            поселения. В книге показано, как происходило заселение и
+            развитие колонии Шабо, и ее значение для последующих
+            поколений колонистов. В деталях описано возникновение
+            поселения Основа как дочерней колонии Шабо и связанных
+            с ней поселений, в частности соседнего села Британы и
+            поселения Новая Шабо. Показана роль Основы для
+            развития экономики Нижнеднепровья и ее связь с новыми
+            немецкими поселениями Ключевая, Луговая и Новые
+            Судаки. 
+          </p>
+          
+          <p>
+            Важным вкладом в историю швейцарских поселенцев является восстановление 
+            исторического значения их деятельности, в книге наглядно раскрыт 
+            неоценимый вклад, сделанный швейцарцами в становление виноградарства в 
+            Нижнеднепровье, а также в развитие инфраструктуры когда-то заброшенной 
+            части Днепровского уезда.
+          </p>
+
+          <p>
+            Наибольшего драматизма повествование достигает в главах 4-й и 5-й, 
+            описывающих страшные лишения, репрессии и пытки, которым подверглись 
+            ни в чем не повинные люди в результате безумного большевистского террора. 
+            Эта часть повествования книги полностью опровергает фальсификации 
+            советского периода, в частности многочисленные заказные статьи в 
+            периодической прессе, которые печатались на протяжении более 70 лет и 
+            порочили репутацию швейцарцев.
+          </p>
+          <p>
+            Это позволяет сделать
+            вывод о кровавых деяниях большевистского режима,
+            который принес народам Украины огромное горе. В
+            завершающей части книги описаны события, происшедшие
+            после выхода первых двух изданий книги (2007 и 2008 гг.)
+            Это период был чрезвычайно насыщенным, автор совершает 
+            много поездок для поиска новых документов и встреч
+            с родственниками и различными специалистами. За это
+            время Генриетта Гётте не только разыскала много новых
+            документов и сведений, но и с честью отдала свой долг
+            славным предкам - поставила в селе Основа памятную
+            стелу в 2009 году, а также памятник в 2010 году. Ее
+            подвижнический труд встретил всеобщее одобрение, о чем
+            свидетельствуют многочисленные положительные отзывы
+            ученых-историков и работников архивных учреждений и
+            музеев Украины и России. В книгу включены также
+            стихотворения местного историка Анатолия Яковлева, в
+            которых описана трагедия швейцарцев и выражена
+            симпатия к основателям Основы.
+          </p>
+          <p>
+            В новом издании значительно увеличен объем книги (свыше 500 с.) и 
+            включены многие новые документы, приведены исчерпывающие библиографии 
+            использованных источников. Книга чрезвычайно богато иллюстрирована, 
+            и содержит уникальные фотографии, многие из которых публикуются впервые.
+          </p>
+
+          <blockquote>
+            <p>
+              «Забывшие уроки прошлого рискуют получить их вновь... 
+              Правда о прошлом - предостережение для будущего...»
+            </p>
+            <footer class="quote-author">
+              Из книги «Отвергнутые родиной»
+            </footer>
+          </blockquote>
+
+          <p style="margin-top: 25px;">
+            Ценность этой книги чрезвычайно велика, поскольку она обращена не только 
+            в прошлое, но и в будущее. Хочется верить, что эта книга послужит хорошим 
+            уроком для всех жителей села Основа и поможет им осознать необходимость 
+            более внимательного отношения к своей истории, чтобы никогда не повторять 
+            безумной кровавой бойни 1929 года и страшных репрессий 30-х -40-х годов ХХ века.
+          </p>
+
+          <p style="text-align: right; font-style: italic; margin-top: 30px; color: #777;">
+            А. Г. Неділько<br>
+            Основські хроніки: краєзнавчий, історичний, культурологічний 
+            та науково-популярний збірник.<br>
+            С. Основа, 2012. - Річник 1. - Число 1. - С. 31-32.
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
+          <p style="font-size: 0.95rem; color: #777; font-style: italic;">
+            Страницы 507-508 книги "Отвергнутые родиной", 3-е издание, 2011<br>
+            Основські хроніки, 2012, С. 31-32
+          </p>
+        </div>
+      `,
+      
+      de: `
+        <h1>Rezensionen nach Veröffentlichung der ersten beiden Ausgaben</h1>
+        
+        <div class="review-section">
+          <h2>W. Schewtschenko</h2>
+          
+          <blockquote>
+            <p>
+              «… Die Monografie "Von der Heimat verleugnet" ist eine wichtige 
+              historische Untersuchung zur Aufdeckung der "weißen Flecken" in 
+              der Geschichte nicht nur des Schwarzmeergebietes, sondern wohl 
+              des gesamten postsowjetischen Raumes. Mit besonders eindringlicher 
+              Klarheit sind die Tragödien der deutschen und Schweizer Kolonisten 
+              dargestellt, die lange Zeit im Schwarzmeergebiet gelebt haben».
+            </p>
+            <footer class="quote-author">
+              <strong>W. Schewtschenko</strong>, Dozent
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section">
+          <h2>S. Skobalaka</h2>
+          
+          <blockquote>
+            <p>
+              «… Ihr Buch ist aufrichtig, wahrheitsgetreu, gefüllt mit einer 
+              Masse authentischer Dokumente und Fotografien, es berührt und 
+              lässt niemanden gleichgültig».
+            </p>
+            <footer class="quote-author">
+              <strong>S. Skobalaka</strong>, Museumsdirektor
+            </footer>
+          </blockquote>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
+          <p style="font-size: 0.95rem; color: #777; font-style: italic;">
+            Seiten 507-508 des Buches "Von der Heimat verleugnet", 3. Auflage, 2011
+          </p>
+        </div>
+      `,
+      
+      en: `
+        <h1>Reviews after the First Two Editions</h1>
+        
+        <div class="review-section">
+          <h2>V. Shevchenko</h2>
+          
+          <blockquote>
+            <p>
+              «… The monograph "Rejected by the Homeland" is a significant 
+              historical research revealing the "white spots" in the history 
+              of not only the Black Sea region, but also almost the entire 
+              post-Soviet space. The tragedy of the German and Swiss colonists 
+              who lived in the Black Sea region for a long time is shown with 
+              particular vividness».
+            </p>
+            <footer class="quote-author">
+              <strong>V. Shevchenko</strong>, Associate Professor
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section">
+          <h2>S. Skobalaka</h2>
+          
+          <blockquote>
+            <p>
+              «… Your book is sincere, truthful, filled with a mass of 
+              authentic documents and photographs, it touches and leaves 
+              no one indifferent. Thank you for this».
+            </p>
+            <footer class="quote-author">
+              <strong>S. Skobalaka</strong>, Museum Director
+            </footer>
+          </blockquote>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
+          <p style="font-size: 0.95rem; color: #777; font-style: italic;">
+            Pages 507-508 of the book "Rejected by the Homeland", 3rd edition, 2011
+          </p>
+        </div>
+      `
+    }
   },
     // RESTORED: Memory Cruise Review
   {
@@ -377,19 +722,64 @@ export const reviewsData = [
       de: "Eine Reise zu den Erinnerungen. 2. Auflage, 2024",
       en: "Memory Cruise. 2nd edition, 2024"
     },
+    bookCover: "03-memory-cruise-2024_1.webp",
+    type: "text",
     items: [
       {
         text: {
-          ru: "Стр. 43 (в книге)",
-          de: "S. 43 (im Buch)",
-          en: "P. 43 (in the book)"
+          ru: "Стихотворение «Круиз памяти» (стр. 43). Читать полностью →",
+          de: "Das Gedicht „Eine Reise zu den Erinnerungen“ (S. 43)",
+          en: "The poem 'Memory Cruise' (p. 43). Read full version →"
         }
-      },
-      {
-        quote: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes „Die Reise zu den Erinnerungen“.",
-        author: "A. Jakowlew, 2009"
       }
-    ]
+    ],
+    fullContent: {
+      ru: `
+        <div class="review-full-text">
+          <h1 style="text-align: center;">Круиз памяти</h1>
+          
+          <div class="poem-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; line-height: 1.6; margin: 30px 0;">
+            <div class="poem-column">
+              <p>Я таинства свидетель был,<br>Прикосновения печали.<br>Ваш теплоход не в Киев плыл,<br>А вёз Вас в лет ушедших дали.</p>
+              <p>По зыбкой памяти волне.<br>Туда, где жили Ваши деды -<br>Желали Вы, понятно мне,<br>Постичь их путь, триумф победы!</p>
+              <p>Все это просто объяснить –<br>Всех тянет в край, где корни наши,<br>И горше нет земли и краше,<br>Что смог заочно полюбить!</p>
+            </div>
+            <div class="poem-column">
+              <p>И счастье с горем пополам<br>Испить, как их вино, неспешно!<br>И унестись в тот давний день.<br>Из этих будней, как из клетки.</p>
+              <p>Когда спасительную тень<br>Не находили ваши предки.<br>Когда мозоли на руках<br>Горячей кровью набухали.<br>Но эти люди твёрдо знали,<br>Что быть оазису в песках!</p>
+            </div>
+          </div>
+          
+          <footer style="text-align: right; margin-top: 20px; font-weight: bold;">
+            А. Яковлев, 2008
+          </footer>
+        </div>
+      `,
+      de: `
+        <div class="review-full-text">
+          <h1 style="text-align: center;">Eine Reise zu den Erinnerungen</h1>
+          <blockquote>
+            <p>«Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes „Die Reise zu den Erinnerungen“.»</p>
+            <footer class="quote-author"><strong>A. Jakowlew</strong>, 2009</footer>
+          </blockquote>
+          <p style="margin-top: 20px; font-style: italic; color: #666;">
+            Das vollständige Gedicht ist in der russischen Originalfassung verfügbar.
+          </p>
+        </div>
+      `,
+      en: `
+        <div class="review-full-text">
+          <h1 style="text-align: center;">Memory Cruise</h1>
+          <blockquote>
+            <p>"I have never heard or read such a report as Henriette Lvovna Goette's 'The Journey to Memories'."</p>
+            <footer class="quote-author"><strong>A. Yakovlev</strong>, 2009</footer>
+          </blockquote>
+          <p style="margin-top: 20px; font-style: italic; color: #666;">
+            The full poem is available in the original Russian version.
+          </p>
+        </div>
+      `
+    }
   },
   // EXISTING: Cossacks Review
   {

@@ -27,33 +27,47 @@ const getR2Url = (path) => {
    ReviewCard Component
 ======================= */
 const ReviewCard = ({ review, lang, onExpand }) => {
-  // Перевіряємо чи є розширений контент для поточної мови
+  // Перевіряємо чи є повний контент для відкриття
   const hasFullContent = review.fullContent && review.fullContent[lang];
+  
+  // Перевіряємо чи є обкладинка книги
+  const hasCover = review.bookCover;
 
   return (
-    <div className="review-block">
-      <h3 className="review-book-title">{review.bookTitle[lang]}</h3>
-      
-      {review.items.map((item, index) => (
-        <div key={index} className="review-item">
-          {item.text && <p className="review-text">{item.text[lang]}</p>}
-          {item.quote && (
-            <blockquote className="review-quote">
-              <p>"{item.quote}"</p>
-              <footer className="review-author">{item.author}</footer>
-            </blockquote>
-          )}
+    <div className="review-card">
+      {hasCover && (
+        <div className="review-book-cover">
+          <img 
+            src={getR2Url(`cover/${review.bookCover}`)} 
+            alt={review.bookTitle[lang]}
+          />
         </div>
-      ))}
-
-      {hasFullContent && (
-        <button 
-          className="btn-read-full"
-          onClick={() => onExpand(review)}
-        >
-          {translations[lang].buttons.readFull}
-        </button>
       )}
+      
+      <div className="review-card-content">
+        <h3 className="review-book-title">{review.bookTitle[lang]}</h3>
+        
+        {review.items.map((item, index) => (
+          <div key={index} className="review-item">
+            {item.text && <p className="review-text">{item.text[lang]}</p>}
+            {item.quote && (
+              <blockquote className="review-quote">
+                <p>"{item.quote}"</p>
+                <footer className="review-author">{item.author}</footer>
+              </blockquote>
+            )}
+          </div>
+        ))}
+
+        {hasFullContent && (
+          <button 
+            className="btn-open-review"
+            onClick={() => onExpand(review)}
+          >
+            {translations[lang].buttons.readFull}
+          </button>
+        )}
+      </div>
     </div>
   );
 };
@@ -99,7 +113,7 @@ const Comments = () => {
 export default function Home() {
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedArticle, setSelectedArticle] = useState(null);
-  const [expandedReview, setExpandedReview] = useState(null); // НОВИЙ СТЕЙТ
+  const [expandedReview, setExpandedReview] = useState(null);
   const [lang, setLang] = useState('ru');
   const [expandedQuotes, setExpandedQuotes] = useState({});
   const [isMobile, setIsMobile] = useState(false);
@@ -107,6 +121,15 @@ export default function Home() {
   useEffect(() => {
     const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
     setLang(savedLang);
+    
+    const handleArticleClick = (article) => {
+    if (isMobile) {
+      // На мобільних відкриваємо PDF у новій вкладці
+      window.open(getR2Url(`article/${encodeURIComponent(article.pdfFile)}`), '_blank');
+    } else {
+      setSelectedArticle(article);
+    }
+  };
     
     const checkMobile = () => {
       setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
@@ -328,7 +351,7 @@ export default function Home() {
             <h2 className="section-title">
               <MessageCircle /> {translations[lang].sections.reviews}
             </h2>
-            <div className="reviews-container">
+            <div className="reviews-grid">
               {reviewsData.map((review) => (
                 <ReviewCard 
                   key={review.id} 
@@ -370,7 +393,9 @@ export default function Home() {
                 </h3>
                 <small className="modal-subtitle">{selectedBook.size}</small>
               </div>
-              <button className="close-btn" onClick={() => setSelectedBook(null)}><X size={32} /></button>
+              <button className="close-btn" onClick={() => setSelectedBook(null)}>
+                <X size={32} />
+              </button>
             </div>
             <div className="iframe-container">
               <iframe
@@ -384,14 +409,16 @@ export default function Home() {
         </div>
       )}
 
-      {/* REVIEWS FULL TEXT MODAL */}
+      {/* REVIEW MODAL - "САЙТ В САЙТІ" */}
       {expandedReview && (
         <div className="review-modal" onClick={() => setExpandedReview(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content modal-review-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h3 className="modal-title">
-                {expandedReview.bookTitle[lang]}
-              </h3>
+              <div className="modal-info">
+                <h3 className="modal-title">
+                  {expandedReview.bookTitle[lang]}
+                </h3>
+              </div>
               <button 
                 className="close-btn" 
                 onClick={() => setExpandedReview(null)}
@@ -399,12 +426,35 @@ export default function Home() {
                 <X size={32} />
               </button> 
             </div>
-            <div className="review-content-scroll">
+            <div className="review-page-scroll">
+              {/* Тут буде ваш контент у форматі "сайт в сайті" */}
               <div 
+                className="review-page-content"
                 dangerouslySetInnerHTML={{ 
                   __html: expandedReview.fullContent[lang] 
                 }}
               />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ARTICLE MODAL */}
+      {selectedArticle && (
+        <div className="pdf-modal" onClick={() => setSelectedArticle(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <div className="modal-info">
+                <h3 className="modal-title">{selectedArticle.title[lang]}</h3>
+              </div>
+              <button className="close-btn" onClick={() => setSelectedArticle(null)}>
+                <X size={32} />
+              </button>
+            </div>
+            <div className="article-content-scroll">
+              <div className="article-full-text">
+                {selectedArticle.fullText[lang] || translations[lang].articlePlaceholder}
+              </div>
             </div>
           </div>
         </div>
