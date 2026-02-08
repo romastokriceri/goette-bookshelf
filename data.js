@@ -242,13 +242,34 @@ export const shelfDividerQuotes = {
         de: "Historiker, Dozent an der Filiale Kachowka der Technischen Universität Cherson",
         en: "Historian, Associate Professor at the Kakhovka Branch of the Kherson Technical University"
       }
-    }
+    },
+    {
+      id: "quote-yakovlev-2011",
+      text: {
+        ru: "Нет сомнения, что замечательное и в своём роде уникальное произведение Генриетты Львовны Гётте... сделает нас лучше, чище, мудрее! И верю, что миллионы будущих читателей во всех концах бывшего Союза и за его пределами по достоинству оценят непреходящее значение этой, без преувеличения великой книги, пронизанной  высоким гуманизмом, верой в высшую справедливость – победу добра над злом!",
+        de: "Es steht außer Zweifel, dass das hervorragende Werk von Henriette Lwowna Goette uns weiser machen wird!Es steht außer Zweifel, dass das hervorragende und in dieser Art einzigartige Werk von Henriette Lwowna  Goette uns allen  nicht nur helfen wird einige Fragen unserer leidvollen  Geschichte, die die sowjetische Geschichtsschreibung zuvor  verschwiegen hat,  sondern  es wird uns, das wage ich zu sagen,  besser, reiner und weiser machen! Und ich glaube, dass Millionen zukünftiger Leser im ganzen Bereich  der ehemaligen Sowjetraum und über  ihre Grenzen hinaus, den unvergänglichen Wert dieses ohne Übertreibung großartigen Buches würdigen werden, das von hohem Humanismus und dem Glauben an die höhere Gerechtigkeit – den Sieg des Guten über das Böse – durchdrungen ist!",
+        en: "There is no doubt that Henrietta Lvovna Gette's remarkable and unique work will not only help our better understanding the certain aspects of our long-suffering history which were previously ignored by Soviet historiography, but it also makes us, I dare say, better, purer, and wiser! And I believe that millions of future readers in all parts of the former Soviet Union and beyond will appreciate the enduring significance of this, without exaggeration, great book, which is imbued with high humanism and a belief in the ultimate triumph of good over evil!"
+      },
+      author: { ru: "А. Яковлев, 2011", de: "A. Jakowlew, 2011", en: "A. Yakovlev, 2011" },
+      position: { ru: "Историк, директор музея «Таврия», Новая Каховка", de: "Historiker, Direktor des Museums „Tawrija“, Nowaja Kachowka", en: "Historian, Director of the Tavria Museum, Novaya Kakhovka" }
+    },
+    {
+      id: "quote-yakovlev-2009",
+      text: {
+        ru: "Я ещё никогда не слышал и не читал такого репортажа как „Круиз памяти“ Генриетты Львовны Гётте",
+        de: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes „Die Reise zu den Erinnerungen“",
+        en: "I have never heard or read a report like Henrietta Lvovna Götté's „Memory Cruise“"
+      },
+      author: { ru: "А. Яковлев, 2009", de: "A. Jakowlew, 2009", en: "A. Yakovlev, 2009" },
+      position: { ru: " ", de: " ", en: " " }
+      }
   ],
+
   "shelf-2": [
     {
       id: "quote-yakovlev-2018",
       text: {
-        ru: "Книга Генриетты Львовны Гётте Казачество. „Исторические метаморфозы“ – лучшая книга о казаках, изданная на сегодня. Она была бы хорошим учебным пособием для казачьих лицеев",
+        ru: "Книга Генриетты Львовны Гётте „Казачество. Исторические метаморфозы“ – лучшая книга о казаках, изданная на сегодня. Она была бы хорошим учебным пособием для казачьих лицеев",
         de: "Das Buch von Henriette Lwowna Goette „Die Kosaken. Historische Metamorphosen“ ist das beste bis heute veröffentlichte Buch über Kosaken. Es wäre ein gutes Lehrbuch für Kosaken-Lyzeen",
         en: "Henrietta Lvovna Gette's book „The Cossacks. Historical Metamorphoses“ is the best book about the Cossacks that has been published to date. It would be a good textbook for Cossack lyceums"
       },
@@ -286,7 +307,10 @@ export const articlesData = [
       de: "Eine Volksbewegung in Russland unter der Führung von Emeljan Iwanowitsch Pugachew",
       en: "The national movement in Russia led by Yemelyan Ivanovich Pugachev"
     },
-    preview: { ru: "", de: "", en: "" },
+    preview: { 
+      ru: "В 2015 г. исполнилось 240 лет со дня подавления Крестьянской войны 1773–1775 гг. под руководством Емельяна Ивановича Пугачѐва. Сведения о нѐм находились более 140лет под грифом «секретно», и поэтому, как отмечает В. Короленко, для созданиясправедливого облика личности, стоявшего в центре движения и давшего ему своѐимя, историкам мешала груда сознательно и бессознательно фальсифицированногоматериала. ",
+      de: "",
+      en: "" },
     fullText: { ru: "", de: "", en: "" }
   },
   {
@@ -296,7 +320,10 @@ export const articlesData = [
       de: "Der Bürgerkrieg im Süden Russlands. Nordtaurien – das Land der Kosakentragödie",
       en: "The Civil War in the South of Russia. Northern Tavria: the Land of the Cossack tragedy"
     },
-    preview: { ru: "", de: "", en: "" },
+    preview: {
+      ru: "В этом году исполняется 100 лет со времён одной из самых кровопролитных войн человечества, последовавшей в России после революции 1917 года. В Северной Таврии в 1920 году проходили самые ожесточённые бои этой гражданской войны уже на своём завершающем этапе.",
+      de: "",
+      en: "" },
     fullText: { ru: "", de: "", en: "" }
   }
 ];
@@ -306,28 +333,6 @@ export const articlesData = [
 // =====================
 // Об'єднано відновлений відгук про "Круїз пам'яті" та існуючі відгуки.
 export const reviewsData = [
-  // RESTORED: Memory Cruise Review
-  {
-    id: "review-memory-cruise-2024",
-    bookTitle: {
-      ru: "Круиз памяти. 2-е издание, 2024",
-      de: "Eine Reise zu den Erinnerungen. 2. Auflage, 2024",
-      en: "Memory Cruise. 2nd edition, 2024"
-    },
-    items: [
-      {
-        text: {
-          ru: "Стр. 43 (в книге)",
-          de: "S. 43 (im Buch)",
-          en: "P. 43 (in the book)"
-        }
-      },
-      {
-        quote: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes „Die Reise zu den Erinnerungen“.",
-        author: "A. Jakowlew, 2009"
-      }
-    ]
-  },
   // EXISTING: Rejected by Homeland Review (HTML)
   {
     id: "review-rejected-homeland-2011",
@@ -361,6 +366,28 @@ export const reviewsData = [
           de: "Rezensionen nach der Veröffentlichung der ersten beiden Ausgaben",
           en: "Reviews after the release of the first two editions"
         }
+      }
+    ]
+  },
+    // RESTORED: Memory Cruise Review
+  {
+    id: "review-memory-cruise-2024",
+    bookTitle: {
+      ru: "Круиз памяти. 2-е издание, 2024",
+      de: "Eine Reise zu den Erinnerungen. 2. Auflage, 2024",
+      en: "Memory Cruise. 2nd edition, 2024"
+    },
+    items: [
+      {
+        text: {
+          ru: "Стр. 43 (в книге)",
+          de: "S. 43 (im Buch)",
+          en: "P. 43 (in the book)"
+        }
+      },
+      {
+        quote: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes „Die Reise zu den Erinnerungen“.",
+        author: "A. Jakowlew, 2009"
       }
     ]
   },
