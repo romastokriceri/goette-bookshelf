@@ -1,0 +1,490 @@
+diff --git a/pages/index.js b/pages/index.js
+index dfd794ea15d1f8566d075055415e319436e11643..3c5aa2d31d6952c10cba502dfa9a8ff41dc12b84 100644
+--- a/pages/index.js
++++ b/pages/index.js
+@@ -1,28 +1,29 @@
+ import React, { useState, useEffect } from 'react';
+ import {
+   X,
++  Menu,
+   BookOpen,
+   User,
+   MessageCircle
+ } from 'lucide-react';
+ import { 
+   authorData, 
+   shelves, 
+   heroData, 
+   translations,
+   shelfDividerQuotes,
+   bookQuotes,
+   articlesData,
+   reviewsData
+ } from '../data';
+ 
+ /* =======================
+    Utils
+ ======================= */
+ const getR2Url = (path) => {
+   const R2_URL = process.env.NEXT_PUBLIC_R2_URL || '';
+   return `${R2_URL}/${path}`;
+ };
+ 
+ /* =======================
+    ReviewCard Component
+@@ -93,131 +94,154 @@ const Comments = () => {
+     (document.head || document.body).appendChild(script);
+ 
+     return () => {
+       if (window.DISQUS) window.DISQUS.reset({ reload: true });
+     };
+   }, []);
+ 
+   return (
+     <div>
+       <div id="disqus_thread"></div>
+       <noscript>Please enable JavaScript to view the comments.</noscript>
+     </div>
+   );
+ };
+ 
+ /* =======================
+    Main Component (Home)
+ ======================= */
+ export default function Home() {
+   const [selectedBook, setSelectedBook] = useState(null);
+   const [selectedArticle, setSelectedArticle] = useState(null);
+   const [expandedReview, setExpandedReview] = useState(null);
+   const [lang, setLang] = useState('ru');
+   const [expandedQuotes, setExpandedQuotes] = useState({});
+   const [isMobile, setIsMobile] = useState(false);
++  const [isMenuOpen, setIsMenuOpen] = useState(false);
+ 
+   useEffect(() => {
+     const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
+     setLang(savedLang);
+     
+     const checkMobile = () => {
+       setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+     };
+     checkMobile();
+     
+     window.addEventListener('resize', checkMobile);
+     return () => window.removeEventListener('resize', checkMobile);
+   }, []);
+ 
++  useEffect(() => {
++    const closeMenuOnDesktop = () => {
++      if (window.innerWidth > 768) {
++        setIsMenuOpen(false);
++      }
++    };
++
++    window.addEventListener('resize', closeMenuOnDesktop);
++    return () => window.removeEventListener('resize', closeMenuOnDesktop);
++  }, []);
++
+   const switchLang = (newLang) => {
+     setLang(newLang);
+     localStorage.setItem('selectedLanguage', newLang);
++    setIsMenuOpen(false);
+   };
+   
+   const toggleQuote = (id) => {
+     setExpandedQuotes(prev => ({ ...prev, [id]: !prev[id] }));
+   };
+ 
+   const scrollToSection = (id) => {
+     const element = document.getElementById(id);
+     if (!element) return;
+     const headerOffset = 80;
+     const elementPosition = element.getBoundingClientRect().top;
+     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
++    setIsMenuOpen(false);
+   };
+ 
+   const quoteById = Object.values(shelfDividerQuotes).flat().reduce((acc, quote) => {
+     acc[quote.id] = quote;
+     return acc;
+   }, {});
+ 
+   const renderQuote = (quote) => {
+     const isExpanded = expandedQuotes[quote.id];
+     const text = quote.text[lang];
+     const isLongText = text.length > 200;
+ 
+     return (
+       <div key={quote.id} className="shelf-divider-quote">
+         <div className="divider-quote-content">
+           <div className={`quote-wrapper ${isExpanded || !isLongText ? 'expanded' : ''}`}>
+             <blockquote className="divider-quote-text">
+               <p>{text}</p>
+             </blockquote>
+             {isLongText && !isExpanded && <div className="quote-gradient-overlay"></div>}
+           </div>
+ 
+           {isLongText && (
+             <button
+               className="quote-toggle-btn"
+               onClick={() => toggleQuote(quote.id)}
+             >
+               {isExpanded ? translations[lang].buttons.readLess : translations[lang].buttons.readMore}
+             </button>
+           )}
+ 
+           <footer className="divider-quote-footer">
+             <strong>{quote.author[lang]}</strong>
+             <br />
+             <span className="divider-quote-position">
+               {quote.position[lang]}
+             </span>
+           </footer>
+         </div>
+       </div>
+     );
+   };
+ 
+   return (
+     <div className="app-wrapper">
+       {/* HEADER */}
+-      <header className="sticky-header">
++      <header className={`sticky-header ${isMenuOpen ? 'menu-open' : ''}`}>
+         <nav className="nav-container">
+           <div className="logo">{authorData.name[lang]}</div>
++
++          <button
++            className="menu-toggle"
++            aria-label="Toggle navigation"
++            aria-expanded={isMenuOpen}
++            onClick={() => setIsMenuOpen((prev) => !prev)}
++          >
++            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
++          </button>
+           
+-          <ul className="nav-links">
++          <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+             {['home', 'about', 'books', 'articles', 'reviews', 'feedback'].map((sec) => (
+               <li key={sec} onClick={() => scrollToSection(sec)}>
+                 {translations[lang].nav[sec]}
+               </li>
+             ))}
+           </ul>
+ 
+           <div className="lang-switcher">
+             {['ru', 'de', 'en'].map((l) => (
+               <button 
+                 key={l}
+                 className={lang === l ? 'active' : ''}
+                 onClick={() => switchLang(l)}
+               >
+                 {l.toUpperCase()}
+               </button>
+             ))}
+           </div>
+         </nav>
+       </header>
+ 
+       <main className="container">
+         {/* HERO SECTION */}
+         <section id="home" className="hero-section">
+           <div className="hero-card">
+@@ -442,26 +466,26 @@ export default function Home() {
+       {selectedArticle && !isMobile && (
+         <div className="pdf-modal" onClick={() => setSelectedArticle(null)}>
+           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+             <div className="modal-header">
+               <div className="modal-info">
+                 <h3 className="modal-title">{selectedArticle.title[lang]}</h3>
+               </div>
+               <button className="close-btn" onClick={() => setSelectedArticle(null)}>
+                 <X size={32} />
+               </button>
+             </div>
+             <div className="iframe-container">
+               <iframe
+                 src={`${getR2Url(`article/${encodeURIComponent(selectedArticle.pdfFile)}`)}#toolbar=1`}
+                 title="Article PDF Viewer"
+                 width="100%"
+                 height="100%"
+               />
+             </div>
+           </div>
+         </div>
+       )}
+ 
+     </div>
+   );
+-}
+\ No newline at end of file
++}
+diff --git a/styles/globals.css b/styles/globals.css
+index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..e9d87a29ba243fe4873f61b79eb2826daa92de01 100644
+--- a/styles/globals.css
++++ b/styles/globals.css
+@@ -15,94 +15,107 @@
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+ }
+ 
+ body {
+   font-family: 'Georgia', serif;
+   background-color: var(--bg-color);
+   color: var(--text-main);
+   line-height: 1.6;
+   font-size: 110%;
+ }
+ 
+ /* =====================
+    HEADER / NAV
+    ===================== */
+ 
+ .sticky-header {
+   position: fixed;
+   top: 0;
+   width: 100%;
+   background: rgba(255, 255, 255, 0.95);
+   backdrop-filter: blur(5px);
+   border-bottom: 3px solid var(--wood-color);
+   z-index: 1000;
+-  padding: 1rem 0;
++  padding: 0.85rem 0;
+ }
+ 
+ .nav-container {
+-  max-width: 1100px;
++  max-width: 1280px;
+   margin: 0 auto;
+   padding: 0 20px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+-  gap: 20px;
++  gap: 14px;
+ }
+ 
+ .logo {
+   font-size: 1.4rem;
+   font-weight: bold;
+   color: var(--wood-dark);
+   text-transform: uppercase;
+   white-space: nowrap;
+ }
+ 
+ .nav-links {
+   display: flex;
+-  gap: 25px;
++  gap: clamp(12px, 1.6vw, 22px);
+   list-style: none;
+   flex-wrap: wrap;
++  justify-content: center;
++  flex: 1;
+ }
+ 
+ .nav-links li {
+   cursor: pointer;
+   font-weight: 600;
+   transition: color 0.3s;
+   white-space: nowrap;
+ }
+ 
+ .nav-links li:hover {
+   color: var(--accent);
+ }
+ 
+ /* Language Switcher */
+ .lang-switcher {
+   display: flex;
+   gap: 8px;
+   align-items: center;
++  flex-shrink: 0;
++}
++
++.menu-toggle {
++  display: none;
++  border: 2px solid var(--wood-color);
++  border-radius: 6px;
++  background: #fff;
++  color: var(--wood-dark);
++  padding: 6px;
++  cursor: pointer;
+ }
+ 
+ .lang-switcher button {
+   padding: 6px 14px;
+   font-size: 0.9rem;
+   font-weight: 600;
+   border: 2px solid var(--wood-color);
+   background: transparent;
+   color: var(--wood-dark);
+   border-radius: 4px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   font-family: 'Georgia', serif;
+ }
+ 
+ .lang-switcher button:hover {
+   background: rgba(139, 90, 43, 0.1);
+ }
+ 
+ .lang-switcher button.active {
+   background: var(--wood-color);
+   color: white;
+ }
+ 
+ /* =====================
+@@ -192,51 +205,51 @@ body {
+   margin: 0;
+ }
+ 
+ .hero-divider {
+   width: 120px;
+   height: 3px;
+   background: linear-gradient(90deg, transparent, var(--wood-color), transparent);
+   margin: 0 auto;
+ }
+ 
+ .hero-quote {
+   background: rgba(139, 90, 43, 0.06);
+   border-left: 4px solid var(--accent);
+   padding: 20px 24px;
+   margin: 20px 0;
+   border-radius: 4px;
+   font-style: italic;
+ }
+ 
+ .quote-text {
+   font-size: 1.55rem;
+   color: #1e2f44;
+   font-weight: 500;
+   margin-bottom: 10px;
+   line-height: 1.45;
+-  font-family: "Marck Script", "Caveat", "Segoe Script", cursive;
++  font-family: "TT Lovelies Script", "Marck Script", "Caveat", "Segoe Script", cursive;
+ }
+ 
+ .quote-author {
+   font-style: normal;
+   font-size: 0.95rem;
+   color: #555;
+   text-align: right;
+ }
+ 
+ .quote-author strong {
+   color: var(--wood-dark);
+ }
+ 
+ .quote-position {
+   font-size: 0.85rem;
+   color: #777;
+   font-style: italic;
+ }
+ 
+ .hero-description {
+   margin-top: 30px;
+ }
+ 
+ .hero-description p {
+   font-size: 1.05rem;
+@@ -1001,58 +1014,96 @@ body {
+ /* =====================
+    RESPONSIVE
+    ===================== */
+ 
+ @media (max-width: 968px) {
+   .author-layout {
+     grid-template-columns: 200px 1fr;
+     gap: 30px;
+   }
+   .author-name { font-size: 1.7rem; }
+   .divider-quote-text { font-size: 1.5rem; }
+   .reviews-grid {
+     grid-template-columns: 1fr;
+   }
+ }
+ 
+ @media (max-width: 768px) {
+   .hero-top-row {
+     grid-template-columns: 1fr;
+   }
+ 
+   .hero-photo-wrapper {
+     max-width: 220px;
+   }
+ 
+-  .nav-links { display: none; }
++  .menu-toggle {
++    display: inline-flex;
++    align-items: center;
++    justify-content: center;
++    margin-left: auto;
++  }
++
++  .nav-links {
++    display: none;
++    width: 100%;
++    order: 4;
++    flex-direction: column;
++    align-items: flex-start;
++    gap: 12px;
++    background: #fff;
++    border: 1px solid rgba(139, 90, 43, 0.2);
++    border-radius: 10px;
++    padding: 14px;
++    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
++  }
++
++  .nav-links.open {
++    display: flex;
++  }
++
++  .nav-container {
++    flex-wrap: wrap;
++    align-items: center;
++  }
++
++  .logo {
++    font-size: 1.1rem;
++  }
++
++  .lang-switcher {
++    order: 3;
++    margin-left: 0;
++  }
++
+   .lang-switcher button { padding: 5px 10px; font-size: 0.85rem; }
+   .hero-card { padding: 30px 20px; }
+   .author-layout { grid-template-columns: 1fr; gap: 25px; }
+   .author-photo-wrapper { max-width: 280px; margin: 0 auto; }
+   .author-name { font-size: 1.8rem; text-align: center; }
+   .books-with-comments {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   gap: 18px;
+   align-items: start;
+ }
+ 
+ .books-with-comments .book-spine {
+   margin: 0 auto;
+ }
+ 
+ .book-spine { width: 130px; height: 190px; }
+   .articles-grid-v4 { grid-template-columns: 1fr; }
+   .reviews-grid { grid-template-columns: 1fr; }
+   .section-card { padding: 20px; }
+   .article-content-scroll { padding: 30px 20px; }
+   .review-page-content { padding: 30px 15px; }
+   .modal-content { width: 100%; height: 100%; border-radius: 0; }
+   .modal-header { flex-direction: column; gap: 15px; align-items: flex-start; }
+   
+   .quote-wrapper { max-height: 8em; }
+   .quote-wrapper:not(.expanded) .quote-gradient-overlay { height: 5em; }
+   
+   .review-page-content h1 { font-size: 1.6rem; }
+   .review-page-content h2 { font-size: 1.4rem; }
+   .review-page-content p { font-size: 1rem; }
+-}
+\ No newline at end of file
++}
+

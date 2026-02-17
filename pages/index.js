@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   X,
+  Menu,
   BookOpen,
   User,
   MessageCircle
@@ -115,6 +116,7 @@ export default function Home() {
   const [lang, setLang] = useState('ru');
   const [expandedQuotes, setExpandedQuotes] = useState({});
   const [isMobile, setIsMobile] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
@@ -129,9 +131,21 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  useEffect(() => {
+    const closeMenuOnDesktop = () => {
+      if (window.innerWidth > 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', closeMenuOnDesktop);
+    return () => window.removeEventListener('resize', closeMenuOnDesktop);
+  }, []);
+
   const switchLang = (newLang) => {
     setLang(newLang);
     localStorage.setItem('selectedLanguage', newLang);
+    setIsMenuOpen(false);
   };
   
   const toggleQuote = (id) => {
@@ -145,6 +159,7 @@ export default function Home() {
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   const quoteById = Object.values(shelfDividerQuotes).flat().reduce((acc, quote) => {
@@ -191,11 +206,20 @@ export default function Home() {
   return (
     <div className="app-wrapper">
       {/* HEADER */}
-      <header className="sticky-header">
+      <header className={`sticky-header ${isMenuOpen ? 'menu-open' : ''}`}>
         <nav className="nav-container">
           <div className="logo">{authorData.name[lang]}</div>
+
+          <button
+            className="menu-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
           
-          <ul className="nav-links">
+          <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
             {['home', 'about', 'books', 'articles', 'reviews', 'feedback'].map((sec) => (
               <li key={sec} onClick={() => scrollToSection(sec)}>
                 {translations[lang].nav[sec]}
