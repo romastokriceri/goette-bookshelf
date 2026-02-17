@@ -1,3 +1,30 @@
+diff --git a/pages/_document.js b/pages/_document.js
+index cff03fb661e888734c6a26923fd0f19c9a364b78..806c39407685f425962f9c6c34f21cb6dc59ea0b 100644
+--- a/pages/_document.js
++++ b/pages/_document.js
+@@ -1,16 +1,18 @@
+ import { Html, Head, Main, NextScript } from 'next/document'
+ 
+ export default function Document() {
+   return (
+     <Html lang="uk">
+       <Head>
+-        {/* Тут можна додати мета-теги або шрифти */}
+-        <meta name="description" content="<библиотека книг>" />
++        <link rel="preconnect" href="https://fonts.googleapis.com" />
++        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
++        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
++        <meta name="description" content="бібліотека книг" />
+       </Head>
+       <body>
+         <Main />
+         <NextScript />
+       </body>
+     </Html>
+   )
+-}
+\ No newline at end of file
++}
 diff --git a/pages/index.js b/pages/index.js
 index dfd794ea15d1f8566d075055415e319436e11643..3c5aa2d31d6952c10cba502dfa9a8ff41dc12b84 100644
 --- a/pages/index.js
@@ -230,20 +257,10 @@ index 0000000000000000000000000000000000000000..cf60a42d6cc1360b6bd3966c81d646f6
 +
 +The site already references these files via @font-face in styles/globals.css.
 diff --git a/styles/globals.css b/styles/globals.css
-index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad5847cbc8a53 100644
+index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..23e1bd8429ea516a397829f73a4f01b289435a18 100644
 --- a/styles/globals.css
 +++ b/styles/globals.css
-@@ -1,108 +1,133 @@
-+@font-face {
-+  font-family: 'TT Lovelies Script';
-+  src:
-+    local('TT Lovelies Script'),
-+    local('TTLoveliesScript'),
-+    url('/fonts/TT-Lovelies-Script.woff2') format('woff2'),
-+    url('/fonts/TT-Lovelies-Script.woff') format('woff');
-+  font-display: swap;
-+}
-+
+@@ -1,108 +1,121 @@
  :root {
    --wood-color: #8b5a2b;
    --wood-dark: #5d3a1a;
@@ -251,8 +268,6 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
    --text-main: #2c3e50;
    --accent: #d35400;
    --shelf-shadow: rgba(0, 0, 0, 0.3);
-+  --body-font-scale: 1.05;
-+  --body-line-scale: 0.9;
  }
  
  /* =====================
@@ -271,8 +286,8 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
    color: var(--text-main);
 -  line-height: 1.6;
 -  font-size: 110%;
-+  line-height: calc(1.6 * var(--body-line-scale));
-+  font-size: calc(110% * var(--body-font-scale));
++  line-height: 1.44;
++  font-size: 115.5%;
  }
  
  /* =====================
@@ -373,7 +388,7 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
  }
  
  /* =====================
-@@ -191,79 +216,79 @@ body {
+@@ -191,79 +204,79 @@ body {
  .hero-quote-top-right {
    margin: 0;
  }
@@ -402,7 +417,7 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
 -  line-height: 1.45;
 -  font-family: "Marck Script", "Caveat", "Segoe Script", cursive;
 +  line-height: 1.62;
-+  font-family: "TT Lovelies Script", "Marck Script", "Caveat", "Segoe Script", cursive;
++  font-family: "Great Vibes", "Marck Script", cursive;
  }
  
  .quote-author {
@@ -428,10 +443,10 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
  
  .hero-description p {
 -  font-size: 1.05rem;
-+  font-size: calc(1.05rem * var(--body-font-scale));
++  font-size: 1.1025rem;
    color: #555;
 -  line-height: 1.8;
-+  line-height: calc(1.8 * var(--body-line-scale));
++  line-height: 1.62;
    margin-bottom: 20px;
    text-align: justify;
  }
@@ -457,7 +472,7 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
  
  .author-layout {
    display: grid;
-@@ -291,54 +316,54 @@ body {
+@@ -291,54 +304,54 @@ body {
    object-fit: cover;
    object-position: center;
    transition: transform 0.3s ease;
@@ -484,11 +499,11 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
  
  .author-text {
 -  font-size: 1.1rem;
-+  font-size: calc(1.1rem * var(--body-font-scale));
++  font-size: 1.155rem;
    color: #555;
    margin-bottom: 18px;
 -  line-height: 1.75;
-+  line-height: calc(1.75 * var(--body-line-scale));
++  line-height: 1.575;
    text-align: justify;
  }
  
@@ -514,7 +529,7 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
    background: var(--wood-color);
    border-radius: 4px;
    border-bottom: 15px solid var(--wood-dark);
-@@ -523,52 +548,52 @@ body {
+@@ -523,52 +536,52 @@ body {
    transform: translateY(-2px);
  }
  
@@ -542,8 +557,8 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
    color: #666;
 -  font-size: 1rem;
 -  line-height: 1.7;
-+  font-size: calc(1rem * var(--body-font-scale));
-+  line-height: calc(1.7 * var(--body-line-scale));
++  font-size: 1.05rem;
++  line-height: 1.53;
    flex-grow: 1;
  }
  
@@ -569,7 +584,7 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
  }
  
  .review-card:hover {
-@@ -597,69 +622,69 @@ body {
+@@ -597,69 +610,69 @@ body {
  .review-card:hover .review-book-cover img {
    transform: scale(1.05);
  }
@@ -596,10 +611,10 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
  .review-text {
    color: #555;
 -  line-height: 1.7;
-+  line-height: calc(1.7 * var(--body-line-scale));
++  line-height: 1.53;
    margin-bottom: 10px;
 -  font-size: 0.95rem;
-+  font-size: calc(0.95rem * var(--body-font-scale));
++  font-size: 0.9975rem;
  }
  
  .review-quote {
@@ -613,11 +628,11 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
  
  .review-quote p {
 -  font-size: 1rem;
-+  font-size: calc(1rem * var(--body-font-scale));
++  font-size: 1.05rem;
    color: var(--text-main);
    margin-bottom: 8px;
 -  line-height: 1.6;
-+  line-height: calc(1.6 * var(--body-line-scale));
++  line-height: 1.44;
  }
  
  .review-author {
@@ -643,7 +658,7 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
    font-size: 0.95rem;
    align-self: flex-start;
  }
-@@ -742,52 +767,52 @@ body {
+@@ -742,52 +755,52 @@ body {
    color: #e74c3c;
  }
  
@@ -671,8 +686,8 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
    font-family: 'Georgia', serif;
 -  font-size: 1.15rem;
 -  line-height: 1.9;
-+  font-size: calc(1.15rem * var(--body-font-scale));
-+  line-height: calc(1.9 * var(--body-line-scale));
++  font-size: 1.2075rem;
++  line-height: 1.71;
    color: var(--text-main);
  }
  
@@ -698,7 +713,7 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
  /* =====================
     REVIEW MODAL - "САЙТ В САЙТІ"
     ===================== */
-@@ -831,68 +856,68 @@ body {
+@@ -831,68 +844,68 @@ body {
    color: var(--wood-dark);
    margin-bottom: 20px;
    margin-top: 30px;
@@ -726,8 +741,8 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
  .review-page-content p {
 -  font-size: 1.1rem;
 -  line-height: 1.8;
-+  font-size: calc(1.1rem * var(--body-font-scale));
-+  line-height: calc(1.8 * var(--body-line-scale));
++  font-size: 1.155rem;
++  line-height: 1.62;
    margin-bottom: 20px;
    text-align: justify;
  }
@@ -744,7 +759,7 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
  
  .review-page-content blockquote p {
 -  font-size: 1.15rem;
-+  font-size: calc(1.15rem * var(--body-font-scale));
++  font-size: 1.2075rem;
    margin-bottom: 10px;
  }
  
@@ -770,7 +785,7 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
    margin: 40px 0;
  }
  
-@@ -905,52 +930,52 @@ body {
+@@ -905,52 +918,52 @@ body {
  }
  
  /* =====================
@@ -798,8 +813,8 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
    color: #666;
 -  font-size: 1.05rem;
 -  line-height: 1.6;
-+  font-size: calc(1.05rem * var(--body-font-scale));
-+  line-height: calc(1.6 * var(--body-line-scale));
++  font-size: 1.1025rem;
++  line-height: 1.44;
    margin-top: 10px;
  }
  
@@ -825,7 +840,7 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
    right: 0;
    height: 40px;
    pointer-events: none;
-@@ -1001,58 +1026,96 @@ body {
+@@ -1001,58 +1014,96 @@ body {
  /* =====================
     RESPONSIVE
     ===================== */
@@ -924,5 +939,5 @@ index 004acfabd6b998a6dbd2837ff4861a73faa5c5ce..a848635522f2cd5ea1173800dc6ad584
 -  .review-page-content p { font-size: 1rem; }
 -}
 \ No newline at end of file
-+  .review-page-content p { font-size: calc(1rem * var(--body-font-scale)); }
++  .review-page-content p { font-size: 1.05rem; }
 +}
