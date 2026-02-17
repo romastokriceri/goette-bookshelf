@@ -11,6 +11,7 @@ import {
   heroData, 
   translations,
   shelfDividerQuotes,
+  bookQuotes,
   articlesData,
   reviewsData
 } from '../data';
@@ -27,26 +28,23 @@ const getR2Url = (path) => {
    ReviewCard Component
 ======================= */
 const ReviewCard = ({ review, lang, onExpand }) => {
-  // Перевіряємо чи є повний контент для відкриття
   const hasFullContent = review.fullContent && review.fullContent[lang];
-  
-  // Перевіряємо чи є обкладинка книги
   const hasCover = review.bookCover;
 
   return (
     <div className="review-card">
       {hasCover && (
         <div className="review-book-cover">
-          <img 
-            src={getR2Url(`cover/${review.bookCover}`)} 
+          <img
+            src={getR2Url(`cover/${review.bookCover}`)}
             alt={review.bookTitle[lang]}
           />
         </div>
       )}
-      
+
       <div className="review-card-content">
         <h3 className="review-book-title">{review.bookTitle[lang]}</h3>
-        
+
         {review.items.map((item, index) => (
           <div key={index} className="review-item">
             {item.text && <p className="review-text">{item.text[lang]}</p>}
@@ -60,7 +58,7 @@ const ReviewCard = ({ review, lang, onExpand }) => {
         ))}
 
         {hasFullContent && (
-          <button 
+          <button
             className="btn-open-review"
             onClick={() => onExpand(review)}
           >
@@ -149,6 +147,47 @@ export default function Home() {
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
   };
 
+  const quoteById = Object.values(shelfDividerQuotes).flat().reduce((acc, quote) => {
+    acc[quote.id] = quote;
+    return acc;
+  }, {});
+
+  const renderQuote = (quote) => {
+    const isExpanded = expandedQuotes[quote.id];
+    const text = quote.text[lang];
+    const isLongText = text.length > 200;
+
+    return (
+      <div key={quote.id} className="shelf-divider-quote">
+        <div className="divider-quote-content">
+          <div className={`quote-wrapper ${isExpanded || !isLongText ? 'expanded' : ''}`}>
+            <blockquote className="divider-quote-text">
+              <p>{text}</p>
+            </blockquote>
+            {isLongText && !isExpanded && <div className="quote-gradient-overlay"></div>}
+          </div>
+
+          {isLongText && (
+            <button
+              className="quote-toggle-btn"
+              onClick={() => toggleQuote(quote.id)}
+            >
+              {isExpanded ? translations[lang].buttons.readLess : translations[lang].buttons.readMore}
+            </button>
+          )}
+
+          <footer className="divider-quote-footer">
+            <strong>{quote.author[lang]}</strong>
+            <br />
+            <span className="divider-quote-position">
+              {quote.position[lang]}
+            </span>
+          </footer>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="app-wrapper">
       {/* HEADER */}
@@ -157,7 +196,7 @@ export default function Home() {
           <div className="logo">{authorData.name[lang]}</div>
           
           <ul className="nav-links">
-            {['about', 'books', 'articles', 'reviews', 'feedback'].map((sec) => (
+            {['home', 'about', 'books', 'articles', 'reviews', 'feedback'].map((sec) => (
               <li key={sec} onClick={() => scrollToSection(sec)}>
                 {translations[lang].nav[sec]}
               </li>
@@ -180,21 +219,31 @@ export default function Home() {
 
       <main className="container">
         {/* HERO SECTION */}
-        <section className="hero-section">
+        <section id="home" className="hero-section">
           <div className="hero-card">
             <div className="hero-title-group">
               <h2 className="hero-title">{translations[lang].hero.title}</h2>
               <div className="hero-divider"></div>
             </div>
 
-            <blockquote className="hero-quote">
-              <p className="quote-text">{heroData.quote.text[lang]}</p>
-              <footer className="quote-author">
-                <strong>{heroData.quote.author[lang]}</strong>
-                <br />
-                <span className="quote-position">{heroData.quote.position[lang]}</span>
-              </footer>
-            </blockquote>
+            <div className="hero-top-row">
+              <div className="hero-photo-wrapper">
+                <img
+                  src={getR2Url(authorData.photo)}
+                  alt={authorData.name[lang]}
+                  className="hero-photo"
+                />
+              </div>
+
+              <blockquote className="hero-quote hero-quote-top-right">
+                <p className="quote-text">{heroData.quote.text[lang]}</p>
+                <footer className="quote-author">
+                  <strong>{heroData.quote.author[lang]}</strong>
+                  <br />
+                  <span className="quote-position">{heroData.quote.position[lang]}</span>
+                </footer>
+              </blockquote>
+            </div>
 
             <div className="hero-description">
               {heroData.description[lang].map((p, i) => <p key={i}>{p}</p>)}
@@ -210,20 +259,11 @@ export default function Home() {
                 <User size={20} /> {translations[lang].sections.about}
               </div>
               
-              <div className="author-layout">
-                <div className="author-photo-wrapper">
-                  <img 
-                    src={getR2Url(authorData.photo)} 
-                    alt={authorData.name[lang]}
-                    className="author-photo"
-                  />
-                </div>
-                <div className="author-text-content">
-                  <h1 className="author-name">{authorData.name[lang]}</h1>
-                  {authorData.bio[lang].map((p, i) => (
-                    <p key={i} className="author-text">{p}</p>
-                  ))}
-                </div>
+              <div className="author-text-content author-text-content-full">
+                <h1 className="author-name">{authorData.name[lang]}</h1>
+                {authorData.bio[lang].map((p, i) => (
+                  <p key={i} className="author-text">{p}</p>
+                ))}
               </div>
             </div>
           </div>
@@ -237,74 +277,37 @@ export default function Home() {
                 <h2 className="section-title">
                   <BookOpen /> {translations[lang].sections.books} {sIndex + 1}
                 </h2>
-                <div className="bookshelf">
-                  {shelf.books.map((book) => (
-                    <button
-                      key={book.id}
-                      className="book-spine"
-                      onClick={() => {
-                        if (isMobile) {
-                          window.open(getR2Url(`Books/${encodeURIComponent(book.pdfWeb)}`), '_blank');
-                        } else {
-                          setSelectedBook(book);
-                        }
-                      }}
-                    >
-                      <img
-                        src={getR2Url(`cover/${book.cover}`)}
-                        alt={book.title[lang]}
-                        className="book-cover"
-                      />
-                      <div className="book-overlay">
-                        <span className="read-badge">{translations[lang].buttons.read}</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {shelfDividerQuotes[shelf.id] && (
-                <div className="shelf-divider-quotes-list">
-                  {shelfDividerQuotes[shelf.id].map((quote) => {
-                    const isExpanded = expandedQuotes[quote.id];
-                    const text = quote.text[lang];
-                    const isLongText = text.length > 200; 
+                <div className="bookshelf books-with-comments">
+                  {shelf.books.map((book) => {
+                    const relatedQuotes = (bookQuotes[book.id] || []).map((id) => quoteById[id]).filter(Boolean);
 
                     return (
-                      <div key={quote.id} className="shelf-divider-quote">
-                        <div className="divider-quote-content">
-                          <div className={`quote-wrapper ${isExpanded || !isLongText ? 'expanded' : ''}`}>
-                            <blockquote className="divider-quote-text">
-                              <p>{text}</p>
-                            </blockquote>
-                            {isLongText && !isExpanded && <div className="quote-gradient-overlay"></div>}
+                      <React.Fragment key={book.id}>
+                        {relatedQuotes.map(renderQuote)}
+                        <button
+                          className="book-spine"
+                          onClick={() => {
+                            if (isMobile) {
+                              window.open(getR2Url(`Books/${encodeURIComponent(book.pdfWeb)}`), '_blank');
+                            } else {
+                              setSelectedBook(book);
+                            }
+                          }}
+                        >
+                          <img
+                            src={getR2Url(`cover/${book.cover}`)}
+                            alt={book.title[lang]}
+                            className="book-cover"
+                          />
+                          <div className="book-overlay">
+                            <span className="read-badge">{translations[lang].buttons.read}</span>
                           </div>
-                          
-                          {isLongText && (
-                            <button 
-                              className="quote-toggle-btn"
-                              onClick={() => toggleQuote(quote.id)}
-                            >
-                              {isExpanded 
-                                ? translations[lang].buttons.readLess 
-                                : translations[lang].buttons.readMore
-                              }
-                            </button>
-                          )}
-
-                          <footer className="divider-quote-footer">
-                            <strong>{quote.author[lang]}</strong>
-                            <br />
-                            <span className="divider-quote-position">
-                              {quote.position[lang]}
-                            </span>
-                          </footer>
-                        </div>
-                      </div>
+                        </button>
+                      </React.Fragment>
                     );
                   })}
                 </div>
-              )}
+              </div>
             </React.Fragment>
           ))}
         </section>

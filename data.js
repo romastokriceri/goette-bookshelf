@@ -49,7 +49,7 @@ export const heroData = {
 // =====================
 export const translations = {
   ru: {
-    nav: { about: "Об авторе", books: "Книги", articles: "Статьи", reviews: "Отзывы", feedback: "Обратная связь" },
+    nav: { home: "Главная", about: "Об авторе", books: "Книги", articles: "Статьи", reviews: "Отзывы", feedback: "Обратная связь" },
     sections: {
       about: "Об авторе",
       books: "Полка",
@@ -69,7 +69,7 @@ export const translations = {
     articlePlaceholder: "Текст будет добавлен..."
   },
   de: {
-    nav: { about: "Über den Autor", books: "Bücher", articles: "Artikel", reviews: "Kommentare", feedback: "Feedback" },
+    nav: { home: "Startseite", about: "Über den Autor", books: "Bücher", articles: "Artikel", reviews: "Kommentare", feedback: "Feedback" },
     sections: {
       about: "Über den Autor",
       books: "Regal",
@@ -89,7 +89,7 @@ export const translations = {
     articlePlaceholder: "Der Text wird hinzugefügt..."
   },
   en: {
-    nav: { about: "About the Author", books: "Books", articles: "Articles", reviews: "Reviews", feedback: "Feedback" },
+    nav: { home: "Home", about: "About the Author", books: "Books", articles: "Articles", reviews: "Reviews", feedback: "Feedback" },
     sections: {
       about: "About the Author",
       books: "Shelf",
@@ -125,6 +125,16 @@ export const booksData = [
     fullSize: "~40 MB"
   },
   {
+    id: "02-von-der-heimat-verleugnet",
+    title: { ru: "Отвергнутые родиной (немецкое издание)", de: "Von der Heimat verleugnet", en: "Rejected by the Homeland (German edition)" },
+    year: 2011,
+    cover: "02-von-der-heimat-verleugnet-deutsch_1.webp",
+    pdfWeb: "02-von-der-heimat-verleugnet-deutsch_144dpi_75%_rgb_web.pdf",
+    pdfFull: "02-von-der-heimat-verleugnet-deutsch_144dpi_75%_rgb_web.pdf",
+    size: "13 MB",
+    fullSize: "13 MB"
+  },
+  {
     id: "03-memory-cruise",
     title: { ru: "Круиз памяти", de: "Die Reise zu den Erinnerungen", en: "Memory Cruise" },
     year: 2024,
@@ -139,7 +149,7 @@ export const booksData = [
     title: { ru: "Немецкий след в истории Николаевщины", de: "Deutsche Spuren in der Geschichte der Region Nikolajew", en: "The German trace in the history of Nykolaev region" },
     year: 2009,
     cover: "04-german-trace-nikolayev-2009_1.webp",
-    pdfWeb: "04-german-trace-nikolayev-2009_web.pdf",
+    pdfWeb: "04-german-trace-nikolayev-2009_web_144dpi_75%_rgb_web.pdf",
     pdfFull: "04-german-trace-nikolayev-2009.pdf",
     size: "2.58 MB",
     fullSize: "2.59 MB"
@@ -208,7 +218,7 @@ export const booksData = [
     id: "12-german-history-of-the-region",
     title: { ru: "Николаевский областной краеведческий музей в освещении немецкой истории края", de: "Das Regionalmuseum von Nikolajew im Licht der deutschen Geschichte der Region", en: "The Nikolaev Regional Museum in view of the Region's German History" },
     year: "2025",
-    pdfFull: "12-german-history-of-the-region-2026.pdf",
+    pdfFull: "12-german-history-of-the-region-2026_144dpi_75%_rgb_web.pdf",
     pdfWeb: "12-german-history-of-the-region-2026_144dpi_75%_rgb_web.pdf",
     cover: "12-german-history-of-the-region-2026_1.webp",
     size: "18 MB",
@@ -220,9 +230,19 @@ export const booksData = [
 // SHELVES
 // =====================
 export const shelves = [
-  { id: "shelf-1", books: booksData.slice(0, 5) },
-  { id: "shelf-2", books: booksData.slice(5) }
+  { id: "shelf-1", books: booksData.slice(0, 6) },
+  { id: "shelf-2", books: booksData.slice(6) }
 ];
+
+// =====================
+// BOOK QUOTES (BOOK -> COMMENT)
+// =====================
+export const bookQuotes = {
+  "01-rejected-by-homeland": ["quote-shevchenko", "quote-yakovlev-2011"],
+  "02-von-der-heimat-verleugnet": ["quote-shevchenko", "quote-yakovlev-2011"],
+  "03-memory-cruise": ["quote-yakovlev-2009"],
+  "09-cossacks-historical-metamorphoses": ["quote-yakovlev-2018"]
+};
 
 // =====================
 // SHELF DIVIDER QUOTES
@@ -247,7 +267,7 @@ export const shelfDividerQuotes = {
       id: "quote-yakovlev-2011",
       text: {
         ru: "Нет сомнения, что замечательное и в своём роде уникальное произведение Генриетты Львовны Гётте... сделает нас лучше, чище, мудрее! И верю, что миллионы будущих читателей во всех концах бывшего Союза и за его пределами по достоинству оценят непреходящее значение этой, без преувеличения великой книги, пронизанной  высоким гуманизмом, верой в высшую справедливость – победу добра над злом!",
-        de: "Es steht außer Zweifel, dass das hervorragende Werk von Henriette Lwowna Goette uns weiser machen wird!Es steht außer Zweifel, dass das hervorragende und in dieser Art einzigartige Werk von Henriette Lwowna  Goette uns allen  nicht nur helfen wird einige Fragen unserer leidvollen  Geschichte, die die sowjetische Geschichtsschreibung zuvor  verschwiegen hat,  sondern  es wird uns, das wage ich zu sagen,  besser, reiner und weiser machen! Und ich glaube, dass Millionen zukünftiger Leser im ganzen Bereich  der ehemaligen Sowjetraum und über  ihre Grenzen hinaus, den unvergänglichen Wert dieses ohne Übertreibung großartigen Buches würdigen werden, das von hohem Humanismus und dem Glauben an die höhere Gerechtigkeit – den Sieg des Guten über das Böse – durchdrungen ist!",
+        de: "Es steht außer Zweifel, dass das hervorragende und in dieser Art einzigartige Werk von Henriette Lwowna Goette uns allen  nicht nur helfen wird einige Fragen unserer leidvollen  Geschichte, die die sowjetische Geschichtsschreibung zuvor  verschwiegen hat,  sondern  es wird uns, das wage ich zu sagen,  besser, reiner und weiser machen! Und ich glaube, dass Millionen zukünftiger Leser im ganzen Bereich  der ehemaligen Sowjetraum und über  ihre Grenzen hinaus, den unvergänglichen Wert dieses ohne Übertreibung großartigen Buches würdigen werden, das von hohem Humanismus und dem Glauben an die höhere Gerechtigkeit – den Sieg des Guten über das Böse – durchdrungen ist!",
         en: "There is no doubt that Henrietta Lvovna Gette's remarkable and unique work will not only help our better understanding the certain aspects of our long-suffering history which were previously ignored by Soviet historiography, but it also makes us, I dare say, better, purer, and wiser! And I believe that millions of future readers in all parts of the former Soviet Union and beyond will appreciate the enduring significance of this, without exaggeration, great book, which is imbued with high humanism and a belief in the ultimate triumph of good over evil!"
       },
       author: { ru: "А. Яковлев, 2011", de: "A. Jakowlew, 2011", en: "A. Yakovlev, 2011" },
@@ -341,9 +361,9 @@ export const reviewsData = [
     items: [
       {
         text: {
-          ru: "Отзывы после выхода первых двух изданий (стр. 507-508)",
-          de: "Rezensionen nach den ersten beiden Ausgaben (S. 507-508)",
-          en: "Reviews after the first two editions (pp. 507-508)"
+          ru: "Отзывы по 1-му, 2-му и 3-му изданиям (стр. 507-508)",
+          de: "Rezensionen zur 1., 2. und 3. Auflage (S. 507-508)",
+          en: "Reviews for the 1st, 2nd and 3rd editions (pp. 507-508)"
         }
       }
     ],
