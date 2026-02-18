@@ -21,8 +21,8 @@ body {
   font-family: 'Georgia', serif;
   background-color: var(--bg-color);
   color: var(--text-main);
-  line-height: 1.6;
-  font-size: 110%;
+  line-height: 1.44;
+  font-size: 115.5%;
 }
 
 /* =====================
@@ -226,7 +226,7 @@ body {
   color: #1e2f44;
   font-weight: 500;
   margin-bottom: 10px;
-  line-height: 1.45;
+  line-height: 1.62;
   font-family: "Great Vibes", "Marck Script", cursive;
 }
 
@@ -252,9 +252,9 @@ body {
 }
 
 .hero-description p {
-  font-size: 1.05rem;
+  font-size: 1.1025rem;
   color: #555;
-  line-height: 1.8;
+  line-height: 1.62;
   margin-bottom: 20px;
   text-align: justify;
 }
@@ -326,10 +326,10 @@ body {
 }
 
 .author-text {
-  font-size: 1.1rem;
+  font-size: 1.155rem;
   color: #555;
   margin-bottom: 18px;
-  line-height: 1.75;
+  line-height: 1.575;
   text-align: justify;
 }
 
@@ -343,6 +343,27 @@ body {
 
 .shelf-group {
   margin-bottom: 80px;
+}
+
+.design-switcher {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.design-switcher button {
+  border: 2px solid var(--wood-color);
+  background: #fff;
+  color: var(--wood-dark);
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.design-switcher button.active {
+  background: var(--wood-color);
+  color: #fff;
 }
 
 .bookshelf {
@@ -365,9 +386,66 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
   align-items: start;
+  transition: all 0.35s ease;
 }
 
-.books-with-comments .book-spine {
+.books-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.single-book-shelf {
+  width: 100%;
+  padding: 16px;
+}
+
+.book-quote-slot {
+  transition: all 0.35s ease;
+}
+
+.book-quote-slot.design-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.book-quote-slot.design-2 {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.quote-stack-vertical {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.design-2 .book-quote-slot.design-2 {
+  min-height: 262px;
+}
+
+.design-2-quote-column {
+  flex: 0 0 70%;
+}
+
+.design-2-no-quote {
+  flex: 1;
+}
+
+.book-quote-slot.design-2.no-quote {
+  justify-content: center;
+}
+
+.books-with-comments .book-spine,
+.book-spine.fixed-size {
   margin: 0 auto;
 }
 
@@ -379,6 +457,22 @@ body {
   cursor: pointer;
   position: relative;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.design-1-quote,
+.design-2-quote {
+  width: 100%;
+  transition: all 0.35s ease;
+}
+
+.design-1-quote .quote-wrapper,
+.design-2-quote .quote-wrapper {
+  max-height: 230px;
+}
+
+.design-1-quote .quote-wrapper.expanded,
+.design-2-quote .quote-wrapper.expanded {
+  max-height: 2000px;
 }
 
 .book-spine:hover {
@@ -558,8 +652,8 @@ body {
 
 .article-preview-v4 {
   color: #666;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  line-height: 1.53;
   flex-grow: 1;
 }
 
@@ -632,9 +726,9 @@ body {
 
 .review-text {
   color: #555;
-  line-height: 1.7;
+  line-height: 1.53;
   margin-bottom: 10px;
-  font-size: 0.95rem;
+  font-size: 0.9975rem;
 }
 
 .review-quote {
@@ -647,10 +741,10 @@ body {
 }
 
 .review-quote p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--text-main);
   margin-bottom: 8px;
-  line-height: 1.6;
+  line-height: 1.44;
 }
 
 .review-author {
@@ -777,8 +871,8 @@ body {
 
 .article-full-text {
   font-family: 'Georgia', serif;
-  font-size: 1.15rem;
-  line-height: 1.9;
+  font-size: 1.2075rem;
+  line-height: 1.71;
   color: var(--text-main);
 }
 
@@ -866,8 +960,8 @@ body {
 }
 
 .review-page-content p {
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1.155rem;
+  line-height: 1.62;
   margin-bottom: 20px;
   text-align: justify;
 }
@@ -883,7 +977,7 @@ body {
 }
 
 .review-page-content blockquote p {
-  font-size: 1.15rem;
+  font-size: 1.2075rem;
   margin-bottom: 10px;
 }
 
@@ -940,8 +1034,8 @@ body {
 
 .feedback-description {
   color: #666;
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: 1.1025rem;
+  line-height: 1.44;
   margin-top: 10px;
 }
 
@@ -1081,11 +1175,26 @@ body {
   .author-photo-wrapper { max-width: 280px; margin: 0 auto; }
   .author-name { font-size: 1.8rem; text-align: center; }
   .books-with-comments {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  align-items: start;
-}
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+
+  .single-book-shelf {
+    padding: 12px;
+  }
+
+  .book-quote-slot.design-2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .design-2-quote-column,
+  .design-2-no-quote {
+    width: 100%;
+    flex: 1 1 auto;
+  }
 
 .books-with-comments .book-spine {
   margin: 0 auto;
@@ -1105,5 +1214,5 @@ body {
   
   .review-page-content h1 { font-size: 1.6rem; }
   .review-page-content h2 { font-size: 1.4rem; }
-  .review-page-content p { font-size: 1rem; }
+  .review-page-content p { font-size: 1.05rem; }
 }
