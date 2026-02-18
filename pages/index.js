@@ -306,45 +306,47 @@ export default function Home() {
                 const hasQuote = relatedQuotes.length > 0;
 
                 return (
-                  <div key={book.id} className="bookshelf single-book-shelf">
+                  <article key={book.id} className="single-book-shelf">
                     <h3 className="shelf-book-title">
                       <BookOpen size={16} />
                       {book.shelfLabel ? book.shelfLabel[lang] : book.title[lang]}
                     </h3>
 
-                    <div className={`book-quote-slot horizontal-layout ${!hasQuote ? 'no-quote' : ''}`}>
+                    <div className="bookshelf">
+                      <div className={`book-quote-slot horizontal-layout ${!hasQuote ? 'no-quote' : ''}`}>
 
-                      <button
-                        className="book-spine fixed-size"
-                        onClick={() => {
-                          if (isMobile) {
-                            window.open(getR2Url(`Books/${encodeURIComponent(book.pdfWeb)}`), '_blank');
-                          } else {
-                            setSelectedBook(book);
-                          }
-                        }}
-                      >
-                        <img
-                          src={getR2Url(`cover/${book.cover}`)}
-                          alt={book.title[lang]}
-                          className="book-cover"
-                        />
-                        <div className="book-overlay">
-                          <span className="read-badge">{translations[lang].buttons.read}</span>
-                        </div>
-                      </button>
+                        <button
+                          className="book-spine fixed-size"
+                          onClick={() => {
+                            if (isMobile) {
+                              window.open(getR2Url(`Books/${encodeURIComponent(book.pdfWeb)}`), '_blank');
+                            } else {
+                              setSelectedBook(book);
+                            }
+                          }}
+                        >
+                          <img
+                            src={getR2Url(`cover/${book.cover}`)}
+                            alt={book.title[lang]}
+                            className="book-cover"
+                          />
+                          <div className="book-overlay">
+                            <span className="read-badge">{translations[lang].buttons.read}</span>
+                          </div>
+                        </button>
 
-                      {hasQuote && (
-                        <div className="quote-column quote-stack-vertical">
-                          {relatedQuotes.map((quote) => (
-                            <React.Fragment key={quote.id}>
-                              {renderShelfQuote(quote, 'horizontal-quote')}
-                            </React.Fragment>
-                          ))}
-                        </div>
-                      )}
+                        {hasQuote && (
+                          <div className="quote-column quote-stack-vertical">
+                            {relatedQuotes.map((quote) => (
+                              <React.Fragment key={quote.id}>
+                                {renderShelfQuote(quote, 'horizontal-quote')}
+                              </React.Fragment>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </article>
                 );
               })}
             </div>

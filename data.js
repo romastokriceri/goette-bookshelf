@@ -643,9 +643,9 @@ fullContent: null
 ];
 
 // =====================
-// AUTHOR DATA (RESTORED & ACTIVE)
+// AUTHOR DATA
 // =====================
-// Використано відновлену версію з детальними біографічними даними
+
 export const authorData = {
   name: {
     ru: "Генриетта Гётте",

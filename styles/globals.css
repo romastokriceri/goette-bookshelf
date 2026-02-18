@@ -24,11 +24,11 @@
 }
 
 body {
-  font-family: 'Lora', 'Georgia', serif;
+  font-family: 'Inter', 'Georgia', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
   font-weight: 700;
-  font-size: 121%;
+  font-size: 125%;
   line-height: 1.44;
 }
 
@@ -59,6 +59,7 @@ body {
 
 .logo {
   font-size: 1.4rem;
+  font-family: 'Lora', 'Georgia', serif;
   font-weight: bold;
   color: var(--wood-dark);
   text-transform: uppercase;
@@ -75,6 +76,7 @@ body {
 }
 
 .nav-links li {
+  font-family: 'Lora', 'Georgia', serif;
   cursor: pointer;
   font-weight: 600;
   transition: color 0.3s;
@@ -145,6 +147,7 @@ body {
 
 .section-title {
   display: flex;
+  font-family: 'Lora', 'Georgia', serif;;
   align-items: center;
   gap: 12px;
   margin-bottom: 30px;
@@ -176,6 +179,7 @@ body {
 
 .hero-title {
   font-size: 1.45rem;
+  font-family: 'Lora', 'Georgia', serif;
   color: var(--wood-dark);
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -229,9 +233,9 @@ body {
 }
 
 .quote-text {
-  font-size: 1.75rem;
+  font-size: 2rem;
   color: #1e2f44;
-  font-weight: 700;
+  font-weight: 900;
   margin-bottom: 10px;
   line-height: 1.62;
   font-family: "Great Vibes", "Marck Script", cursive;
@@ -239,7 +243,7 @@ body {
 
 .quote-author {
   font-style: normal;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--quote-meta-dark);
   text-align: right;
 }
@@ -249,7 +253,7 @@ body {
 }
 
 .quote-position {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-muted);
   font-style: italic;
 }
@@ -328,6 +332,7 @@ body {
 
 .author-name {
   font-size: 2rem;
+  font-family: 'Lora', 'Georgia', serif;
   color: var(--wood-dark);
   margin-bottom: 25px;
   line-height: 1.2;
@@ -384,23 +389,25 @@ font-weight: 700;
   gap: 18px;
 }
 
- .single-book-shelf {
+.single-book-shelf {
   width: 100%;
-  padding: 16px;
+  padding: 0;
 }
 
 .shelf-book-title {
   display: flex;
   align-items: center;
+  font-family: 'Lora', 'Georgia', serif;
   gap: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--wood-dark);
-  margin-bottom: 10px;
-  padding: 6px 10px;
-  background: var(--shelf-title-bg);
-  border-radius: 6px;
-  font-style: italic;
+  font-size: clamp(1.68rem, 1.73vw, 2.03rem);
+  font-weight: 700;
+  color: #1c2430;
+  margin-bottom: 8px;
+  padding: 0 2px;
+  background: transparent;
+  border-radius: 0;
+  font-style: normal;
+  line-height: 1.5;
 }
 
 .book-quote-slot {
@@ -496,6 +503,7 @@ font-weight: 700;
 .read-badge {
   color: #fff;
   border: 2px solid #fff;
+  font-family: 'Lora', 'Georgia', serif;
   padding: 5px 15px;
   font-weight: bold;
   text-transform: uppercase;
@@ -862,7 +870,7 @@ font-weight: 700;
 }
 
 .article-full-text {
-  font-family: 'Lora', 'Georgia', serif;
+  font-family: 'Inter', 'Georgia', sans-serif;
   font-size: 1.2075rem;
   line-height: 1.71;
   color: var(--text-main);
@@ -915,7 +923,7 @@ font-weight: 700;
 }
 
 .review-page-content {
-  font-family: 'Lora', 'Georgia', serif;
+  font-family: 'Inter', 'Georgia', sans-serif;
   color: var(--text-main);
   max-width: 1000px;
   margin: 0 auto;
@@ -1151,10 +1159,6 @@ font-weight: 700;
   .nav-container {
     flex-wrap: wrap;
     align-items: center;
-  }
-
-  .logo {
-    font-size: 1.1rem;
   }
 
   .lang-switcher {
