@@ -222,12 +222,12 @@ body {
 }
 
 .quote-text {
-  font-size: 1.55rem;
+  font-size: 1.75rem;
   color: #1e2f44;
   font-weight: 500;
   margin-bottom: 10px;
   line-height: 1.45;
-  font-family: "TT Lovelies Script", "Marck Script", "Caveat", "Segoe Script", cursive;
+  font-family: "Great Vibes", "Marck Script", cursive;
 }
 
 .quote-author {
