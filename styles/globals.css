@@ -2,7 +2,7 @@
   --wood-color: #8b5a2b;
   --wood-dark: #5d3a1a;
   --bg-color: #f9f7f2;
-  --text-main: #2c3e50;
+  --text-main: #1a2530;
   --accent: #d35400;
   --shelf-shadow: rgba(0, 0, 0, 0.3);
 }
@@ -18,11 +18,12 @@
 }
 
 body {
-  font-family: 'Georgia', serif;
+  font-family: 'Lora', 'Georgia', serif;
   background-color: var(--bg-color);
   color: var(--text-main);
+  font-weight: 700;
+  font-size: 121%;
   line-height: 1.44;
-  font-size: 115.5%;
 }
 
 /* =====================
@@ -224,7 +225,7 @@ body {
 .quote-text {
   font-size: 1.75rem;
   color: #1e2f44;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 10px;
   line-height: 1.62;
   font-family: "Great Vibes", "Marck Script", cursive;
@@ -252,8 +253,9 @@ body {
 }
 
 .hero-description p {
-  font-size: 1.1025rem;
-  color: #555;
+  font-size: 1.16rem;
+  font-weight: 700;
+  color: #444;
   line-height: 1.62;
   margin-bottom: 20px;
   text-align: justify;
@@ -326,8 +328,9 @@ body {
 }
 
 .author-text {
-  font-size: 1.155rem;
-  color: #555;
+  font-size: 1.21rem;
+color: #333;
+font-weight: 700;
   margin-bottom: 18px;
   line-height: 1.575;
   text-align: justify;
@@ -552,10 +555,10 @@ body {
 }
 
 .divider-quote-text {
-  font-size: 1.25rem;
+  font-size: 1.31rem;
+  color: #3a1f08;
+  font-weight: 700;
   font-style: italic;
-  font-weight: 500;
-  color: var(--wood-dark);
   line-height: 1.6;
   margin-bottom: 30px;
   position: relative;
@@ -643,16 +646,17 @@ body {
 }
 
 .article-title-v4 {
-  color: var(--wood-dark);
-  font-size: 1.3rem;
+  font-size: 1.37rem;
+color: #3a1f08;
   font-weight: 600;
   margin: 0;
   line-height: 1.4;
 }
 
 .article-preview-v4 {
-  color: #666;
-  font-size: 1.05rem;
+font-size: 1.1rem;
+color: #444;
+font-weight: 700;
   line-height: 1.53;
   flex-grow: 1;
 }
@@ -725,10 +729,11 @@ body {
 }
 
 .review-text {
-  color: #555;
+  font-size: 1.05rem;
+color: #333;
+font-weight: 700;
   line-height: 1.53;
   margin-bottom: 10px;
-  font-size: 0.9975rem;
 }
 
 .review-quote {
@@ -741,8 +746,9 @@ body {
 }
 
 .review-quote p {
-  font-size: 1.05rem;
-  color: var(--text-main);
+  font-size: 1.1rem;
+color: #222;
+font-weight: 700;
   margin-bottom: 8px;
   line-height: 1.44;
 }
@@ -870,7 +876,7 @@ body {
 }
 
 .article-full-text {
-  font-family: 'Georgia', serif;
+  font-family: 'Lora', 'Georgia', serif;
   font-size: 1.2075rem;
   line-height: 1.71;
   color: var(--text-main);
@@ -923,8 +929,7 @@ body {
 }
 
 .review-page-content {
-  /* Тут ви будете додавати свій власний контент */
-  font-family: 'Georgia', serif;
+  font-family: 'Lora', 'Georgia', serif;
   color: var(--text-main);
   max-width: 1000px;
   margin: 0 auto;
@@ -960,7 +965,9 @@ body {
 }
 
 .review-page-content p {
-  font-size: 1.155rem;
+  font-size: 1.21rem;
+color: #222;
+font-weight: 700;
   line-height: 1.62;
   margin-bottom: 20px;
   text-align: justify;

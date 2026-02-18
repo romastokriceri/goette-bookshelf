@@ -238,8 +238,7 @@ export const shelves = [
 // BOOK QUOTES (BOOK -> COMMENT)
 // =====================
 export const bookQuotes = {
-  "01-rejected-by-homeland": ["quote-shevchenko"],
-  "02-von-der-heimat-verleugnet": ["quote-yakovlev-2011"],
+  "01-rejected-by-homeland": ["quote-shevchenko", "quote-yakovlev-2011"],
   "03-memory-cruise": ["quote-yakovlev-2009"],
   "09-cossacks-historical-metamorphoses": ["quote-yakovlev-2018"]
 };
@@ -395,7 +394,7 @@ export const reviewsData = [
         <div class="review-divider"></div>
 
         <div class="review-section">
-          <h2>С. Скобалака</h2>
+          <h2>С. Седёлкина</h2>
           <p style="font-style: italic; color: #666; margin-bottom: 20px;">
             Директор Каховского исторического музея филиала Херсонского 
             краеведческого музея
