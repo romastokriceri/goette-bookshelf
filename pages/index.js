@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   X,
+  Menu,
   BookOpen,
   User,
   MessageCircle
@@ -115,6 +116,8 @@ export default function Home() {
   const [lang, setLang] = useState('ru');
   const [expandedQuotes, setExpandedQuotes] = useState({});
   const [isMobile, setIsMobile] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [designMode, setDesignMode] = useState('design-1');
 
   useEffect(() => {
     const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
@@ -129,9 +132,21 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  useEffect(() => {
+    const closeMenuOnDesktop = () => {
+      if (window.innerWidth > 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', closeMenuOnDesktop);
+    return () => window.removeEventListener('resize', closeMenuOnDesktop);
+  }, []);
+
   const switchLang = (newLang) => {
     setLang(newLang);
     localStorage.setItem('selectedLanguage', newLang);
+    setIsMenuOpen(false);
   };
   
   const toggleQuote = (id) => {
@@ -145,6 +160,7 @@ export default function Home() {
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   const quoteById = Object.values(shelfDividerQuotes).flat().reduce((acc, quote) => {
@@ -152,13 +168,21 @@ export default function Home() {
     return acc;
   }, {});
 
-  const renderQuote = (quote) => {
+  const booksList = shelves.flatMap((shelf) => shelf.books);
+
+  const designLabels = {
+    ru: { one: 'Дизайн 1', two: 'Дизайн 2' },
+    de: { one: 'Design 1', two: 'Design 2' },
+    en: { one: 'Design 1', two: 'Design 2' }
+  };
+
+  const renderShelfQuote = (quote, className = '') => {
     const isExpanded = expandedQuotes[quote.id];
     const text = quote.text[lang];
     const isLongText = text.length > 200;
 
     return (
-      <div key={quote.id} className="shelf-divider-quote">
+      <div className={`shelf-divider-quote ${className}`.trim()}>
         <div className="divider-quote-content">
           <div className={`quote-wrapper ${isExpanded || !isLongText ? 'expanded' : ''}`}>
             <blockquote className="divider-quote-text">
@@ -191,11 +215,20 @@ export default function Home() {
   return (
     <div className="app-wrapper">
       {/* HEADER */}
-      <header className="sticky-header">
+      <header className={`sticky-header ${isMenuOpen ? 'menu-open' : ''}`}>
         <nav className="nav-container">
           <div className="logo">{authorData.name[lang]}</div>
+
+          <button
+            className="menu-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
           
-          <ul className="nav-links">
+          <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
             {['home', 'about', 'books', 'articles', 'reviews', 'feedback'].map((sec) => (
               <li key={sec} onClick={() => scrollToSection(sec)}>
                 {translations[lang].nav[sec]}
@@ -271,45 +304,83 @@ export default function Home() {
 
         {/* BOOKS SECTION */}
         <section id="books" className="section books-section">
-          {shelves.map((shelf, sIndex) => (
-            <React.Fragment key={shelf.id}>
-              <div className="shelf-group">
-                <h2 className="section-title">
-                  <BookOpen /> {translations[lang].sections.books} {sIndex + 1}
-                </h2>
-                <div className="bookshelf books-with-comments">
-                  {shelf.books.map((book) => {
-                    const relatedQuotes = (bookQuotes[book.id] || []).map((id) => quoteById[id]).filter(Boolean);
+          <div className="design-switcher" role="group" aria-label="Design mode switcher">
+            <button
+              className={designMode === 'design-1' ? 'active' : ''}
+              onClick={() => setDesignMode('design-1')}
+            >
+              {designLabels[lang].one}
+            </button>
+            <button
+              className={designMode === 'design-2' ? 'active' : ''}
+              onClick={() => setDesignMode('design-2')}
+            >
+              {designLabels[lang].two}
+            </button>
+          </div>
 
-                    return (
-                      <React.Fragment key={book.id}>
-                        {relatedQuotes.map(renderQuote)}
-                        <button
-                          className="book-spine"
-                          onClick={() => {
-                            if (isMobile) {
-                              window.open(getR2Url(`Books/${encodeURIComponent(book.pdfWeb)}`), '_blank');
-                            } else {
-                              setSelectedBook(book);
-                            }
-                          }}
-                        >
-                          <img
-                            src={getR2Url(`cover/${book.cover}`)}
-                            alt={book.title[lang]}
-                            className="book-cover"
-                          />
-                          <div className="book-overlay">
-                            <span className="read-badge">{translations[lang].buttons.read}</span>
-                          </div>
-                        </button>
-                      </React.Fragment>
-                    );
-                  })}
-                </div>
-              </div>
-            </React.Fragment>
-          ))}
+          <div className="shelf-group">
+            <h2 className="section-title">
+              <BookOpen /> {translations[lang].sections.books}
+            </h2>
+
+            <div className="books-list">
+              {booksList.map((book) => {
+                const relatedQuotes = (bookQuotes[book.id] || []).map((id) => quoteById[id]).filter(Boolean);
+                const hasQuote = relatedQuotes.length > 0;
+
+                return (
+                  <div key={book.id} className="bookshelf single-book-shelf">
+                    <div className={`book-quote-slot ${designMode} ${!hasQuote ? 'no-quote' : ''}`}>
+                      {hasQuote && designMode === 'design-1' && (
+                        <div className="quote-stack-vertical">
+                          {relatedQuotes.map((quote) => (
+                            <React.Fragment key={quote.id}>
+                              {renderShelfQuote(quote, 'design-1-quote')}
+                            </React.Fragment>
+                          ))}
+                        </div>
+                      )}
+
+                      {hasQuote && designMode === 'design-2' && (
+                        <div className="design-2-quote-column quote-stack-vertical">
+                          {relatedQuotes.map((quote) => (
+                            <React.Fragment key={quote.id}>
+                              {renderShelfQuote(quote, 'design-2-quote')}
+                            </React.Fragment>
+                          ))}
+                        </div>
+                      )}
+
+                      {!hasQuote && designMode === 'design-2' && (
+                        <div className="design-2-no-quote" aria-hidden="true"></div>
+                      )}
+
+                      <button
+                        className="book-spine fixed-size"
+                        onClick={() => {
+                          if (isMobile) {
+                            window.open(getR2Url(`Books/${encodeURIComponent(book.pdfWeb)}`), '_blank');
+                          } else {
+                            setSelectedBook(book);
+                          }
+                        }}
+                      >
+                        <img
+                          src={getR2Url(`cover/${book.cover}`)}
+                          alt={book.title[lang]}
+                          className="book-cover"
+                        />
+                        <div className="book-overlay">
+                          <span className="read-badge">{translations[lang].buttons.read}</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </section>
 
         {/* ARTICLES SECTION */}

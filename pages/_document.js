@@ -4,8 +4,10 @@ export default function Document() {
   return (
     <Html lang="uk">
       <Head>
-        {/* Тут можна додати мета-теги або шрифти */}
-        <meta name="description" content="<библиотека книг>" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+        <meta name="description" content="бібліотека книг" />
       </Head>
       <body>
         <Main />
