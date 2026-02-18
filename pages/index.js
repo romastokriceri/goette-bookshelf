@@ -29,7 +29,6 @@ const getR2Url = (path) => {
    ReviewCard Component
 ======================= */
 const ReviewCard = ({ review, lang, onExpand }) => {
-  const hasFullContent = review.fullContent && review.fullContent[lang];
   const hasCover = review.bookCover;
 
   return (
@@ -48,24 +47,27 @@ const ReviewCard = ({ review, lang, onExpand }) => {
 
         {review.items.map((item, index) => (
           <div key={index} className="review-item">
-            {item.text && <p className="review-text">{item.text[lang]}</p>}
+            {item.text && (
+              <p className="review-text" style={{ whiteSpace: 'pre-line' }}>
+                {item.text[lang]}
+              </p>
+            )}
             {item.quote && (
               <blockquote className="review-quote">
-                <p>"{item.quote}"</p>
-                <footer className="review-author">{item.author}</footer>
+                <p>"{item.quote[lang]}"</p>
+                <footer className="review-author">{item.author[lang]}</footer>
               </blockquote>
+            )}
+            {item.hasFullContent && review.fullContent?.[lang] && (
+              <button
+                className="btn-open-review"
+                onClick={() => onExpand(review)}
+              >
+                {translations[lang].buttons.readFull}
+              </button>
             )}
           </div>
         ))}
-
-        {hasFullContent && (
-          <button
-            className="btn-open-review"
-            onClick={() => onExpand(review)}
-          >
-            {translations[lang].buttons.readFull}
-          </button>
-        )}
       </div>
     </div>
   );
@@ -446,7 +448,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* REVIEW MODAL - "САЙТ В САЙТІ" */}
+      {/* REVIEW MODAL */}
       {expandedReview && (
         <div className="review-modal" onClick={() => setExpandedReview(null)}>
           <div className="modal-content modal-review-content" onClick={(e) => e.stopPropagation()}>

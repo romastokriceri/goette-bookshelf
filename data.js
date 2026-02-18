@@ -365,10 +365,18 @@ export const reviewsData = [
     items: [
       {
         text: {
-          ru: "Отзывы по 1-му, 2-му и 3-му изданиям (стр. 507-508)",
-          de: "Rezensionen zur 1., 2. und 3. Auflage (S. 507-508)",
-          en: "Reviews for the 1st, 2nd and 3rd editions (pp. 507-508)"
+          ru: "а) Стр. 507–508 (в книге)",
+          de: "a) S. 507–508 (im Buch)",
+          en: "a) pp. 507–508 (in the book)"
         }
+      },
+      {
+        text: {
+          ru: "б) Анатолий Недiлько / Основські хроніки...",
+          de: "b) Anatoly Nedilko / Osnovski Chroniken...",
+          en: "b) Anatoliy Nedilko / Osnovski chronicles..."
+        },
+        hasFullContent: true
       }
     ],
     fullContent: {
@@ -376,127 +384,6 @@ export const reviewsData = [
         <h1>Отзывы после выхода первых двух изданий книги</h1>
         
         <div class="review-section">
-          <h2>В. Шевченко</h2>
-          <p style="font-style: italic; color: #666; margin-bottom: 20px;">
-            Доцент Каховского филиала Херсонского технического университета
-          </p>
-          
-          <blockquote>
-            <p>
-              «… Монография "Отвергнутые родиной" — значительное историческое 
-              исследование в раскрытии "белых пятен" истории не только 
-              Причерноморья, но и почти всего постсоветского пространства. 
-              С особой яркостью показан трагизм немецких и швейцарских 
-              колонистов, долгое время проживавших в Причерноморье».
-            </p>
-            <footer class="quote-author">
-              <strong>В. Шевченко</strong>, доцент Каховского филиала Херсонского 
-              технического университета
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="review-divider"></div>
-
-        <div class="review-section">
-          <h2>С. Седёлкина</h2>
-          <p style="font-style: italic; color: #666; margin-bottom: 20px;">
-            Директор Каховского исторического музея филиала Херсонского 
-            краеведческого музея
-          </p>
-          
-          <blockquote>
-            <p>
-              «… Ваша книга искренняя, правдивая, насыщенная массой подлинных 
-              документов и фотографий, волнует и не оставляет никого 
-              равнодушным. Спасибо Вам за это».
-            </p>
-            <footer class="quote-author">
-              <strong>С. Скобалака</strong>, директор Каховского исторического 
-              музея филиала Херсонского краеведческого музея
-            </footer>
-          </blockquote>
-          
-          <p style="margin-top: 25px;">
-            «Невозможно выразить признательность за Ваш авторский труд. 
-            Исследуя историю своей семьи на фоне глобальных социальных 
-            перемен XX ст., Вы открыли читателям страницы жизни первых 
-            немецких и швейцарских переселенцев в степи Таврии, а также 
-            судьбы их потомков. Здесь присутствуют все человеческие чувства: 
-            любовь и ненависть, разочарование и надежда.
-          </p>
-          
-          <p>
-            Книга "Отвергнутые родиной" поможет историкам, студентам, 
-            краеведам в проведении научно-исследовательских работ. Советские 
-            репрессии были беспощадны ко всему населению страны и сегодня 
-            важно знать правду прошлого, осмыслить её, чтобы впредь 
-            национальность не использовалась политиками при решении любых 
-            вопросов».
-          </p>
-          
-          <p style="text-align: right; font-style: italic; margin-top: 20px;">
-            Спасибо за книгу. Новых творческих удач!
-          </p>
-        </div>
-
-        <div class="review-divider"></div>
-
-        <div class="review-section">
-          <h2>Г. Франтенко</h2>
-          <p style="font-style: italic; color: #666; margin-bottom: 20px;">
-            Директор Бериславского краеведческого музея
-          </p>
-          
-          <blockquote>
-            <p>
-              «… От имени сотрудников музея благодарю за Вашу книгу, в которой 
-              собран интереснейший материал о Ваших родственниках и истории 
-              Херсонщины. Прочитав эту книгу, мы увидели бережное Ваше 
-              отношение к предкам, глубокое познание истории.
-            </p>
-            <p>
-              Ваша работа — титанический вклад в сохранение истории, культуры».
-            </p>
-            <footer class="quote-author">
-              <strong>Г. Франтенко</strong>, директор Бериславского 
-              краеведческого музея
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="review-divider"></div>
-
-        <div class="review-section">
-          <h2>Л. Белоусова</h2>
-          <p style="font-style: italic; color: #666; margin-bottom: 20px;">
-            Зам. директора Госархива Одесской области
-          </p>
-          
-          <blockquote>
-            <p>
-              «Выражаем Вам огромную благодарность за Вашу книгу 
-              "Отвергнутые родиной". Это замечательное исследование дополнило 
-              материалы нашей библиотеки по истории российских немцев и вызвало 
-              большой интерес у исследователей, студентов-практикантов и 
-              сотрудников архива. Семейные истории сегодня актуальны и 
-              востребованы как никогда. В Ваши работе блестяще является новым 
-              словом в исторической науке. Архивистам же особенно интересно было 
-              ознакомиться с копиями документов, фамилиями частных лиц, с 
-              фотографиями, опубликованными в книге.
-            </p>
-            <p>
-              Желаем Вам дальнейших творческих успехов, новых интересных 
-              исследовательских работ и публикаций!»
-            </p>
-            <footer class="quote-author">
-              <strong>Л. Белоусова</strong>, зам. директора Госархива 
-              Одесской области
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="review-divider"></div>
 
         <div class="review-section">
           <h2>А. Г. Неділько</h2>
@@ -649,41 +536,6 @@ export const reviewsData = [
       
       de: `
         <h1>Rezensionen nach Veröffentlichung der ersten beiden Ausgaben</h1>
-        
-        <div class="review-section">
-          <h2>W. Schewtschenko</h2>
-          
-          <blockquote>
-            <p>
-              «… Die Monografie "Von der Heimat verleugnet" ist eine wichtige 
-              historische Untersuchung zur Aufdeckung der "weißen Flecken" in 
-              der Geschichte nicht nur des Schwarzmeergebietes, sondern wohl 
-              des gesamten postsowjetischen Raumes. Mit besonders eindringlicher 
-              Klarheit sind die Tragödien der deutschen und Schweizer Kolonisten 
-              dargestellt, die lange Zeit im Schwarzmeergebiet gelebt haben».
-            </p>
-            <footer class="quote-author">
-              <strong>W. Schewtschenko</strong>, Dozent
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="review-divider"></div>
-
-        <div class="review-section">
-          <h2>S. Skobalaka</h2>
-          
-          <blockquote>
-            <p>
-              «… Ihr Buch ist aufrichtig, wahrheitsgetreu, gefüllt mit einer 
-              Masse authentischer Dokumente und Fotografien, es berührt und 
-              lässt niemanden gleichgültig».
-            </p>
-            <footer class="quote-author">
-              <strong>S. Skobalaka</strong>, Museumsdirektor
-            </footer>
-          </blockquote>
-        </div>
 
         <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
           <p style="font-size: 0.95rem; color: #777; font-style: italic;">
@@ -694,41 +546,6 @@ export const reviewsData = [
       
       en: `
         <h1>Reviews after the First Two Editions</h1>
-        
-        <div class="review-section">
-          <h2>V. Shevchenko</h2>
-          
-          <blockquote>
-            <p>
-              «… The monograph "Rejected by the Homeland" is a significant 
-              historical research revealing the "white spots" in the history 
-              of not only the Black Sea region, but also almost the entire 
-              post-Soviet space. The tragedy of the German and Swiss colonists 
-              who lived in the Black Sea region for a long time is shown with 
-              particular vividness».
-            </p>
-            <footer class="quote-author">
-              <strong>V. Shevchenko</strong>, Associate Professor
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="review-divider"></div>
-
-        <div class="review-section">
-          <h2>S. Skobalaka</h2>
-          
-          <blockquote>
-            <p>
-              «… Your book is sincere, truthful, filled with a mass of 
-              authentic documents and photographs, it touches and leaves 
-              no one indifferent. Thank you for this».
-            </p>
-            <footer class="quote-author">
-              <strong>S. Skobalaka</strong>, Museum Director
-            </footer>
-          </blockquote>
-        </div>
 
         <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
           <p style="font-size: 0.95rem; color: #777; font-style: italic;">
@@ -738,7 +555,27 @@ export const reviewsData = [
       `
     }
   },
-    // RESTORED: Memory Cruise Review
+    
+    {
+    id: "review-von-der-heimat-verleugnet-deutsch",
+    bookTitle: {
+      ru: "Отвергнутые родиной (немецкое издание)",
+      de: "Von der Heimat verleugnet (deutsch)",
+      en: "Rejected by the Homeland (German)"
+    },
+    bookCover: "02-von-der-heimat-verleugnet-deutsch_1.webp",
+    items: [
+      {
+        text: {
+          ru: "Отзывы на обратной стороне обложки",
+          de: "Kommentare auf der Rückseite des Buches",
+          en: "Reviews on the back cover of the book"
+        }
+      }
+    ],
+    fullContent: null
+  },
+
   {
     id: "review-memory-cruise-2024",
     bookTitle: {
@@ -747,64 +584,29 @@ export const reviewsData = [
       en: "Memory Cruise. 2nd edition, 2024"
     },
     bookCover: "03-memory-cruise-2024_1.webp",
-    type: "text",
     items: [
       {
         text: {
-          ru: "Стихотворение «Круиз памяти» (стр. 43). Читать полностью →",
-          de: "Das Gedicht „Eine Reise zu den Erinnerungen“ (S. 43)",
-          en: "The poem 'Memory Cruise' (p. 43). Read full version →"
+          ru: "Стр. 43 (в книге)",
+          de: "S. 43 (im Buch)",
+          en: "p. 43 (in the book)"
+        }
+      },
+      {
+        quote: {
+          ru: "Я ещё никогда не слышал и не читал такого репортажа как \"Круиз памяти\" Генриетты Львовны Гётте",
+          de: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes \"Die Reise zu den Erinnerungen\"",
+          en: "I have never heard or read a report like Henrietta Lvovna Götté's 'Memory Cruise'"
+        },
+        author: {
+          ru: "А. Яковлев, 2009",
+          de: "A. Jakowlew, 2009",
+          en: "A. Yakovlev, 2009"
         }
       }
     ],
-    fullContent: {
-      ru: `
-        <div class="review-full-text">
-          <h1 style="text-align: center;">Круиз памяти</h1>
-          
-          <div class="poem-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; line-height: 1.6; margin: 30px 0;">
-            <div class="poem-column">
-              <p>Я таинства свидетель был,<br>Прикосновения печали.<br>Ваш теплоход не в Киев плыл,<br>А вёз Вас в лет ушедших дали.</p>
-              <p>По зыбкой памяти волне.<br>Туда, где жили Ваши деды -<br>Желали Вы, понятно мне,<br>Постичь их путь, триумф победы!</p>
-              <p>Все это просто объяснить –<br>Всех тянет в край, где корни наши,<br>И горше нет земли и краше,<br>Что смог заочно полюбить!</p>
-            </div>
-            <div class="poem-column">
-              <p>И счастье с горем пополам<br>Испить, как их вино, неспешно!<br>И унестись в тот давний день.<br>Из этих будней, как из клетки.</p>
-              <p>Когда спасительную тень<br>Не находили ваши предки.<br>Когда мозоли на руках<br>Горячей кровью набухали.<br>Но эти люди твёрдо знали,<br>Что быть оазису в песках!</p>
-            </div>
-          </div>
-          
-          <footer style="text-align: right; margin-top: 20px; font-weight: bold;">
-            А. Яковлев, 2008
-          </footer>
-        </div>
-      `,
-      de: `
-        <div class="review-full-text">
-          <h1 style="text-align: center;">Eine Reise zu den Erinnerungen</h1>
-          <blockquote>
-            <p>«Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes „Die Reise zu den Erinnerungen“.»</p>
-            <footer class="quote-author"><strong>A. Jakowlew</strong>, 2009</footer>
-          </blockquote>
-          <p style="margin-top: 20px; font-style: italic; color: #666;">
-            Das vollständige Gedicht ist in der russischen Originalfassung verfügbar.
-          </p>
-        </div>
-      `,
-      en: `
-        <div class="review-full-text">
-          <h1 style="text-align: center;">Memory Cruise</h1>
-          <blockquote>
-            <p>"I have never heard or read such a report as Henriette Lvovna Goette's 'The Journey to Memories'."</p>
-            <footer class="quote-author"><strong>A. Yakovlev</strong>, 2009</footer>
-          </blockquote>
-          <p style="margin-top: 20px; font-style: italic; color: #666;">
-            The full poem is available in the original Russian version.
-          </p>
-        </div>
-      `
-    }
-  },
+    fullContent: null
+    },
 
   {
     id: "review-cossacks-2018",
@@ -815,216 +617,29 @@ export const reviewsData = [
     },
     bookCover: "09-cossacks-historical-metamorphoses-2018_1.webp",
     items: [
-      {
-        text: { 
-          ru: "Отзывы о книге (стр. 456-457)", 
-          de: "Rezensionen (S. 456-457)", 
-          en: "Reviews (pp. 456-457)" 
-        }
-      }
-    ],
-    fullContent: {
-      ru: `
-        <h1>Отзывы</h1>
-        
-        <div class="review-section">
-          <h2>После ознакомления с оглавлением книги Генриетты Гётте о казачестве</h2>
-          <p style="font-style: italic; color: #666; margin-bottom: 30px; text-align: center;">
-            Анатолий Яковлев
-          </p>
-          
-          <div style="background: rgba(139, 90, 43, 0.03); padding: 30px; border-left: 4px solid var(--wood-color); margin: 30px 0; border-radius: 4px;">
-            <p style="text-align: center; margin-bottom: 15px;">
-              Своё имея мнение,<br>
-              Без лести Вам скажу:<br>
-              "Прочёл я оглавление<br>
-              И рот открыл, сижу!
-            </p>
-            
-            <p style="text-align: center; margin-bottom: 15px;">
-              Слова в мозгу раздались<br>
-              Потом их смог сказать,<br>
-              И как же Вам удалося<br>
-              Сей уникум создать!
-            </p>
-            
-            <p style="text-align: center; margin-bottom: 15px;">
-              Такой огромный перечень<br>
-              Всего, что в книге есть,<br>
-              Ну как же нам теперича,<br>
-              Ваш супертруд прочесть!
-            </p>
-            
-            <p style="text-align: center; margin-bottom: 0;">
-              Он уплывёт из гавани<br>
-              К читателям своим -<br>
-              Желать большого плаванья<br>
-              Мы "Казакам" хотим!"
-            </p>
-          </div>
-          
-          <p style="text-align: right; font-style: italic; color: #777; margin-top: 20px;">
-            Анатолий Яковлев
-          </p>
-        </div>
+  {
+    text: {
+      ru: "Стр. 456–457",
+      de: "S. 456–457",
+      en: "pp. 456–457"
+    }
+  },
 
-        <div class="review-divider"></div>
-
-        <div class="review-section">
-          <h2>По прочтении "Заключения" к монографии Генриетты Гётте о трагедии казачества</h2>
-          <p style="font-style: italic; color: #666; margin-bottom: 30px; text-align: center;">
-            Анатолий Яковлев
-          </p>
-          
-          <div style="background: rgba(139, 90, 43, 0.03); padding: 30px; border-left: 4px solid var(--accent); margin: 30px 0; border-radius: 4px;">
-            <p style="text-align: center; margin-bottom: 15px;">
-              Себя Вы бросили опять<br>
-              Внутрь вселенского страданья,<br>
-              Вы повернули время вспять,<br>
-              Нарушив тайну мирозданья!
-            </p>
-            
-            <p style="text-align: center; margin-bottom: 15px;">
-              И вновь слова у Вас кричат,<br>
-              Их будто больно пронизали,<br>
-              Чтоб убиенных скорбный взгляд<br>
-              Мы в страшном прошлом увидали!
-            </p>
-            
-            <p style="text-align: center; margin-bottom: 15px;">
-              Вы, будто, в ад открыли дверь,<br>
-              В кошмар реальный, не иначе,<br>
-              Где ощутить масштаб потерь,<br>
-              Неразрешимая задача!
-            </p>
-            
-            <p style="text-align: center; margin-bottom: 15px;">
-              И чтобы нам не опоздать,<br>
-              Чтобы от горя не свихнуться,<br>
-              Вы позволяете прозреть<br>
-              И к лжи привычной не вернуться!
-            </p>
-            
-            <p style="text-align: center; margin-bottom: 0;">
-              Едва ли станем мы добрей,<br>
-              Вступив на истины пороги -<br>
-              Жестокой правдою своей,<br>
-              Вы изменили нас, ей Богу!
-            </p>
-          </div>
-          
-          <p style="text-align: right; font-style: italic; color: #777; margin-top: 20px;">
-            Анатолий Яковлев
-          </p>
-        </div>
-
-        <div class="review-divider"></div>
-
-        <div class="review-section">
-          <h2>Оценка А. Яковлева</h2>
-          
-          <blockquote>
-            <p>
-              «Книга Генриетты Львовны Гётте "Казачество. Исторические метаморфозы" – 
-              лучшая книга о казаках, изданная на сегодня. Она была бы хорошим учебным 
-              пособием для казачьих лицеев».
-            </p>
-            <footer class="quote-author">
-              <strong>А. Яковлев</strong>, историк, директор музея «Таврия», 2018
-            </footer>
-          </blockquote>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
-          <p style="font-size: 0.95rem; color: #777; font-style: italic;">
-            Страницы 456-457 книги "Казачество. Исторические метаморфозы", 2018
-          </p>
-        </div>
-      `,
-      
-      de: `
-        <h1>Rezensionen</h1>
-        
-        <div class="review-section">
-          <h2>Gedichte von Anatoly Jakowlew</h2>
-          <p style="font-style: italic; color: #666; margin-bottom: 30px;">
-            Nach dem Lesen des Buches von Henriette Goette über die Kosaken
-          </p>
-          
-          <blockquote>
-            <p style="text-align: center; font-style: italic;">
-              Zwei Gedichte des Historikers Anatoly Jakowlew,<br>
-              gewidmet dem Buch "Die Kosaken. Historische Metamorphosen"
-            </p>
-          </blockquote>
-        </div>
-
-        <div class="review-divider"></div>
-
-        <div class="review-section">
-          <h2>Bewertung</h2>
-          
-          <blockquote>
-            <p>
-              «Das Buch von Henriette Lwowna Goette "Die Kosaken. Historische 
-              Metamorphosen" ist das beste bis heute veröffentlichte Buch über 
-              Kosaken. Es wäre ein gutes Lehrbuch für Kosaken-Lyzeen».
-            </p>
-            <footer class="quote-author">
-              <strong>A. Jakowlew</strong>, Historiker, 2018
-            </footer>
-          </blockquote>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
-          <p style="font-size: 0.95rem; color: #777; font-style: italic;">
-            Seiten 456-457 des Buches "Die Kosaken. Historische Metamorphosen", 2018
-          </p>
-        </div>
-      `,
-      
-      en: `
-        <h1>Reviews</h1>
-        
-        <div class="review-section">
-          <h2>Poems by Anatoly Yakovlev</h2>
-          <p style="font-style: italic; color: #666; margin-bottom: 30px;">
-            After reading Henriette Goette's book about the Cossacks
-          </p>
-          
-          <blockquote>
-            <p style="text-align: center; font-style: italic;">
-              Two poems by historian Anatoly Yakovlev,<br>
-              dedicated to the book "The Cossacks. Historical Metamorphoses"
-            </p>
-          </blockquote>
-        </div>
-
-        <div class="review-divider"></div>
-
-        <div class="review-section">
-          <h2>Assessment</h2>
-          
-          <blockquote>
-            <p>
-              «Henrietta Lvovna Gette's book "The Cossacks. Historical Metamorphoses" 
-              is the best book about the Cossacks that has been published to date. 
-              It would be a good textbook for Cossack lyceums».
-            </p>
-            <footer class="quote-author">
-              <strong>A. Yakovlev</strong>, Historian, 2018
-            </footer>
-          </blockquote>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(139, 90, 43, 0.05); border-radius: 8px;">
-          <p style="font-size: 0.95rem; color: #777; font-style: italic;">
-            Pages 456-457 of the book "The Cossacks. Historical Metamorphoses", 2018
-          </p>
-        </div>
-      `
+  {
+    quote: {
+      ru: "Книга Генриетты Львовны Гётте \"Казачество. Исторические метаморфозы\" – лучшая книга о казаках, изданная на сегодня. Она была бы хорошим учебным пособием для казачьих лицеев",
+      de: "Das Buch von Henriette Lwowna Goette \"Die Kosaken. Historische Metamorphosen\" ist das beste bis heute veröffentlichte Buch über Kosaken. Es wäre ein gutes Lehrbuch für Kosaken-Lyzeen",
+      en: "Henrietta Lvovna Gette's book \"The Cossacks. Historical Metamorphoses\" is the best book about the Cossacks that has been published to date. It would be a good textbook for Cossack lyceums"
+    },
+    author: {
+      ru: "А. Яковлев, 2018",
+      de: "A. Jakowlew, 2018",
+      en: "A. Yakovlev, 2018"
     }
   }
+],
+fullContent: null   
+    }
 ];
 
 // =====================

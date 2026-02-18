@@ -9,9 +9,8 @@
   --text-muted: #777;
   --quote-bg: #f9f7f2;
   --overlay-dark: rgba(0, 0, 0, 0.4);
-  --shelf-panel-bg: rgba(255, 255, 255, 0.25);
-  --shelf-panel-border: rgba(255, 255, 255, 0.2);
-  --shelf-title-bg: rgba(0, 0, 0, 0.2);
+  --shelf-title-bg: #fff;
+  --quote-meta-dark: #3f3f3f;
 }
 
 /* =====================
@@ -241,7 +240,7 @@ body {
 .quote-author {
   font-style: normal;
   font-size: 0.95rem;
-  color: #555;
+  color: var(--quote-meta-dark);
   text-align: right;
 }
 
@@ -396,7 +395,7 @@ font-weight: 700;
   gap: 8px;
   font-size: 0.95rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--wood-dark);
   margin-bottom: 10px;
   padding: 6px 10px;
   background: var(--shelf-title-bg);
@@ -425,14 +424,11 @@ font-weight: 700;
   max-height: 2000px;
 }
 
- .book-quote-slot.horizontal-layout {
+.book-quote-slot.horizontal-layout {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background: var(--shelf-panel-bg);
-  border: 1px solid var(--shelf-panel-border);
-  border-radius: 8px;
-  padding: 12px;
+  padding: 0;
 }
 
 .quote-stack-vertical {
@@ -578,7 +574,7 @@ font-weight: 700;
 .divider-quote-footer {
   font-style: normal;
   font-size: 1.1rem;
-  color: #555;
+  color: var(--quote-meta-dark);
 }
 
 .divider-quote-footer strong {
@@ -888,7 +884,7 @@ font-weight: 700;
   background: rgba(139, 90, 43, 0.05);
   border-left: 4px solid var(--accent);
   font-style: italic;
-  color: #555;
+  color: var(--quote-meta-dark);
 }
 
 /* =====================
@@ -951,7 +947,7 @@ font-weight: 700;
 
 .review-page-content h3 {
   font-size: 1.4rem;
-  color: #555;
+  color: var(--quote-meta-dark);
 }
 
 .review-page-content p {
