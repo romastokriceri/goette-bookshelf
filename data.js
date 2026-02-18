@@ -25,21 +25,15 @@ export const heroData = {
   description: {
     ru: [
       "Генриетта Гётте – независимый исследователь, автор книг, основанных на исторических документах из архивов и библиотек Одессы, Херсона, Николаева, Измаила, Симферополя, Санкт-Петербурга, Москвы, Саратова, Иркутска, а также документов из швейцарских архивов Во (Vaud) и Арговия (Aarau), общины Оберкульм, документов из немецких Государственных и Военных архивов (Bundesarchiv, Militärarchiv) и библиотек.",
-      "В период публикаций работ Генриетты Гётте на сайте Academia-Prämium (Academia.edu) с 2021 по 2024 годы имя автора цитировалось учёными различных университетов.",
-      "В 565 научных работах на Academia.edu упоминается автор «Генриетта Гётте».",
-      "Были загружены научные труды по историографии и статьи конференций с упоминанием работ Генриетты Гётте, внёсшей ценный вклад в историческую литературу."
+      "В период публикаций работ Генриетты Гётте на сайте Academia-Prämium (Academia.edu) с 2021 по 2024 годы имя автора цитировалось учёными различных университетов. В 565 научных работах на Academia.edu упоминается автор «Генриетта Гётте». Были загружены научные труды по историографии и статьи конференций с упоминанием работ Генриетты Гётте, внёсшей ценный вклад в историческую литературу."
     ],
     de: [
       "Henriette Goette ist eine unabhängige Forscherin und Autorin von Büchern, die auf historischen Dokumenten aus Archiven und Bibliotheken von Odessa, Cherson, Nikolajew, Izmail, Simferopol, St. Petersburg, Moskau, Saratow, Irkutsk, sowie Dokumenten aus den Schweizer Archiven der Kantone Vaud und Argovie (Aarau), der Gemeinde Oberkulm, Dokumenten aus deutschen Staats- und Militärarchiv (Bundesarchiv, Militärarchiv) und Bibliotheken basieren.",
-      "Während der Veröffentlichung der Werke von Henriette Goette auf der Website des Academia-Prämiums (Academia.edu) von 2021 bis 2024 wurde der Name der Autorin von Wissenschaftlern verschiedener Universitäten zitiert.",
-      "Die Autorin „Henriette Goette“ wird in 565 wissenschaftlichen Arbeiten auf Academia.edu erwähnt.",
-      "Mit ihren Werken, wissenschaftlichen Abhandlungen zur Geschichtsschreibung und Konferenzbeiträgen hat sie einen wertvollen Beitrag zur historischen Literatur geleistet."
+      "Während der Veröffentlichung der Werke von Henriette Goette auf der Website des Academia-Prämiums (Academia.edu) von 2021 bis 2024 wurde der Name der Autorin von Wissenschaftlern verschiedener Universitäten zitiert. Die Autorin „Henriette Goette“ wird in 565 wissenschaftlichen Arbeiten auf Academia.edu erwähnt. Mit ihren Werken, wissenschaftlichen Abhandlungen zur Geschichtsschreibung und Konferenzbeiträgen hat sie einen wertvollen Beitrag zur historischen Literatur geleistet."
     ],
     en: [
       "Henrietta Goethe is an independent researcher, the author of books based on historical documents from the archives and libraries of Odessa, Kherson, Nikolaev, Izmail, Simferopol, St. Petersburg, Moscow, Saratov, Irkutsk, as well as documents from the Swiss archives of Zurich, Vaud and Argovia, the community of Oberkulm, documents from German State and Military Archives (Bundesarchiv, Militararchiv) and libraries.",
-      "During the publication of Henriette Goette’s works on the Academia-Prämium website (Academia.edu) from 2021 to 2024, her name was cited by scholars from various universities.",
-      "The author “Henriette Goette” is mentioned in 565 academic papers on Academia.edu.",
-      "Through her works, historiographic studies and conference articles, she has made a valuable contribution to historical literature."
+      "During the publication of Henriette Goette’s works on the Academia-Prämium website (Academia.edu) from 2021 to 2024, her name was cited by scholars from various universities. The author “Henriette Goette” is mentioned in 565 academic papers on Academia.edu. Through her works, historiographic studies and conference articles, she has made a valuable contribution to historical literature."
     ]
   }
 };
@@ -116,6 +110,7 @@ export const translations = {
 export const booksData = [
   {
     id: "01-rejected-by-homeland",
+    shelfLabel: { ru: "Отвергнутые родиной · 1-е изд. 2007 · 2-е изд. 2008 · 3-е изд. 2011", de: "Von der Heimat verleugnet · 1. Aufl. 2007 · 2. Aufl. 2008 · 3. Aufl. 2011", en: "Rejected by the Homeland · 1st ed. 2007 · 2nd ed. 2008 · 3rd ed. 2011" },
     title: { ru: "Отвергнутые родиной", de: "Von der Heimat verleugnet", en: "Rejected by the Homeland" },
     year: 2011,
     cover: "01-rejected-by-homeland-2011_1.webp",
@@ -126,6 +121,7 @@ export const booksData = [
   },
   {
     id: "02-von-der-heimat-verleugnet",
+    shelfLabel: { ru: "Отвергнутые родиной (нем.) · Перевод 2-го изд. 2008", de: "Von der Heimat verleugnet · Übersetzung der 2. Auflage 2008", en: "Rejected by the Homeland (German) · Translation of the 2nd ed. 2008" },
     title: { ru: "Отвергнутые родиной (немецкое издание)", de: "Von der Heimat verleugnet", en: "Rejected by the Homeland (German edition)" },
     year: 2011,
     cover: "02-von-der-heimat-verleugnet-deutsch_1.webp",
@@ -136,6 +132,7 @@ export const booksData = [
   },
   {
     id: "03-memory-cruise",
+    shelfLabel: { ru: "Круиз памяти · 1-е изд. 2009 · 2-е изд. 2024", de: "Eine Reise zu den Erinnerungen · 1. Aufl. 2009 · 2. Aufl. 2024", en: "Memory Cruise · 1st ed. 2009 · 2nd ed. 2024" },
     title: { ru: "Круиз памяти", de: "Die Reise zu den Erinnerungen", en: "Memory Cruise" },
     year: 2024,
     cover: "03-memory-cruise-2024_1.webp",
@@ -146,6 +143,7 @@ export const booksData = [
   },
   {
     id: "04-german-trace-nikolayev",
+    shelfLabel: { ru: "Немецкий след в истории Николаевщины · 2009", de: "Deutsche Spuren in der Geschichte der Region Nikolajew · 2009", en: "The German trace in the history of Nykolaev region · 2009" },
     title: { ru: "Немецкий след в истории Николаевщины", de: "Deutsche Spuren in der Geschichte der Region Nikolajew", en: "The German trace in the history of Nykolaev region" },
     year: 2009,
     cover: "04-german-trace-nikolayev-2009_1.webp",
@@ -156,6 +154,7 @@ export const booksData = [
   },
   {
     id: "05-tribute-to-memory",
+    shelfLabel: { ru: "Дань памяти, встречи у истоков · 2011", de: "Dem Gedenken verpflichtet. Begegnungen an den Quellen · 2011", en: "Tribute to memory, Meetings at the origins · 2011" },
     title: { ru: "Дань памяти, встречи у истоков", de: "Dem Gedenken verpflichtet. Begegnungen an den Quellen", en: "Tribute to memory, Meetings at the origins" },
     year: 2011,
     cover: "05-tribute-to-memory-2011_1.webp",
@@ -166,6 +165,7 @@ export const booksData = [
   },
   {
     id: "06-swiss-colony-shabo",
+    shelfLabel: { ru: "Документальная история образования швейцарской колонии «Шабо» · 2024", de: "Dokumentierte Geschichte der Gründung der Schweizer Kolonie „Schabo“ · 2024", en: "A documentary history of the Swiss colony of Shabo · 2024" },
     title: { ru: "Документальная история образования швейцарской колонии «Шабо» в Российской империи. Её основатель – Луи Винсент Тардан", de: "Dokumentierte Geschichte der Gründung der Schweizer Kolonie „Schabo“ im Russischen Reich. Ihr Gründer Louis Vincent Tardan", en: "A documentary history of the Swiss colony of Shabo in the Russian Empire. Its founder is Louis Vincent Tardan" },
     year: 2024,
     cover: "06-swiss-colony-shabo-2024_1.webp",
@@ -176,6 +176,7 @@ export const booksData = [
   },
   {
     id: "07-st-joseph-church-nikolayev",
+    shelfLabel: { ru: "Николаевская римско-католическая церковь Святого Иосифа · 2011", de: "Die Römisch-katholische Kirche St. Joseph in Nikolajew · 2011", en: "St. Joseph's Roman Catholic Church in Nikolaev · 2011" },
     title: { ru: "Николаевская римско-католическая церковь Святого Иосифа", de: "Die Römisch-katholische Kirche St. Joseph in Nikolajew", en: "St. Joseph's Roman Catholic Church in Nikolaev" },
     year: 2011,
     cover: "07-st-joseph-church-nikolayev-2011_1.webp",
@@ -186,6 +187,7 @@ export const booksData = [
   },
   {
     id: "09-cossacks-historical-metamorphoses",
+    shelfLabel: { ru: "Казачество. Исторические метаморфозы · 2018", de: "Die Kosaken. Historische Metamorphosen · 2018", en: "The Cossacks. Historical Metamorphoses · 2018" },
     title: { ru: "Казачество. Исторические метаморфозы", de: "Die Kosaken. Historische Metamorphosen", en: "The Cossacks. Historical Metamorphoses" },
     year: 2018,
     cover: "09-cossacks-historical-metamorphoses-2018_1.webp",
@@ -196,6 +198,7 @@ export const booksData = [
   },
   {
     id: "10-german-swiss-contribution-18-19c",
+    shelfLabel: { ru: "Вклад немцев и швейцарцев в развитие Российской империи · 2022", de: "Der Beitrag von Deutschen und Schweizern zur Entwicklung des Russischen Reiches · 2022", en: "The contribution of Germans and Swiss to the evolution of the Russian Empire · 2022" },
     title: { ru: "Вклад немцев и швейцарцев в развитие Российской империи и их участие в колонизации юга страны в XVIII–XIX веках", de: "Der Beitrag von Deutschen und Schweizern zur Entwicklung des Russischen Reiches und ihre Beteiligung an der Kolonisierung des Südens des Landes im 18.–19. Jahrhundert", en: "The contribution of Germans and Swiss to the evolution of the Russian Empire and their participation in the colonization of the country's South in the 18th and 19th centuries" },
     year: 2022,
     cover: "10-german-swiss-contribution-18-19c_1.webp",
@@ -206,6 +209,7 @@ export const booksData = [
   },
   {
     id: "11-in-memory-of-jakowlew",
+    shelfLabel: { ru: "В память тех, кого нам не забыть · 2024", de: "Zum Gedenken an die Unvergessenen · 2024", en: "In memory of those we never forget · 2024" },
     title: { ru: "В память тех, кого нам не забыть. Яковлев Анатолий Авенирович (1948-2018) ", de: "Zum Gedenken an die Unvergessenen. Anatoly Awenirowitsch Jakowlev (1948–2018)", en: "In memory of those we never forget. Yakovlev Anatoly Avenirovich (1948-2018)" },
     year: 2024,
     cover: "11-in-memory-of-jakowlew-2024_1.webp",
@@ -216,6 +220,7 @@ export const booksData = [
   },
   {
     id: "12-german-history-of-the-region",
+    shelfLabel: { ru: "Николаевский областной краеведческий музей в освещении немецкой истории края · 2025", de: "Das Regionalmuseum von Nikolajew im Licht der deutschen Geschichte der Region · 2025", en: "The Nikolaev Regional Museum in view of the Region's German History · 2025" },
     title: { ru: "Николаевский областной краеведческий музей в освещении немецкой истории края", de: "Das Regionalmuseum von Nikolajew im Licht der deutschen Geschichte der Region", en: "The Nikolaev Regional Museum in view of the Region's German History" },
     year: "2025",
     pdfFull: "12-german-history-of-the-region-2026_144dpi_75%_rgb_web.pdf",
@@ -1036,18 +1041,15 @@ export const authorData = {
   bio: {
     ru: [
       "Автору книг, Генриетте Гётте, судьбою была уготовлена полная трагизма жизнь: война, разлука с родителями, детские дома, лишения, унижения, радость воссоединения семьи, учёба, работа в Советском Союзе, переезд в Германию, снова учёба и адаптация на новой родине.",
-      "После смерти её родителей в 2002 году она начала собирать документальный материал о событиях, проходивших в XIX-XX столетиях.",
-      "Все они нашли отражение в истории пяти поколений автора."
+      "После смерти её родителей в 2002 году она начала собирать документальный материал о событиях, проходивших в XIX-XX столетиях. Все они нашли отражение в истории пяти поколений автора."
     ],
     de: [
       "Die Autorin der Bücher, Henriette Götte, hatte ein Leben voller Tragödien: Krieg, Trennung von ihren Eltern, Waisenhäuser, Entbehrungen, Demütigungen, die Freude über die Familienzusammenführung, Studium, Arbeit in der Sowjetunion, Übersiedlung nach Deutschland, erneutes Studium und Anpassung in ihrer neuen Heimat.",
-      "Nach dem Tod ihrer Eltern im Jahr 2002 begann sie Dokumentationsmaterial über die Ereignisse des 19. und 20. Jahrhunderts zu sammeln.",
-      "All diese Ereignisse spiegeln sich in der Geschichte von fünf Generationen der Autorin wider."
+      "Nach dem Tod ihrer Eltern im Jahr 2002 begann sie Dokumentationsmaterial über die Ereignisse des 19. und 20. Jahrhunderts zu sammeln. All diese Ereignisse spiegeln sich in der Geschichte von fünf Generationen der Autorin wider."
     ],
     en: [
       "The author of the books Henriette Goette was destined to a tragic life: war, separation from her parents, orphanages, deprivation, humiliation, the joy of family reunification, study and work in the Soviet Union, relocation to Germany, study again and adapting to her new homeland.",
-      "After the death of her parents in 2002 she began collecting documentary evidence of events which took place in the 19th and 20th centuries.",
-      "These events are reflected in the five generation history of the author's family."
+      "After the death of her parents in 2002 she began collecting documentary evidence of events which took place in the 19th and 20th centuries. These events are reflected in the five generation history of the author's family."
     ]
   }
 };

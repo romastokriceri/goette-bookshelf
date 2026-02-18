@@ -5,6 +5,13 @@
   --text-main: #1a2530;
   --accent: #d35400;
   --shelf-shadow: rgba(0, 0, 0, 0.3);
+  --white: #fff;
+  --text-muted: #777;
+  --quote-bg: #f9f7f2;
+  --overlay-dark: rgba(0, 0, 0, 0.4);
+  --shelf-panel-bg: rgba(255, 255, 255, 0.25);
+  --shelf-panel-border: rgba(255, 255, 255, 0.2);
+  --shelf-title-bg: rgba(0, 0, 0, 0.2);
 }
 
 /* =====================
@@ -91,7 +98,7 @@ body {
   display: none;
   border: 2px solid var(--wood-color);
   border-radius: 6px;
-  background: #fff;
+  background: var(--white);
   color: var(--wood-dark);
   padding: 6px;
   cursor: pointer;
@@ -130,7 +137,7 @@ body {
 }
 
 .section-card {
-  background: #fff;
+  background: var(--white);
   padding: 40px;
   margin-bottom: 60px;
   border-radius: 8px;
@@ -244,7 +251,7 @@ body {
 
 .quote-position {
   font-size: 0.85rem;
-  color: #777;
+  color: var(--text-muted);
   font-style: italic;
 }
 
@@ -348,26 +355,6 @@ font-weight: 700;
   margin-bottom: 80px;
 }
 
-.design-switcher {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-
-.design-switcher button {
-  border: 2px solid var(--wood-color);
-  background: #fff;
-  color: var(--wood-dark);
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.design-switcher button.active {
-  background: var(--wood-color);
-  color: #fff;
-}
 
 .bookshelf {
   position: relative;
@@ -398,28 +385,52 @@ font-weight: 700;
   gap: 18px;
 }
 
-.single-book-shelf {
+ .single-book-shelf {
   width: 100%;
   padding: 16px;
+}
+
+.shelf-book-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  background: var(--shelf-title-bg);
+  border-radius: 6px;
+  font-style: italic;
 }
 
 .book-quote-slot {
   transition: all 0.35s ease;
 }
 
-.book-quote-slot.design-1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
+.quote-column {
+  flex: 1;
 }
 
-.book-quote-slot.design-2 {
+.horizontal-quote {
+  width: 100%;
+  transition: all 0.35s ease;
+}
+
+.horizontal-quote .quote-wrapper {
+  max-height: 3.2em;
+}
+
+.horizontal-quote .quote-wrapper.expanded {
+  max-height: 2000px;
+}
+
+ .book-quote-slot.horizontal-layout {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--shelf-panel-bg);
+  border: 1px solid var(--shelf-panel-border);
   border-radius: 8px;
   padding: 12px;
 }
@@ -431,21 +442,13 @@ font-weight: 700;
   gap: 12px;
 }
 
-.design-2 .book-quote-slot.design-2 {
-  min-height: 262px;
-}
-
-.design-2-quote-column {
-  flex: 0 0 70%;
-}
-
-.design-2-no-quote {
-  flex: 1;
-}
-
-.book-quote-slot.design-2.no-quote {
+.book-quote-slot.no-quote {
   justify-content: center;
 }
+
+
+
+
 
 .books-with-comments .book-spine,
 .book-spine.fixed-size {
@@ -462,21 +465,8 @@ font-weight: 700;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.design-1-quote,
-.design-2-quote {
-  width: 100%;
-  transition: all 0.35s ease;
-}
 
-.design-1-quote .quote-wrapper,
-.design-2-quote .quote-wrapper {
-  max-height: 230px;
-}
 
-.design-1-quote .quote-wrapper.expanded,
-.design-2-quote .quote-wrapper.expanded {
-  max-height: 2000px;
-}
 
 .book-spine:hover {
   transform: translateY(-15px) scale(1.05);
@@ -494,7 +484,7 @@ font-weight: 700;
 .book-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--overlay-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -523,7 +513,7 @@ font-weight: 700;
 .shelf-divider-quote {
   margin: 0;
   padding: 20px 18px;
-  background: linear-gradient(135deg, #f9f7f2 0%, #ffffff 100%);
+  background: linear-gradient(135deg, var(--quote-bg) 0%, var(--white) 100%);
   border-radius: 12px;
   box-shadow: 
     0 10px 40px rgba(0, 0, 0, 0.1),
@@ -598,7 +588,7 @@ font-weight: 700;
 
 .divider-quote-position {
   font-size: 0.95rem;
-  color: #777;
+  color: var(--text-muted);
   font-style: italic;
 }
 
@@ -673,7 +663,7 @@ font-weight: 700;
 }
 
 .review-card {
-  background: #fff;
+  background: var(--white);
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
@@ -757,7 +747,7 @@ font-weight: 700;
   text-align: right;
   font-style: normal;
   font-size: 0.9rem;
-  color: #777;
+  color: var(--text-muted);
   margin-top: 8px;
 }
 
@@ -802,7 +792,7 @@ font-weight: 700;
   width: 95%;
   height: 95%;
   max-width: 1200px;
-  background: #fff;
+  background: var(--white);
   display: flex;
   flex-direction: column;
   border-radius: 12px;
@@ -831,7 +821,7 @@ font-weight: 700;
 }
 
 .modal-year {
-  color: #777;
+  color: var(--text-muted);
   font-weight: normal;
 }
 
@@ -974,7 +964,7 @@ font-weight: 700;
 }
 
 .review-page-content blockquote {
-  background: #fff;
+  background: var(--white);
   border-left: 5px solid var(--accent);
   padding: 25px 30px;
   margin: 30px 0;
@@ -992,12 +982,12 @@ font-weight: 700;
   text-align: right;
   font-style: normal;
   font-size: 1rem;
-  color: #777;
+  color: var(--text-muted);
   margin-top: 15px;
 }
 
 .review-page-content .review-section {
-  background: #fff;
+  background: var(--white);
   padding: 30px;
   margin: 30px 0;
   border-radius: 8px;
@@ -1029,7 +1019,7 @@ font-weight: 700;
 
 .comments-wrapper {
   min-height: 400px;
-  background: #fff;
+  background: var(--white);
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -1052,7 +1042,7 @@ font-weight: 700;
 
 .quote-wrapper {
   position: relative;
-  max-height: 3.5em; 
+  max-height: 3.2em; 
   overflow: hidden;
   transition: max-height 0.5s ease;
 }
@@ -1151,7 +1141,7 @@ font-weight: 700;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-    background: #fff;
+    background: var(--white);
     border: 1px solid rgba(139, 90, 43, 0.2);
     border-radius: 10px;
     padding: 14px;
@@ -1192,13 +1182,12 @@ font-weight: 700;
     padding: 12px;
   }
 
-  .book-quote-slot.design-2 {
+  .book-quote-slot.horizontal-layout {
     flex-direction: column;
     align-items: center;
   }
 
-  .design-2-quote-column,
-  .design-2-no-quote {
+  .quote-column {
     width: 100%;
     flex: 1 1 auto;
   }
@@ -1216,7 +1205,6 @@ font-weight: 700;
   .modal-content { width: 100%; height: 100%; border-radius: 0; }
   .modal-header { flex-direction: column; gap: 15px; align-items: flex-start; }
   
-  .quote-wrapper { max-height: 8em; }
   .quote-wrapper:not(.expanded) .quote-gradient-overlay { height: 5em; }
   
   .review-page-content h1 { font-size: 1.6rem; }

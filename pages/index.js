@@ -117,7 +117,6 @@ export default function Home() {
   const [expandedQuotes, setExpandedQuotes] = useState({});
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [designMode, setDesignMode] = useState('design-1');
 
   useEffect(() => {
     const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
@@ -170,16 +169,10 @@ export default function Home() {
 
   const booksList = shelves.flatMap((shelf) => shelf.books);
 
-  const designLabels = {
-    ru: { one: 'Дизайн 1', two: 'Дизайн 2' },
-    de: { one: 'Design 1', two: 'Design 2' },
-    en: { one: 'Design 1', two: 'Design 2' }
-  };
-
   const renderShelfQuote = (quote, className = '') => {
     const isExpanded = expandedQuotes[quote.id];
     const text = quote.text[lang];
-    const isLongText = text.length > 200;
+    const isLongText = text.length > 110;
 
     return (
       <div className={`shelf-divider-quote ${className}`.trim()}>
@@ -304,26 +297,7 @@ export default function Home() {
 
         {/* BOOKS SECTION */}
         <section id="books" className="section books-section">
-          <div className="design-switcher" role="group" aria-label="Design mode switcher">
-            <button
-              className={designMode === 'design-1' ? 'active' : ''}
-              onClick={() => setDesignMode('design-1')}
-            >
-              {designLabels[lang].one}
-            </button>
-            <button
-              className={designMode === 'design-2' ? 'active' : ''}
-              onClick={() => setDesignMode('design-2')}
-            >
-              {designLabels[lang].two}
-            </button>
-          </div>
-
           <div className="shelf-group">
-            <h2 className="section-title">
-              <BookOpen /> {translations[lang].sections.books}
-            </h2>
-
             <div className="books-list">
               {booksList.map((book) => {
                 const relatedQuotes = (bookQuotes[book.id] || []).map((id) => quoteById[id]).filter(Boolean);
@@ -331,30 +305,12 @@ export default function Home() {
 
                 return (
                   <div key={book.id} className="bookshelf single-book-shelf">
-                    <div className={`book-quote-slot ${designMode} ${!hasQuote ? 'no-quote' : ''}`}>
-                      {hasQuote && designMode === 'design-1' && (
-                        <div className="quote-stack-vertical">
-                          {relatedQuotes.map((quote) => (
-                            <React.Fragment key={quote.id}>
-                              {renderShelfQuote(quote, 'design-1-quote')}
-                            </React.Fragment>
-                          ))}
-                        </div>
-                      )}
+                    <h3 className="shelf-book-title">
+                      <BookOpen size={16} />
+                      {book.shelfLabel ? book.shelfLabel[lang] : book.title[lang]}
+                    </h3>
 
-                      {hasQuote && designMode === 'design-2' && (
-                        <div className="design-2-quote-column quote-stack-vertical">
-                          {relatedQuotes.map((quote) => (
-                            <React.Fragment key={quote.id}>
-                              {renderShelfQuote(quote, 'design-2-quote')}
-                            </React.Fragment>
-                          ))}
-                        </div>
-                      )}
-
-                      {!hasQuote && designMode === 'design-2' && (
-                        <div className="design-2-no-quote" aria-hidden="true"></div>
-                      )}
+                    <div className={`book-quote-slot horizontal-layout ${!hasQuote ? 'no-quote' : ''}`}>
 
                       <button
                         className="book-spine fixed-size"
@@ -375,6 +331,16 @@ export default function Home() {
                           <span className="read-badge">{translations[lang].buttons.read}</span>
                         </div>
                       </button>
+
+                      {hasQuote && (
+                        <div className="quote-column quote-stack-vertical">
+                          {relatedQuotes.map((quote) => (
+                            <React.Fragment key={quote.id}>
+                              {renderShelfQuote(quote, 'horizontal-quote')}
+                            </React.Fragment>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
