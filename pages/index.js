@@ -74,41 +74,6 @@ const ReviewCard = ({ review, lang, onExpand }) => {
 };
 
 /* =======================
-   Disqus Comments Component
-======================= */
-const Comments = () => {
-  useEffect(() => {
-    const existingScript = document.getElementById('disqus-script');
-    if (existingScript) existingScript.remove();
-
-    window.disqus_config = function () {
-      this.page.url = window.location.href;
-      this.page.identifier = window.location.pathname;
-      this.language = 'ru';
-    };
-
-    const script = document.createElement('script');
-    script.id = 'disqus-script';
-    script.src = 'https://goette-bookshelf.disqus.com/embed.js';
-    script.setAttribute('data-timestamp', +new Date());
-    script.async = true;
-
-    (document.head || document.body).appendChild(script);
-
-    return () => {
-      if (window.DISQUS) window.DISQUS.reset({ reload: true });
-    };
-  }, []);
-
-  return (
-    <div>
-      <div id="disqus_thread"></div>
-      <noscript>Please enable JavaScript to view the comments.</noscript>
-    </div>
-  );
-};
-
-/* =======================
    Main Component (Home)
 ======================= */
 export default function Home() {
@@ -405,22 +370,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FEEDBACK */}
-        <section id="feedback" className="section feedback-section">
-          <div className="section-card">
-            <div className="feedback-header">
-              <h2 className="section-title">
-                <MessageCircle /> {translations[lang].sections.feedback}
-              </h2>
-              <p className="feedback-description">
-                {translations[lang].sections.feedbackDescription}
-              </p>
-            </div>
-            <div className="comments-wrapper">
-              <Comments />
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* PDF MODAL - BOOKS */}

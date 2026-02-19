@@ -1013,34 +1013,6 @@ font-weight: 700;
 }
 
 /* =====================
-   DISQUS COMMENTS
-   ===================== */
-
-#disqus_thread {
-  min-height: 400px;
-  padding: 20px;
-}
-
-.comments-wrapper {
-  min-height: 400px;
-  background: var(--white);
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.feedback-header {
-  margin-bottom: 30px;
-}
-
-.feedback-description {
-  color: #666;
-  font-size: 1.1025rem;
-  line-height: 1.44;
-  margin-top: 10px;
-}
-
-/* =====================
    EXPANDABLE QUOTE FUNCTIONALITY
    ===================== */
 

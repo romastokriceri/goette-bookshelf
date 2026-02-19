@@ -43,14 +43,12 @@ export const heroData = {
 // =====================
 export const translations = {
   ru: {
-    nav: { home: "Главная", about: "Об авторе", books: "Книги", articles: "Статьи", reviews: "Отзывы", feedback: "Обратная связь" },
+    nav: { home: "Главная", about: "Об авторе", books: "Книги", articles: "Статьи", reviews: "Отзывы"},
     sections: {
       about: "Об авторе",
       books: "Полка",
       articles: "Статьи",
-      reviews: "Отзывы",
-      feedback: "Обратная связь",
-      feedbackDescription: "Поделитесь впечатлениями от исследований, задайте вопросы автору или оставьте слова благодарности."
+      reviews: "Отзывы"
     },
     buttons: {
       read: "Читать",
@@ -63,15 +61,13 @@ export const translations = {
     articlePlaceholder: "Текст будет добавлен..."
   },
   de: {
-    nav: { home: "Startseite", about: "Über den Autor", books: "Bücher", articles: "Artikel", reviews: "Kommentare", feedback: "Feedback" },
+    nav: { home: "Startseite", about: "Über den Autor", books: "Bücher", articles: "Artikel", reviews: "Kommentare"},
     sections: {
       about: "Über den Autor",
       books: "Regal",
       articles: "Artikel",
-      reviews: "Kommentare zum Buch",
-      feedback: "Feedback",
-      feedbackDescription: "Teilen Sie Ihre Eindrücke von der Forschung, stellen Sie Fragen an den Autor oder hinterlassen Sie Worte der Dankbarkeit."
-    },
+      reviews: "Kommentare zum Buch"
+      },
     buttons: {
       read: "Lesen",
       close: "Schließen",
@@ -83,14 +79,12 @@ export const translations = {
     articlePlaceholder: "Der Text wird hinzugefügt..."
   },
   en: {
-    nav: { home: "Home", about: "About the Author", books: "Books", articles: "Articles", reviews: "Reviews", feedback: "Feedback" },
+    nav: { home: "Home", about: "About the Author", books: "Books", articles: "Articles", reviews: "Reviews" },
     sections: {
       about: "About the Author",
       books: "Shelf",
       articles: "Articles",
-      reviews: "Reviews",
-      feedback: "Feedback",
-      feedbackDescription: "Share your impressions of the research, ask questions to the author, or leave words of gratitude."
+      reviews: "Reviews"
     },
     buttons: {
       read: "Read",
