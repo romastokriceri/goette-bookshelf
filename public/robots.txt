@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://goette-bookshelf.vercel.app/sitemap.xml
