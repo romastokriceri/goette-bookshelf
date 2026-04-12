@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html lang="uk">
       <Head>
+        <link rel="canonical" href="https://goette-bookshelf.vercel.app/" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
@@ -14,6 +15,7 @@ export default function Document() {
         <meta property="og:title" content="Goette Bookshelf — Henriette Goette" />
         <meta property="og:description" content="Цифрова бібліотека історичних досліджень про німецько-швейцарську спадщину в Україні" />
         <meta property="og:url" content="https://goette-bookshelf.vercel.app" />
+        <meta name="google-site-verification" content="Jt4r1pCq_qJRIINA2WK9QRe0LTNxcEWdIjBRRj_VQko" />
       </Head>
       <body>
         <Main />
