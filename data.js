@@ -8,12 +8,12 @@ export const heroData = {
   quote: {
     text: {
       ru: "«Потрясение. По прочтении книг Генриетты Львовны Гётте».",
-      de: "„Man ist erschüttert beim Lesen der Bücher von Henriette Lwowna Goette“.",
+      de: "„Man ist erschüttert beim Lesen der Bücher von Henriette Lwowna Götte“.",
       en: "“Reading the books written by Henriette Lvovna Goette leaves you shaken”."
     },
     author: {
       ru: "А. Яковлев, 2017",
-      de: "Jakovlev, 2017",
+      de: "Jakowlew, 2017",
       en: "A. Yakovlev, 2017"
     },
     position: {
@@ -24,15 +24,15 @@ export const heroData = {
   },
   description: {
     ru: [
-      "Генриетта Гётте – независимый исследователь, автор книг, основанных на исторических документах из архивов и библиотек Одессы, Херсона, Николаева, Измаила, Симферополя, Санкт-Петербурга, Москвы, Саратова, Иркутска, а также документов из швейцарских архивов Во (Vaud) и Арговия (Aarau), общины Оберкульм, документов из немецких Государственных и Военных архивов (Bundesarchiv, Militärarchiv) и библиотек.",
+      "Генриетта Гётте – независимый исследователь, автор книг, основанных на исторических документах из архивов и библиотек Одессы, Херсона, Николаева, Измаила, Симферополя, Санкт-Петербурга, Москвы, Саратова, Иркутска, а также документов из швейцарских архивов Во (Vaud) и Арговия (Aarau), общины Оберкульм, документов из немецких восударственных и военных архивов (Bundesarchiv, Militärarchiv) и библиотек.",
       "В период публикаций работ Генриетты Гётте на сайте Academia-Prämium (Academia.edu) с 2021 по 2024 годы имя автора цитировалось учёными различных университетов. В 565 научных работах на Academia.edu упоминается автор «Генриетта Гётте». Были загружены научные труды по историографии и статьи конференций с упоминанием работ Генриетты Гётте, внёсшей ценный вклад в историческую литературу."
     ],
     de: [
-      "Henriette Goette ist eine unabhängige Forscherin und Autorin von Büchern, die auf historischen Dokumenten aus Archiven und Bibliotheken von Odessa, Cherson, Nikolajew, Izmail, Simferopol, St. Petersburg, Moskau, Saratow, Irkutsk, sowie Dokumenten aus den Schweizer Archiven der Kantone Vaud und Argovie (Aarau), der Gemeinde Oberkulm, Dokumenten aus deutschen Staats- und Militärarchiv (Bundesarchiv, Militärarchiv) und Bibliotheken basieren.",
-      "Während der Veröffentlichung der Werke von Henriette Goette auf der Website des Academia-Prämiums (Academia.edu) von 2021 bis 2024 wurde der Name der Autorin von Wissenschaftlern verschiedener Universitäten zitiert. Die Autorin „Henriette Goette“ wird in 565 wissenschaftlichen Arbeiten auf Academia.edu erwähnt. Mit ihren Werken, wissenschaftlichen Abhandlungen zur Geschichtsschreibung und Konferenzbeiträgen hat sie einen wertvollen Beitrag zur historischen Literatur geleistet."
+      "Henriette Götte ist eine unabhängige Forscherin und Autorin von Büchern, die auf historischen Dokumenten aus Archiven und Bibliotheken von Odessa, Cherson, Nikolajew, Izmail, Simferopol, St. Petersburg, Moskau, Saratow, Irkutsk, sowie Dokumenten aus den Schweizer Archiven der Kantone Vaud und Argovie (Aarau), der Gemeinde Oberkulm, Dokumenten aus deutschen Staats- und Militärarchiv (Bundesarchiv, Militärarchiv) und Bibliotheken basieren.",
+      "Während der Veröffentlichung der Werke von Henriette Götte auf der Website des Academia-Prämiums (Academia.edu) von 2021 bis 2024 wurde der Name der Autorin von Wissenschaftlern verschiedener Universitäten zitiert. Die Autorin „Henriette Götte“ wird in 565 wissenschaftlichen Arbeiten auf Academia.edu erwähnt. Mit ihren Werken, wissenschaftlichen Abhandlungen zur Geschichtsschreibung und Konferenzbeiträgen hat sie einen wertvollen Beitrag zur historischen Literatur geleistet."
     ],
     en: [
-      "Henrietta Goethe is an independent researcher, the author of books based on historical documents from the archives and libraries of Odessa, Kherson, Nikolaev, Izmail, Simferopol, St. Petersburg, Moscow, Saratov, Irkutsk, as well as documents from the Swiss archives of Zurich, Vaud and Argovia, the community of Oberkulm, documents from German State and Military Archives (Bundesarchiv, Militararchiv) and libraries.",
+      "Henriette Goette is an independent researcher, the author of books based on historical documents from the archives and libraries of Odessa, Kherson, Nikolaev, Izmail, Simferopol, St. Petersburg, Moscow, Saratov, Irkutsk, as well as documents from the Swiss archives of Zurich, Vaud and Argovia, the community of Oberkulm, documents from German State and Military Archives (Bundesarchiv, Militararchiv) and libraries.",
       "During the publication of Henriette Goette’s works on the Academia-Prämium website (Academia.edu) from 2021 to 2024, her name was cited by scholars from various universities. The author “Henriette Goette” is mentioned in 565 academic papers on Academia.edu. Through her works, historiographic studies and conference articles, she has made a valuable contribution to historical literature."
     ]
   }
@@ -265,8 +265,8 @@ export const shelfDividerQuotes = {
       id: "quote-yakovlev-2011",
       text: {
         ru: "Нет сомнения, что замечательное и в своём роде уникальное произведение Генриетты Львовны Гётте... сделает нас лучше, чище, мудрее! И верю, что миллионы будущих читателей во всех концах бывшего Союза и за его пределами по достоинству оценят непреходящее значение этой, без преувеличения великой книги, пронизанной  высоким гуманизмом, верой в высшую справедливость – победу добра над злом!",
-        de: "Es steht außer Zweifel, dass das hervorragende und in dieser Art einzigartige Werk von Henriette Lwowna Goette uns allen  nicht nur helfen wird einige Fragen unserer leidvollen  Geschichte, die die sowjetische Geschichtsschreibung zuvor  verschwiegen hat,  sondern  es wird uns, das wage ich zu sagen,  besser, reiner und weiser machen! Und ich glaube, dass Millionen zukünftiger Leser im ganzen Bereich  der ehemaligen Sowjetraum und über  ihre Grenzen hinaus, den unvergänglichen Wert dieses ohne Übertreibung großartigen Buches würdigen werden, das von hohem Humanismus und dem Glauben an die höhere Gerechtigkeit – den Sieg des Guten über das Böse – durchdrungen ist!",
-        en: "There is no doubt that Henrietta Lvovna Gette's remarkable and unique work will not only help our better understanding the certain aspects of our long-suffering history which were previously ignored by Soviet historiography, but it also makes us, I dare say, better, purer, and wiser! And I believe that millions of future readers in all parts of the former Soviet Union and beyond will appreciate the enduring significance of this, without exaggeration, great book, which is imbued with high humanism and a belief in the ultimate triumph of good over evil!"
+        de: "Es steht außer Zweifel, dass das hervorragende und in dieser Art einzigartige Werk von Henriette Lwowna Götte uns allen  nicht nur helfen wird einige Fragen unserer leidvollen  Geschichte, die die sowjetische Geschichtsschreibung zuvor  verschwiegen hat, besser zu verstehen,  sondern  es wird uns, das wage ich zu sagen,  besser, reiner und weiser machen! Und ich glaube, dass Millionen zukünftiger Leser im ganzen Bereich  der ehemaligen Sowjetunion und über  ihre Grenzen hinaus, den unvergänglichen Wert dieses ohne Übertreibung großartigen Buches würdigen werden, das von hohem Humanismus und dem Glauben an die höhere Gerechtigkeit – den Sieg des Guten über das Böse – durchdrungen ist!",
+        en: "There is no doubt that Henriette Lvovna Goette's remarkable and unique work will not only help our better understanding the certain aspects of our long-suffering history which were previously ignored by Soviet historiography, but it also makes us, I dare say, better, purer, and wiser! And I believe that millions of future readers in all parts of the former Soviet Union and beyond will appreciate the enduring significance of this, without exaggeration, great book, which is imbued with high humanism and a belief in the ultimate triumph of good over evil!"
       },
       author: { ru: "А. Яковлев, 2011", de: "A. Jakowlew, 2011", en: "A. Yakovlev, 2011" },
       position: { ru: "Историк, директор музея «Таврия», Новая Каховка", de: "Historiker, Direktor des Museums „Tawrija“, Nowaja Kachowka", en: "Historian, Director of the Tavria Museum, Novaya Kakhovka" }
@@ -275,8 +275,8 @@ export const shelfDividerQuotes = {
       id: "quote-yakovlev-2009",
       text: {
         ru: "Я ещё никогда не слышал и не читал такого репортажа как „Круиз памяти“ Генриетты Львовны Гётте",
-        de: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes „Die Reise zu den Erinnerungen“",
-        en: "I have never heard or read a report like Henrietta Lvovna Götté's „Memory Cruise“"
+        de: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Göttes „Die Reise zu den Erinnerungen“",
+        en: "I have never heard or read a report like Henriette Lvovna Götté's „Memory Cruise“"
       },
       author: { ru: "А. Яковлев, 2009", de: "A. Jakowlew, 2009", en: "A. Yakovlev, 2009" },
       position: { ru: " ", de: " ", en: " " }
@@ -288,8 +288,8 @@ export const shelfDividerQuotes = {
       id: "quote-yakovlev-2018",
       text: {
         ru: "Книга Генриетты Львовны Гётте „Казачество. Исторические метаморфозы“ – лучшая книга о казаках, изданная на сегодня. Она была бы хорошим учебным пособием для казачьих лицеев",
-        de: "Das Buch von Henriette Lwowna Goette „Die Kosaken. Historische Metamorphosen“ ist das beste bis heute veröffentlichte Buch über Kosaken. Es wäre ein gutes Lehrbuch für Kosaken-Lyzeen",
-        en: "Henrietta Lvovna Gette's book „The Cossacks. Historical Metamorphoses“ is the best book about the Cossacks that has been published to date. It would be a good textbook for Cossack lyceums"
+        de: "Das Buch von Henriette Lwowna Götte „Die Kosaken. Historische Metamorphosen“ ist das beste bis heute veröffentlichte Buch über Kosaken. Es wäre ein gutes Lehrbuch für Kosaken-Lyzeen",
+        en: "Henriette Lvovna Götté's book „The Cossacks. Historical Metamorphoses“ is the best book about the Cossacks that has been published to date. It would be a good textbook for Cossack lyceums"
       },
       author: { ru: "А. Яковлев, 2018", de: "A. Jakowlew, 2018", en: "A. Yakovlev, 2018" },
       position: { ru: " ", de: " ", en: " " }
@@ -589,8 +589,8 @@ export const reviewsData = [
       {
         quote: {
           ru: "Я ещё никогда не слышал и не читал такого репортажа как \"Круиз памяти\" Генриетты Львовны Гётте",
-          de: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Goettes \"Die Reise zu den Erinnerungen\"",
-          en: "I have never heard or read a report like Henrietta Lvovna Götté's 'Memory Cruise'"
+          de: "Ich habe noch nie einen solchen Bericht gehört oder gelesen wie Henriette Lvovna Göttes \"Die Reise zu den Erinnerungen\"",
+          en: "I have never heard or read a report like Henriette Lvovna Götté's 'Memory Cruise'"
         },
         author: {
           ru: "А. Яковлев, 2009",
@@ -622,8 +622,8 @@ export const reviewsData = [
   {
     quote: {
       ru: "Книга Генриетты Львовны Гётте \"Казачество. Исторические метаморфозы\" – лучшая книга о казаках, изданная на сегодня. Она была бы хорошим учебным пособием для казачьих лицеев",
-      de: "Das Buch von Henriette Lwowna Goette \"Die Kosaken. Historische Metamorphosen\" ist das beste bis heute veröffentlichte Buch über Kosaken. Es wäre ein gutes Lehrbuch für Kosaken-Lyzeen",
-      en: "Henrietta Lvovna Gette's book \"The Cossacks. Historical Metamorphoses\" is the best book about the Cossacks that has been published to date. It would be a good textbook for Cossack lyceums"
+      de: "Das Buch von Henriette Lwowna Götte \"Die Kosaken. Historische Metamorphosen\" ist das beste bis heute veröffentlichte Buch über Kosaken. Es wäre ein gutes Lehrbuch für Kosaken-Lyzeen",
+      en: "Henriette Lvovna Goette's book \"The Cossacks. Historical Metamorphoses\" is the best book about the Cossacks that has been published to date. It would be a good textbook for Cossack lyceums"
     },
     author: {
       ru: "А. Яковлев, 2018",
