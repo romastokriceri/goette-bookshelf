@@ -13,7 +13,7 @@ export const heroData = {
     },
     author: {
       ru: "А. Яковлев, 2017",
-      de: "Jakowlew, 2017",
+      de: "A. Jakowlew, 2017",
       en: "A. Yakovlev, 2017"
     },
     position: {
@@ -24,15 +24,15 @@ export const heroData = {
   },
   description: {
     ru: [
-      "Генриетта Гётте – независимый исследователь, автор книг, основанных на исторических документах из архивов и библиотек Одессы, Херсона, Николаева, Измаила, Симферополя, Санкт-Петербурга, Москвы, Саратова, Иркутска, а также документов из швейцарских архивов Во (Vaud) и Арговия (Aarau), общины Оберкульм, документов из немецких восударственных и военных архивов (Bundesarchiv, Militärarchiv) и библиотек.",
+      "Генриетта Гётте – независимый исследователь, автор книг, основанных на исторических документах из архивов и библиотек Одессы, Херсона, Николаева, Измаила, Симферополя, Санкт-Петербурга, Москвы, Саратова, Иркутска, а также документов из швейцарских архивов Во (Vaud) и Арговия (Aarau), общины Оберкульм и документов из немецких восударственных и военных архивов (Bundesarchiv, Militärarchiv) и библиотек.",
       "В период публикаций работ Генриетты Гётте на сайте Academia-Prämium (Academia.edu) с 2021 по 2024 годы имя автора цитировалось учёными различных университетов. В 565 научных работах на Academia.edu упоминается автор «Генриетта Гётте». Были загружены научные труды по историографии и статьи конференций с упоминанием работ Генриетты Гётте, внёсшей ценный вклад в историческую литературу."
     ],
     de: [
-      "Henriette Götte ist eine unabhängige Forscherin und Autorin von Büchern, die auf historischen Dokumenten aus Archiven und Bibliotheken von Odessa, Cherson, Nikolajew, Izmail, Simferopol, St. Petersburg, Moskau, Saratow, Irkutsk, sowie Dokumenten aus den Schweizer Archiven der Kantone Vaud und Argovie (Aarau), der Gemeinde Oberkulm, Dokumenten aus deutschen Staats- und Militärarchiv (Bundesarchiv, Militärarchiv) und Bibliotheken basieren.",
+      "Henriette Götte ist eine unabhängige Forscherin und Autorin von Büchern, die auf historischen Dokumenten aus Archiven und Bibliotheken von Odessa, Cherson, Nikolajew, Izmail, Simferopol, St. Petersburg, Moskau, Saratow, Irkutsk, sowie Dokumenten aus den Schweizer Archiven der Kantone Vaud und Argovie (Aarau), der Gemeinde Oberkulm und Dokumenten aus deutschen Staats- und Militärarchiv (Bundesarchiv, Militärarchiv) und Bibliotheken basieren.",
       "Während der Veröffentlichung der Werke von Henriette Götte auf der Website des Academia-Prämiums (Academia.edu) von 2021 bis 2024 wurde der Name der Autorin von Wissenschaftlern verschiedener Universitäten zitiert. Die Autorin „Henriette Götte“ wird in 565 wissenschaftlichen Arbeiten auf Academia.edu erwähnt. Mit ihren Werken, wissenschaftlichen Abhandlungen zur Geschichtsschreibung und Konferenzbeiträgen hat sie einen wertvollen Beitrag zur historischen Literatur geleistet."
     ],
     en: [
-      "Henriette Goette is an independent researcher, the author of books based on historical documents from the archives and libraries of Odessa, Kherson, Nikolaev, Izmail, Simferopol, St. Petersburg, Moscow, Saratov, Irkutsk, as well as documents from the Swiss archives of Zurich, Vaud and Argovia, the community of Oberkulm, documents from German State and Military Archives (Bundesarchiv, Militararchiv) and libraries.",
+      "Henriette Goette is an independent researcher, the author of books based on historical documents from the archives and libraries of Odessa, Kherson, Nikolaev, Izmail, Simferopol, St. Petersburg, Moscow, Saratov, Irkutsk, as well as documents from the Swiss archives of Zurich, Vaud and Argovia, the community of Oberkulm and documents from German State and Military Archives (Bundesarchiv, Militararchiv) and libraries.",
       "During the publication of Henriette Goette’s works on the Academia-Prämium website (Academia.edu) from 2021 to 2024, her name was cited by scholars from various universities. The author “Henriette Goette” is mentioned in 565 academic papers on Academia.edu. Through her works, historiographic studies and conference articles, she has made a valuable contribution to historical literature."
     ]
   }
@@ -316,12 +316,12 @@ export const articlesData = [
     id: "pugachev",
     title: {
       ru: "Народное движение в России под предводительством Емельяна Ивановича Пугачёва",
-      de: "Eine Volksbewegung in Russland unter der Führung von Emeljan Iwanowitsch Pugachew",
+      de: "Eine Volksbewegung in Russland unter der Führung von Jemelian Iwanowitsch Pugatschow.",
       en: "The national movement in Russia led by Yemelyan Ivanovich Pugachev"
     },
     preview: { 
       ru: "В 2015 г. исполнилось 240 лет со дня подавления Крестьянской войны 1773–1775 гг. под руководством Емельяна Ивановича Пугачѐва...",
-      de: "Im Jahr 2015 jährte sich zum 240. Mal die Unterdrückung des Bauernkriegs von 1773–1775 unter der Führung von Pugachew...",
+      de: "Im Jahr 2015 jährte sich zum 240. Mal die Unterdrückung des Bauernkriegs von 1773–1775 unter der Führung von Pugatschow...",
       en: "2015 marked the 240th anniversary of the suppression of the Peasant War of 1773–1775 led by Yemelyan Pugachev..." 
     },
     pdfFile: "The_Pugachev_Rebellion.pdf"
