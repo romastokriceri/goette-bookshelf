@@ -264,6 +264,9 @@ export default function Home() {
 
         {/* BOOKS SECTION */}
         <section id="books" className="section books-section">
+          <h2 className="section-title">
+            <BookOpen /> {translations[lang].sections.books}
+          </h2>
           <div className="shelf-group">
             <div className="books-list">
               {booksList.map((book) => {
