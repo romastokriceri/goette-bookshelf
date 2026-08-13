@@ -46,7 +46,7 @@ export const translations = {
     nav: { home: "Главная", about: "Об авторе", books: "Книги", articles: "Статьи", reviews: "Отзывы"},
     sections: {
       about: "Об авторе",
-      books: "Полка",
+      books: "Книги",
       articles: "Статьи",
       reviews: "Отзывы"
     },
@@ -64,7 +64,7 @@ export const translations = {
     nav: { home: "Startseite", about: "Über den Autor", books: "Bücher", articles: "Artikel", reviews: "Kommentare"},
     sections: {
       about: "Über den Autor",
-      books: "Regal",
+       books: "Bücher",
       articles: "Artikel",
       reviews: "Kommentare zum Buch"
       },
@@ -82,7 +82,7 @@ export const translations = {
     nav: { home: "Home", about: "About the Author", books: "Books", articles: "Articles", reviews: "Reviews" },
     sections: {
       about: "About the Author",
-      books: "Shelf",
+      books: "Books",
       articles: "Articles",
       reviews: "Reviews"
     },
